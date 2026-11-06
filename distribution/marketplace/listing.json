@@ -30,7 +30,7 @@
   ],
   "license_decision": "MIT",
   "pricing_decision": "free_workbuddy",
-  "public_repository_decision": "public_now_author_override",
+  "public_repository_decision": "public_author_override_verified",
   "client_verification": "evidence/m5/clients.json",
   "case_index": "examples/README.md",
   "preview_images": [
@@ -51,5 +51,7 @@
     "办公"
   ],
   "price": "free",
-  "submission_record": "evidence/releases/0.1.4/workbuddy-submission.json"
+  "submission_record": "evidence/releases/0.1.4/workbuddy-submission.json",
+  "github_repository_url": "https://github.com/zcjunblog/excel-reconciliation-assistant",
+  "github_release_url": "https://github.com/zcjunblog/excel-reconciliation-assistant/releases/tag/v0.1.4"
 }

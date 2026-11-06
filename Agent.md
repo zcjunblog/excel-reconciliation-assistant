@@ -7,7 +7,7 @@
 - GitHub账号：`zcjunblog`。
 - 方向：跨行业的表格核对Agent Skill，标准技能包为主体，WorkBuddy等渠道按需适配。
 - 当前授权：最新用户指令“同步更新github，readme写好一点，直接开源”明确授权立即将本仓库公开，取代此前“WorkBuddy审核通过后再公开”的等待条件。MIT与WorkBuddy免费策略保持，SkillHub暂缓。
-- 当前阶段：M0–M5与M6发布准备完成；0.1.4已提交WorkBuddy审核（os_5a4af3ee62a8592f）。本轮完善开源README、核对公开内容并发布GitHub v0.1.4资源；GitHub公开与WorkBuddy审核/上线分别记录，真人和其他环境验证仍待完成。
+- 当前阶段：M0–M5与M6发布准备完成；0.1.4已提交WorkBuddy审核（os_5a4af3ee62a8592f）。GitHub仓库已公开，正式README和v0.1.4 Release已发布，四下载文件匿名回读一致；GitHub公开与WorkBuddy审核/上线分别记录，真人和其他环境验证仍待完成。
 - 用户确认了产品名称、跨行业与跨客户端方向；首版格式、匹配策略和技术方案是设计提案，不能写成已批准的全部产品细节。
 - 初始化采用私有仓库的可逆默认，沿用同一工作区前两个项目的做法。最新决定为MIT、立即公开GitHub并提供下载；WorkBuddy审核独立，SkillHub暂缓。
 

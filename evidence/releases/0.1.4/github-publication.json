@@ -1,5 +1,5 @@
 {
-  "status": "prepared_for_publication",
+  "status": "public_verified",
   "authorization": "Latest user explicitly requested immediate public release, superseding WorkBuddy-approval condition",
   "version": "0.1.4",
   "license": "MIT",
@@ -20,9 +20,56 @@
   "skill_source_and_release_archives_changed": false,
   "frozen_18_fixtures_and_55_showcase_files_unchanged": true,
   "visibility_before": "private",
-  "visibility_after": null,
+  "visibility_after": "public",
   "release_url": "https://github.com/zcjunblog/excel-reconciliation-assistant/releases/tag/v0.1.4",
   "workbuddy_status_source": "evidence/releases/0.1.4/workbuddy-submission.json",
   "workbuddy_approval_rechecked": false,
-  "skillhub": "deferred_by_author"
+  "skillhub": "deferred_by_author",
+  "verified_at": "2026-11-06T20:29:23.402887+08:00",
+  "release_tag": "v0.1.4",
+  "release_target_commit": "f368aa4234d74bcf3b068261ffa597f4e5752085",
+  "release_assets": [
+    {
+      "name": "excel-reconciliation-assistant-0.1.4.zip",
+      "status": 200,
+      "bytes": 79461,
+      "sha256": "c06db30824361c81a00a77e64edd4a07e90e56e45440b497dbcfd2d3d0ff3f4b",
+      "anonymous": true
+    },
+    {
+      "name": "manifest.json",
+      "status": 200,
+      "bytes": 15611,
+      "sha256": "3ca1360e725ae6664cb192e6ca2e87690d359fe96bf04c6d517f6d279149d84d",
+      "anonymous": true
+    },
+    {
+      "name": "excel-reconciliation-assistant-workbuddy-0.1.4.zip",
+      "status": 200,
+      "bytes": 80272,
+      "sha256": "84cd9a6e28920047d80e68868c391aa9b0c3a8246556313d3638259a430658bc",
+      "anonymous": true
+    },
+    {
+      "name": "SHA256SUMS",
+      "status": 200,
+      "bytes": 224,
+      "sha256": "9968b792fc847478f0b4a5413904a69230e70145f8602af76f055095792b4f22",
+      "anonymous": true
+    }
+  ],
+  "anonymous_readme_http_status": 200,
+  "anonymous_readme_matches_local": true,
+  "readme_sha256": "2d0b49fd6067846084528e9de572916d433619795ef2922f072e138b8fc535d3",
+  "readme_browser_verification": {
+    "anonymous": true,
+    "public_label_seen": true,
+    "mit_license_seen": true,
+    "release_link_seen": true,
+    "cover_logo_and_two_workbook_renders_loaded": 4,
+    "scope": "Live desktop GitHub page; no mobile-native claim",
+    "screenshot": "outputs/public-launch/github-readme-public.png",
+    "screenshot_sha256": "708de9a7998f72f74085675984ad74924ed7ce227ec8f3642224a25c66ab1dc9"
+  },
+  "fresh_archive_smoke_summary": "outputs/public-launch/archive-smoke/verification.json"
 }

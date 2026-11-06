@@ -2,7 +2,7 @@
 
 更新日期：2026-11-06（Asia/Shanghai）。
 
-当前状态：0.1.4已提交WorkBuddy审核；用户最新授权立即公开GitHub，不再等待审核。正在完善README、公开内容与GitHub Release，SkillHub暂缓。
+当前状态：GitHub已公开，正式README与v0.1.4 Release上线，匿名访问及四文件下载校验通过。WorkBuddy提审状态独立，SkillHub暂缓；真人和其他环境仍待验证。
 
 ## M0 项目初始化
 
@@ -153,5 +153,5 @@
 - [x] 用户授权立即公开，覆盖此前等待WorkBuddy审核的条件；MIT保持。
 - [x] README补强正式定位、快速下载、安装、版本证据、贡献说明与许可证。
 - [x] 历史文本/包内文本已知凭证标记扫描、六张办公截图检查、冻结资料和版本包准备。
-- [ ] 同步最终文档、创建0.1.4 GitHub Release并逐文件校验。
-- [ ] 将仓库设为public，核验匿名访问、图片/下载与远端提交一致。
+- [x] 同步最终文档、创建0.1.4 GitHub Release，四文件认证/匿名回读与本地一致。
+- [x] 仓库已设为public，匿名README和4张产品图片正常；四个Release下载HTTP200且字节一致。

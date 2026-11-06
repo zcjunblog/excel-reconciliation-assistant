@@ -81,3 +81,7 @@ WorkBuddy后续仍需核验审核结果和市场是否上线；GitHub已获最�
 ## GitHub直接开源执行
 
 用户最新授权直接公开。README已完善开源首页与v0.1.4下载说明；现有双包、许可和历史资料保持不变。公开与Release实际结果见[evidence/releases/0.1.4/github-publication.json](../evidence/releases/0.1.4/github-publication.json)。
+
+### GitHub公开结果
+
+已公开仓库并发布[v0.1.4 Release](https://github.com/zcjunblog/excel-reconciliation-assistant/releases/tag/v0.1.4)。两ZIP、SHA256SUMS和manifest共四文件均经认证及匿名回读，内容与本地完全一致；README匿名可读，四张产品/工作簿图片加载正常。最新主分支包含公开状态记录，v0.1.4标签保持在发布准备提交f368aa4，不改写标签或安装包。本轮未重查WorkBuddy审核，不据GitHub公开宣称市场上线。

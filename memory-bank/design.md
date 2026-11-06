@@ -2,7 +2,7 @@
 
 更新日期：2026-11-06（Asia/Shanghai）。
 
-状态：0.1.4已免费提交WorkBuddy审核；最新用户授权立即公开GitHub，覆盖此前审核后公开的顺序。本轮完善README与公开下载，SkillHub暂缓。
+状态：GitHub已按最新授权以MIT公开，正式README与v0.1.4 Release已上线，匿名访问与四文件摘要核对通过。WorkBuddy提审记录独立，SkillHub暂缓。
 
 ## 1. 已确认需求与设计边界
 
@@ -308,3 +308,7 @@ M1已确定首版规则协议、容量拒绝阈值、公式策略和报告明细
 用户最新要求：同步GitHub、README正式完善、直接开源。该明确指令取代此前“WorkBuddy审核通过后才公开”的等待条件，不再次申请同一授权。沿用MIT、白蓝封面/Logo和真实演示，将首页整理为产品定位、快速开始/下载、能力、场景、流程、案例、客户端证据、开发与贡献、许可；实际原生客户端版本标清。发布现有0.1.4双包到GitHub Release，上传前后核对SHA，不改已提审包、VERSION或核对引擎。
 
 公开前核对全部可达历史的已知凭证/本机路径标记、包内文本、合成资料与六张M4办公截图；不上传忽略目录里的原始浏览器截图/日志。该检查限已列格式与实际查看，不称通用PII检测。源码公开、GitHub Release、WorkBuddy审核与市场上线分别记状态；SkillHub仍暂缓。
+
+### 23.1 公开结果
+
+GitHub已设为Public并识别MIT；v0.1.4 Release包含两ZIP、SHA256SUMS和manifest共4文件，先认证回读、再匿名下载，均与本地原件逐字节一致。匿名浏览器确认Public、MIT、Release及正式README，封面/Logo/两张真实工作簿渲染图均加载；本轮未改Skill源、安装包、18份固定资料或55展示文件。公开前历史扫描713对象/450blob/1107文本载荷只命中规则与合成负例，6张M4截图已查看。原始浏览器截图/日志仍不入库。WorkBuddy上次已提交的状态未在本轮重查，不称市场审核通过。详情见[evidence/releases/0.1.4/github-publication.json](../evidence/releases/0.1.4/github-publication.json)。
