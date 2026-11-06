@@ -48,7 +48,10 @@
       "sha256": "19e0a291d54a470a1c264c6e21d110ac31575a3dff6161da1014f970f0e5072a"
     }
   ],
-  "marketplace_state": "not_uploaded",
+  "marketplace_state": "parsed_not_submitted",
   "repository_visibility": "private_until_workbuddy_approval",
-  "skillhub": "deferred_by_author"
+  "skillhub": "deferred_by_author",
+  "workbuddy_skill_id": "os_e85c4a5a6cefa97f",
+  "superseded_by": "0.1.4",
+  "superseded_reason": "Author requested a more formal marketplace overview; confirmed field is package-derived and read-only"
 }

@@ -4,7 +4,7 @@
 
 ## 下载与手动安装
 
-通用包：`releases/0.1.3/excel-reconciliation-assistant-0.1.3.zip`。先按同目录SHA256SUMS核对摘要，再解压，将其中**整个excel-reconciliation-assistant目录**放到所选技能根目录。结果应是`<技能根>/excel-reconciliation-assistant/SKILL.md`，不要只复制入口文件或额外多套一层文件夹。
+通用包：`releases/0.1.4/excel-reconciliation-assistant-0.1.4.zip`。先按同目录SHA256SUMS核对摘要，再解压，将其中**整个excel-reconciliation-assistant目录**放到所选技能根目录。结果应是`<技能根>/excel-reconciliation-assistant/SKILL.md`，不要只复制入口文件或额外多套一层文件夹。
 
 下表于2026-11-06按各官方说明核对；只列本工具选择的本地目录，不代表所有远程/云端surface都会同步本机个人技能。
 
@@ -34,7 +34,7 @@ python3 tools/install.py --client codex --scope project --project "<项目目录
 
 ## WorkBuddy
 
-使用`excel-reconciliation-assistant-workbuddy-0.1.3.zip`。本机V5.9.3入口为“专家·技能·连接器 → 技能 → 添加技能 → 上传技能 → 选择 ZIP 文件”。当前本机V5.9.3已完成最终0.1.0包导入和真实任务验收，证据见M5记录。检查导入结果和技能名/版本，再在新任务中通过`/`技能菜单或明确名称调用。
+使用`excel-reconciliation-assistant-workbuddy-0.1.4.zip`。本机V5.9.3入口为“专家·技能·连接器 → 技能 → 添加技能 → 上传技能 → 选择 ZIP 文件”。当前本机V5.9.3已完成最终0.1.0包导入和真实任务验收，证据见M5记录。检查导入结果和技能名/版本，再在新任务中通过`/`技能菜单或明确名称调用。
 
 此包注入[WorkBuddy官方元数据](https://open.workbuddy.cn/docs/skill)：中文/英文展示名、介绍、作者、版本及等长非空中英示例。为满足市场两级目录限制，行业样例平铺到references/，四份规则相对文件名与样例索引链接同步调整；核对引擎、Skill正文、原始表格字节和业务规则不变。客户端本地导入、市场解析、提交审核与上线分别记录；当前已获市场提审授权，实际进度见[发布记录](release-readiness.md)。
 
@@ -46,4 +46,4 @@ python3 tools/install.py --client codex --scope project --project "<项目目录
 
 重新打开任务并查看技能列表，再做一次实际文件调用。六客户端目录布局的隔离安装验证、独立ZIP脚本验证及真实宿主验证分别记录在[M5证据](../evidence/m5/README.md)，以该记录中的实际状态为准。
 
-当前0.1.3包含MIT许可证并更新VERSION，标准包核对引擎和Skill正文与0.1.0逐字节一致；WorkBuddy包另将样例平铺到references/，同步调整样例索引及规则相对文件名以满足市场两级目录限制，业务规则和原表不变。旧版客户端实跑证据保留原版本；新版安装包单独验包，不把平台解析或旧版宿主测试冒充新版实际调用。
+当前0.1.4包含MIT许可证并更新VERSION，标准包核对引擎和Skill正文与0.1.0逐字节一致；WorkBuddy包另将样例平铺到references/，同步调整样例索引及规则相对文件名以满足市场两级目录限制，业务规则和原表不变。旧版客户端实跑证据保留原版本；新版安装包单独验包，不把平台解析或旧版宿主测试冒充新版实际调用。

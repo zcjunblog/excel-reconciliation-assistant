@@ -1,0 +1,194 @@
+{
+  "stage": "M5",
+  "passed": true,
+  "version": "0.1.4",
+  "profiles": [
+    {
+      "profile": "standard",
+      "archive_sha256": "c06db30824361c81a00a77e64edd4a07e90e56e45440b497dbcfd2d3d0ff3f4b",
+      "skill_version": "0.1.4",
+      "python": "3.9.6",
+      "installed_cli_only": true,
+      "inspect_ready": true,
+      "cases": [
+        {
+          "case": "commerce",
+          "status": "needs_confirmation",
+          "tasks": [
+            {
+              "task_id": "order_delivery",
+              "manual_oracle_matches": true,
+              "field_counts": {
+                "exact": 5,
+                "within_rule": 1,
+                "different": 2,
+                "not_comparable": 1
+              }
+            }
+          ],
+          "actual_files": 11
+        },
+        {
+          "case": "inventory",
+          "status": "needs_confirmation",
+          "tasks": [
+            {
+              "task_id": "stock_check",
+              "manual_oracle_matches": true,
+              "field_counts": {
+                "exact": 4,
+                "within_rule": 0,
+                "different": 2,
+                "not_comparable": 2
+              }
+            }
+          ],
+          "actual_files": 11
+        },
+        {
+          "case": "training",
+          "status": "needs_confirmation",
+          "tasks": [
+            {
+              "task_id": "roster_check",
+              "manual_oracle_matches": true,
+              "field_counts": {
+                "exact": 7,
+                "within_rule": 1,
+                "different": 0,
+                "not_comparable": 1
+              }
+            }
+          ],
+          "actual_files": 11
+        },
+        {
+          "case": "administration",
+          "status": "needs_confirmation",
+          "tasks": [
+            {
+              "task_id": "assets_default",
+              "manual_oracle_matches": true,
+              "field_counts": {
+                "exact": 3,
+                "within_rule": 0,
+                "different": 0,
+                "not_comparable": 3
+              }
+            },
+            {
+              "task_id": "assets_cached",
+              "manual_oracle_matches": true,
+              "field_counts": {
+                "exact": 4,
+                "within_rule": 0,
+                "different": 0,
+                "not_comparable": 2
+              }
+            }
+          ],
+          "actual_files": 11
+        }
+      ],
+      "csv_no_dependencies": {
+        "status": "partial",
+        "xlsx_generated": false
+      }
+    },
+    {
+      "profile": "workbuddy",
+      "archive_sha256": "84cd9a6e28920047d80e68868c391aa9b0c3a8246556313d3638259a430658bc",
+      "skill_version": "0.1.4",
+      "python": "3.9.6",
+      "installed_cli_only": true,
+      "inspect_ready": true,
+      "cases": [
+        {
+          "case": "commerce",
+          "status": "needs_confirmation",
+          "tasks": [
+            {
+              "task_id": "order_delivery",
+              "manual_oracle_matches": true,
+              "field_counts": {
+                "exact": 5,
+                "within_rule": 1,
+                "different": 2,
+                "not_comparable": 1
+              }
+            }
+          ],
+          "actual_files": 11
+        },
+        {
+          "case": "inventory",
+          "status": "needs_confirmation",
+          "tasks": [
+            {
+              "task_id": "stock_check",
+              "manual_oracle_matches": true,
+              "field_counts": {
+                "exact": 4,
+                "within_rule": 0,
+                "different": 2,
+                "not_comparable": 2
+              }
+            }
+          ],
+          "actual_files": 11
+        },
+        {
+          "case": "training",
+          "status": "needs_confirmation",
+          "tasks": [
+            {
+              "task_id": "roster_check",
+              "manual_oracle_matches": true,
+              "field_counts": {
+                "exact": 7,
+                "within_rule": 1,
+                "different": 0,
+                "not_comparable": 1
+              }
+            }
+          ],
+          "actual_files": 11
+        },
+        {
+          "case": "administration",
+          "status": "needs_confirmation",
+          "tasks": [
+            {
+              "task_id": "assets_default",
+              "manual_oracle_matches": true,
+              "field_counts": {
+                "exact": 3,
+                "within_rule": 0,
+                "different": 0,
+                "not_comparable": 3
+              }
+            },
+            {
+              "task_id": "assets_cached",
+              "manual_oracle_matches": true,
+              "field_counts": {
+                "exact": 4,
+                "within_rule": 0,
+                "different": 0,
+                "not_comparable": 2
+              }
+            }
+          ],
+          "actual_files": 11
+        }
+      ],
+      "csv_no_dependencies": {
+        "status": "partial",
+        "xlsx_generated": false
+      }
+    }
+  ],
+  "case_tasks": 10,
+  "m1_originals_unchanged": true,
+  "execution_scope": "Unpacked package scripts/resources only; no repository production path or PYTHONPATH during execution"
+}

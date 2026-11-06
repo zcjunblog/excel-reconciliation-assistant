@@ -1,8 +1,8 @@
 {
   "display_name": "Excel表格核对助手",
   "display_name_en": "Excel Reconciliation Assistant",
-  "description_zh": "按业务编号与明确规则核对Excel和CSV，整理字段差异、缺失记录、重复编号和待确认事项。覆盖订单交付、库存盘点、报名签到、资产台账与清单版本核对，输出可筛选的白蓝工作簿及可追溯报告，保留原文件。",
-  "description_en": "Reconcile Excel and CSV tables by business identifiers and explicit rules. Review field differences, missing rows, duplicate keys and unresolved items across orders, inventory, attendance, assets and versioned lists, with a traceable workbook and reports.",
+  "description_zh": "面向订单交付、库存盘点、报名签到、资产管理与清单版本核对等办公场景，依据明确的业务编号和字段规则，对 Excel、CSV 表格进行结构化核对。集中呈现字段差异、缺失记录、重复编号及待确认事项，生成可筛选的核对工作簿与可追溯报告，支持回查原始行列位置。\n\n工作流程：登记授权来源 → 预检表格结构 → 明确核对规则 → 执行字段比较 → 生成结果文件 → 回查与复核。\n\n原始文件保持只读；核对结论限于指定范围和规则，不替代业务审批。",
+  "description_en": "Structured reconciliation of Excel and CSV tables for orders, inventory, attendance, assets and versioned lists. Compare explicit business keys and field rules, then deliver a filterable workbook and traceable reports for differences, missing rows, duplicate keys and unresolved items. Workflow: authorize sources, inspect structure, confirm rules, compare, export and review. Original files remain read-only; findings apply to the specified scope and rules.",
   "author": "zcjunblog",
   "examples_zh": [
     "按订单号和行号核对订单与交付表的数量、金额，保留前导零并列出差异。",

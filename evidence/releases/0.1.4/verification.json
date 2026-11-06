@@ -1,0 +1,47 @@
+{
+  "version": "0.1.4",
+  "license": "MIT",
+  "resources_per_profile": 42,
+  "workbuddy_market_layout": "Skill root/subdirectory/file",
+  "examples_per_language": 3,
+  "formal_overview_in_package": true,
+  "engine_and_standard_skill_body_unchanged": true,
+  "reproducible_two_builds": true,
+  "prior_archives_preserved": [
+    "0.1.0",
+    "0.1.1",
+    "0.1.2",
+    "0.1.3"
+  ],
+  "full_suite": {
+    "count": 158,
+    "passed": true,
+    "python": "3.12.14",
+    "log_sha256": "ce53154edaefe435ec1cb976aa080c1a133edd1f85b94241634a3c591d6a4faf"
+  },
+  "packaging_python_floor": {
+    "count": 11,
+    "passed": true,
+    "python": "3.9.6"
+  },
+  "independent_archive_tasks": 10,
+  "archive_python": "3.9.6",
+  "packages": [
+    {
+      "profile": "standard",
+      "archive": "excel-reconciliation-assistant-0.1.4.zip",
+      "bytes": 79461,
+      "sha256": "c06db30824361c81a00a77e64edd4a07e90e56e45440b497dbcfd2d3d0ff3f4b"
+    },
+    {
+      "profile": "workbuddy",
+      "archive": "excel-reconciliation-assistant-workbuddy-0.1.4.zip",
+      "bytes": 80272,
+      "sha256": "84cd9a6e28920047d80e68868c391aa9b0c3a8246556313d3638259a430658bc"
+    }
+  ],
+  "marketplace_state": "name_conflict_with_own_unsubmitted_0.1.3_draft",
+  "draft_id": "os_e85c4a5a6cefa97f",
+  "repository_visibility": "private_until_workbuddy_approval",
+  "skillhub": "deferred_by_author"
+}
