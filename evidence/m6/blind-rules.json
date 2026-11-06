@@ -1,0 +1,70 @@
+{
+  "stage": "M6",
+  "passed": true,
+  "scope": "Fresh isolated context used installed Skill, raw invented inputs and a draft rule file; no expected answers supplied",
+  "skill_resources_unchanged": 41,
+  "original_csv_and_draft_unchanged": true,
+  "input_sha256": {
+    "旧台账.csv": "a83dedad92ab5a8adc22630fc54eb7545296088b76e1503c846047e707b409e8",
+    "新清单.csv": "b9815738cf8145fa39e72281eea471b37bce6b44f857e2595247d1c3b81a9778",
+    "规则草稿.json": "ca6aedb52f61a3cf6aabad612dadd6539e80b0028c6566423ea24c5dc5d42003"
+  },
+  "steps": [
+    {
+      "step": "original_rules_inspect",
+      "exit_code": 2,
+      "status": "partial",
+      "issue_codes": [
+        "header_mismatch"
+      ]
+    },
+    {
+      "step": "doctor",
+      "exit_code": 0,
+      "status": "ready",
+      "issue_codes": []
+    },
+    {
+      "step": "inspect",
+      "exit_code": 0,
+      "status": "ready",
+      "issue_codes": []
+    },
+    {
+      "step": "run",
+      "exit_code": 2,
+      "status": "needs_confirmation",
+      "issue_codes": [
+        "missing_key",
+        "missing_key"
+      ]
+    }
+  ],
+  "draft_issues_explicitly_documented": [
+    "header mismatch",
+    "draft tolerance1 versus user tolerance0.01"
+  ],
+  "actual_amount_tolerance": "0.01",
+  "field_counts": {
+    "exact": 4,
+    "within_rule": 1,
+    "different": 1,
+    "not_comparable": 0
+  },
+  "matched_pairs": [
+    [
+      3,
+      2
+    ],
+    [
+      7,
+      6
+    ]
+  ],
+  "manifest_files_verified": 10,
+  "manifest_sha256": "9ddd19b15f95af4f47c6a6eee66da9ec99e74e2f6277a9763bc2c245ed33a6b1",
+  "call_record_sha256": "a2d155f9db7c18c0667d6872c68f4b4af13bed3f3fa5c854ce5fbb3037f9c7af",
+  "output": "outputs/m6-blind/交付-v001/正式核对",
+  "not_human_acceptance": true,
+  "source_row_classification_independently_checked": true
+}

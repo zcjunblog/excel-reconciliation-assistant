@@ -29,17 +29,17 @@
 
 ## Task 1: 可下载真实合成案例
 
-- [ ] 新增examples/release-cases/negative-delta：两CSV、明确规则、手工expected；编号0007/0008，6非键字段比较，exact3/different3，差额-2、-10.25、+0.20；不修改既有14份。
-- [ ] tests/test_showcase.py先覆盖新准备器缺失、五案例六任务与清单/人工答案、已有目录拒绝、MD/JSON/XLSX中的私有路径阻断，确认失败。
-- [ ] tools/prepare_showcase.py：`prepare(output:Path)->dict`，调用现有CLI并用独立oracle回读，扫描再通过现有独占发布器复制到新目录；`audit_public_tree(folder:Path)->dict`只保证已列出的路径/令牌标记，不宣称通用PII检测。
-- [ ] 运行聚焦与完整测试，五案例真实文件对照与冻结SHA通过；生成examples/showcase-v1及manifest。Expected: 四行业5任务+新增1任务，共6任务，所有清单逐项SHA正确。
+- [x] 新增examples/release-cases/negative-delta：两CSV、明确规则、手工expected；编号0007/0008，6非键字段比较，exact3/different3，差额-2、-10.25、+0.20；不修改既有14份。
+- [x] tests/test_showcase.py先覆盖新准备器缺失、五案例六任务与清单/人工答案、已有目录拒绝、MD/JSON/XLSX中的私有路径阻断，确认失败。
+- [x] tools/prepare_showcase.py：`prepare(output:Path)->dict`，调用现有CLI并用独立oracle回读，扫描再通过现有独占发布器复制到新目录；`audit_public_tree(folder:Path)->dict`只保证已列出的路径/令牌标记，不宣称通用PII检测。
+- [x] 运行聚焦与完整测试，五案例真实文件对照与冻结SHA通过；生成examples/showcase-v1及manifest。Expected: 四行业5任务+新增1任务，共6任务，所有清单逐项SHA正确。
 
 ## Task 2: 品牌、README与提审素材
 
-- [ ] 内置imagegen各生成一个白蓝宽封面和无字Logo；与前两办公Skill协调，但保留独立图形。检查文字、边界、小尺寸辨认；原始资源与完整提示词保存项目。
-- [ ] 正式README以场景/价值、能力、七步流程、真实案例、交付、安装、能力矩阵与边界组织；加入封面/Logo、真实样张和可下载案例，不虚构开源许可证或已发布状态。
-- [ ] distribution/marketplace提供中文/英文说明、使用示例、独立Logo路径及建议分类；docs/release-readiness.md汇总版本/摘要、提审步骤、许可/公开/渠道决策和人工验收清单；不实际提交。
-- [ ] 按当前官方渠道资料检查字段/Logo要求，仅引用官方来源；检查README桌面/窄屏预览及全部链接。Expected: 文案和图像可审阅，使用流程清晰，概念图有标注。
+- [x] 内置imagegen各生成一个白蓝宽封面和无字Logo；与前两办公Skill协调，但保留独立图形。检查文字、边界、小尺寸辨认；原始资源与完整提示词保存项目。
+- [x] 正式README以场景/价值、能力、七步流程、真实案例、交付、安装、能力矩阵与边界组织；加入封面/Logo、真实样张和可下载案例，不虚构开源许可证或已发布状态。
+- [x] distribution/marketplace提供中文/英文说明、使用示例、独立Logo路径及建议分类；docs/release-readiness.md汇总版本/摘要、提审步骤、许可/公开/渠道决策和人工验收清单；不实际提交。
+- [x] 按当前官方渠道资料检查字段/Logo要求，仅引用官方来源；检查README桌面/窄屏预览及全部链接。Expected: 文案和图像可审阅，使用流程清晰，概念图有标注。
 
 ## Task 3: 最终证据与阶段同步
 

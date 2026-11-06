@@ -1,0 +1,32 @@
+{
+  "stage": "M6",
+  "passed": true,
+  "scope": "One synthetic full CLI sample on current machine; no largest-capacity, concurrency, cross-OS or arbitrary-customer-data claim",
+  "python": "3.12.14",
+  "os": "Darwin",
+  "architecture": "arm64",
+  "input_rows_per_side": 5000,
+  "input_columns": 6,
+  "matched_pairs": 5000,
+  "field_comparisons": 15000,
+  "field_counts": {
+    "exact": 14930,
+    "different": 70,
+    "within_rule": 0,
+    "not_comparable": 0
+  },
+  "native_cli_status": "complete",
+  "cli_exit_code": 0,
+  "full_cli_seconds": 4.7428,
+  "child_max_rss_mib": 119.3,
+  "memory_scope": "OS child-process maximum RSS; not total simultaneous process-tree memory",
+  "verified_delivery_files": 10,
+  "source_sha256": {
+    "left.csv": "d00cfbd073ed923fd70612190f4e5dad3af271895b6a67da21a382b1fdcfd2fb",
+    "right.csv": "872bda6552766cf37d0797b89dabee92da15110461e8a11e371252ffdab3e098",
+    "rules.json": "2a662c3cab6526dbfc8439ec78c30d9d0f7bddfee8e3aadbd715730c03e09665"
+  },
+  "receipt_sha256": "9d58f5f70b4b839aa257b7444f8deb92d31730170a0955286c6cefb6b1abbda2",
+  "output": "outputs/m6-performance/3125a2a0af",
+  "m1_and_m5_unchanged": true
+}

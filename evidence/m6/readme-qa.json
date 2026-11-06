@@ -1,0 +1,35 @@
+{
+  "preview": "Local approximation of GitHub Markdown styling, not a real GitHub or mobile-device test",
+  "desktop": {
+    "checked": true
+  },
+  "narrow_viewport": {
+    "width": 390,
+    "height": 844,
+    "document_width": 375,
+    "horizontal_page_overflow": false,
+    "loaded_images": 7,
+    "wide_tables_local_scroll": true
+  },
+  "logo_sizes_px": [
+    32,
+    64,
+    128
+  ],
+  "viewport_restored": true,
+  "preview_tab_closed": true,
+  "screenshots": [
+    {
+      "path": "outputs/m6-readme-desktop.png",
+      "sha256": "0dc0724161c1296fc841665bf4d89148f2eacc76f965eb9842e643944660cad2"
+    },
+    {
+      "path": "outputs/m6-readme-mobile.png",
+      "sha256": "c3b4cc1ccf9fd44873fb776bb40fdbb806f680d01a2e2a697b7a7366943d8da9"
+    },
+    {
+      "path": "outputs/m6-logo-small-preview.png",
+      "sha256": "2b230b8e213c0406cd58de880dfd409c10cbb6e2b0a7e5ba6419b5a10fa7c01c"
+    }
+  ]
+}

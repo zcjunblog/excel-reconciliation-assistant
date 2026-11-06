@@ -173,6 +173,7 @@ python3 -m unittest discover -s tests -q
 - [M1 材料与容量范围](evidence/m1/README.md) · [M2 来源读取](evidence/m2/README.md)
 - [M3 确定性比较](evidence/m3/README.md) · [M4 文件与办公验证](evidence/m4/README.md)
 - [M5 分发与客户端](evidence/m5/README.md) · [渠道说明](docs/distribution.md)
+- [M6 展示、错误规则盲测与性能样本](evidence/m6/README.md)
 
 当前为 0.1.0 发布准备版本，尚未市场提审；许可证、公开范围与发布渠道待作者确定。发布状态以[发布准备记录](docs/release-readiness.md)为准。
 

@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "scope": "Synthetic sources, showcase receipts, known private-path/token markers and PNG metadata checks; not generic PII detection",
+  "showcase_files": 56,
+  "case_tasks": 6,
+  "audit": {
+    "passed": true,
+    "files_checked": 56,
+    "office_xml_bytes_checked": 426315,
+    "scope": "Known developer path/token markers plus synthetic-source review; not a general PII detector"
+  },
+  "frozen_m1_git_objects_match": 14,
+  "new_csv_git_objects_preserve_source_bytes": 2,
+  "m5_archives_unchanged": true,
+  "image_review": "Generated concept assets contain no user data; public previews render synthetic workbook ranges. Raw native WPS screenshots remain in ignored outputs.",
+  "not_reviewed": "User-specific source data not part of this repository"
+}

@@ -1,0 +1,63 @@
+{
+  "application": "WPS Office",
+  "os": "macOS",
+  "zoom_observed": "85%",
+  "passed": true,
+  "human_office_user_acceptance": false,
+  "scope": "Agent-operated native application viewing on the current Mac, not cross-device or cross-OS validation",
+  "case_workbooks": [
+    "commerce",
+    "inventory",
+    "training",
+    "administration",
+    "negative-delta"
+  ],
+  "checks": [
+    "Five actual workbooks open with legible Chinese, status and summary counts",
+    "Negative deltas -2 / -10.25 and positive0.20 visible",
+    "Identifiers0007/0008 retained; inventory-only SKU0010 retained",
+    "Negative worksheet P2 selects actual comparison row3, and frozen task/key columns remain visible during horizontal navigation",
+    "Five disposable copies and five original public demo workbooks remain byte-identical"
+  ],
+  "workbook_sha256": {
+    "commerce": "801879a4745776622312c418b4b5a7ef535a501e5f2f294c2126e79e39100bb3",
+    "inventory": "65e501a2f1d001324ded5226c1d35d9e5c5e67200f069c5890e4a271254c61f2",
+    "training": "12ec67a6d77538047ad09f0bf12dfdce47b78d83eb8b8826e1c04e313396a1d9",
+    "administration": "fe37a766e2ae37d77d5e571b7f7bd459d11baff9a66708b1d2c2e71792acfa8b",
+    "negative-delta": "dc1eec292cb4ec979cb746ee36775ef2efd8f62267556a25640099fa61a30547"
+  },
+  "screenshots_ignored": [
+    {
+      "path": "outputs/m6-office/negative-overview.png",
+      "sha256": "204f2ed4d41d876de2f34a05b54b894e41635145cacb4d34dabd29ffb70793ac"
+    },
+    {
+      "path": "outputs/m6-office/negative-details-final.png",
+      "sha256": "e419091d4093412c3634b096846abf1ccd55278e3cda2365aa9369e17918dcf1"
+    },
+    {
+      "path": "outputs/m6-office/negative-source-location.png",
+      "sha256": "2e172f8d7be44e6d1a680c48521067aa9fb0c7db4b70e148b81b1f648e59ec72"
+    },
+    {
+      "path": "outputs/m6-office/inventory-overview.png",
+      "sha256": "00794e6d2e02b0dd139aba75e5037348ec0d196f665e142a5fc8740f037959e8"
+    },
+    {
+      "path": "outputs/m6-office/inventory-only-left.png",
+      "sha256": "781087fc7aa449eb976d0d6e909f3ddc89363638bbf586881f5ac038429edaa8"
+    },
+    {
+      "path": "outputs/m6-office/training-view.png",
+      "sha256": "d1f0955535fe285f55afe9d1fb271eec809f1e95ffd70c89f1393014e4e286dc"
+    },
+    {
+      "path": "outputs/m6-office/commerce-view.png",
+      "sha256": "c47744d1c5aa9e85e0037fcd64893175625c153e24eb321c3ab890aea207fa6b"
+    },
+    {
+      "path": "outputs/m6-office/administration-view.png",
+      "sha256": "578a2a4ba832e7caa37d09c6abaf7b3ae932bdf9d50d5556bcbbb12552ea34ff"
+    }
+  ]
+}
