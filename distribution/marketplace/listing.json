@@ -30,7 +30,7 @@
   ],
   "license_decision": "MIT",
   "pricing_decision": "free_workbuddy",
-  "public_repository_decision": "after_workbuddy_approval",
+  "public_repository_decision": "public_now_author_override",
   "client_verification": "evidence/m5/clients.json",
   "case_index": "examples/README.md",
   "preview_images": [

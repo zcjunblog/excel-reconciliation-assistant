@@ -7,18 +7,45 @@
 <p align="center"><strong>让每一处表格差异，都能定位、解释和复核。</strong></p>
 <p align="center">Excel Reconciliation Assistant<br>面向各行业与多种 Agent 客户端的表格核对 Skill</p>
 <p align="center">
-  <a href="releases/0.1.4/excel-reconciliation-assistant-0.1.4.zip">标准 Skill</a> ·
-  <a href="releases/0.1.4/excel-reconciliation-assistant-workbuddy-0.1.4.zip">WorkBuddy 安装包</a> ·
+  <a href="https://github.com/zcjunblog/excel-reconciliation-assistant/releases/download/v0.1.4/excel-reconciliation-assistant-0.1.4.zip">标准 Skill</a> ·
+  <a href="https://github.com/zcjunblog/excel-reconciliation-assistant/releases/download/v0.1.4/excel-reconciliation-assistant-workbuddy-0.1.4.zip">WorkBuddy 安装包</a> ·
   <a href="#工作流程">工作流程</a> ·
   <a href="#真实演示">真实演示</a> ·
   <a href="#快速开始">快速开始</a>
 </p>
 
-订单与交付表对不上，台账与盘点记录存在差异，名单有重复编号，版本变化难以回查。表格核对需要看见差异，也需要知道差异来自哪里、按什么规则判断、哪些记录仍待确认。
+**Excel表格核对助手是一套面向业务表格复核的开源 Agent Skill。** 依据明确的业务编号、字段映射与比较规则，对 XLSX、CSV 数据进行核对，形成可筛选、可解释、可回查的结果工作簿与报告。
 
-**Excel表格核对助手将用户提供的 XLSX、CSV 按明确的业务编号与字段规则进行核对，生成可筛选的结果工作簿、核对报告和待确认事项，并保留原行、原列与原始值。**
+覆盖订单交付、库存盘点、报名签到、资产管理及清单版本核对等办公场景。由 Agent 整理任务与规则，确定性工具执行读取、关联、比较和文件生成。原始表格保持只读，每次交付独立保存；业务歧义和待确认范围始终可见。
 
-Agent 理解任务、整理规则并解释结果；确定性工具执行读取、关联、比较与文件生成。原表只读，每次交付独立版本，补充规则后可重新核对并保留旧结果。
+<p align="center"><strong>规则明确</strong> · <strong>差异可追溯</strong> · <strong>原表只读</strong> · <strong>MIT 开源</strong></p>
+
+## 快速开始
+
+### 选择安装方式
+
+| 使用方式 | 下载与安装 |
+| --- | --- |
+| WorkBuddy | 下载专用 ZIP，在客户端“添加技能 → 上传技能”导入，打开新任务调用 |
+| 其他支持 Agent Skills 的客户端 | 下载标准 ZIP，将完整技能目录安装到客户端支持的位置；[查看安装指南](docs/installation.md) |
+| 本地 Python | 克隆仓库后运行确定性 CLI；[查看本地示例](#本地运行与规则复用) |
+
+使用前确认宿主具有文件读写、Python 3.9+ 和输出目录权限。需要 XLSX 时，在所选 Python 环境安装 `openpyxl>=3.1,<4`；可通过 `scripts/doctor.py --require-xlsx` 检查依赖。CSV 计算和 Markdown／JSON 交付可使用标准库。工具本身不要求模型 API 密钥。
+
+可以这样提出任务：
+
+> 核对这两份资产清单。按资产编号对应，比较领用人、数量和金额，金额绝对差额 0.01 以内视为容差内一致。编号保持原样，原表只读。生成 Excel、核对报告和待确认事项，保留原行定位。若字段或单位不明确，请列出需要确认的问题。
+
+### 下载 v0.1.4
+
+| 安装包 | 用途 |
+| --- | --- |
+| [下载标准 Skill ZIP](https://github.com/zcjunblog/excel-reconciliation-assistant/releases/download/v0.1.4/excel-reconciliation-assistant-0.1.4.zip) | 标准目录，适配具备文件执行能力的 Agent 客户端 |
+| [下载 WorkBuddy ZIP](https://github.com/zcjunblog/excel-reconciliation-assistant/releases/download/v0.1.4/excel-reconciliation-assistant-workbuddy-0.1.4.zip) | 包含中英展示信息、三组快捷示例和市场目录适配 |
+
+[全部发布文件](https://github.com/zcjunblog/excel-reconciliation-assistant/releases/tag/v0.1.4) · [SHA256SUMS](https://github.com/zcjunblog/excel-reconciliation-assistant/releases/download/v0.1.4/SHA256SUMS) · [逐资源清单](releases/0.1.4/manifest.json)
+
+下载后按 SHA256SUMS 核对摘要，再解压或导入。两包均含 MIT 许可证、完整工具和四行业合成样例；区别为平台展示与样例目录适配，核对引擎和业务规则一致。
 
 ## 核心能力
 
@@ -60,7 +87,7 @@ Agent 理解任务、整理规则并解释结果；确定性工具执行读取�
 
 ## 真实演示
 
-以下全部使用合成数据，由当前 0.1.0 工具实际生成。展示文件保留原始清单与摘要，可下载检查。
+以下均为合成数据，由 0.1.0 核对引擎实际生成；0.1.4 保留相同业务逻辑。展示文件保留原始清单与摘要，可下载检查。
 
 ### 一份清单的数量与金额变化
 
@@ -107,34 +134,21 @@ Agent 理解任务、整理规则并解释结果；确定性工具执行读取�
 
 结果工作簿提供文字状态、筛选、冻结窗格、来源坐标与分片导航。报告展示主要例外，完整记录保留在工作簿和 JSONL；超过输出范围时说明实际完成内容，不静默截断。
 
-## 快速开始
-
-### 在 Agent 客户端中使用
-
-1. 下载并按[安装指南](docs/installation.md)安装整个技能目录；WorkBuddy 使用专用 ZIP 导入。
-2. 选择 Python 3.9+，运行技能目录中的 `scripts/doctor.py`；需要 Excel 时加 `--require-xlsx`。XLSX 需要 `openpyxl>=3.1,<4`。
-3. 提供需核对文件与明确规则，打开新任务调用技能。
-
-可以这样提出任务：
-
-> 核对这两份资产清单。按资产编号对应，比较领用人、数量和金额，金额绝对差额 0.01 以内视为容差内一致。编号保持原样，原表只读。生成 Excel、核对报告和待确认事项，保留原行定位。若字段或单位不明确，请列出需要确认的问题。
-
-### 安装包
-
-- [标准 Skill 0.1.4](releases/0.1.4/excel-reconciliation-assistant-0.1.4.zip)
-- [WorkBuddy 0.1.4](releases/0.1.4/excel-reconciliation-assistant-workbuddy-0.1.4.zip)
-- [SHA256SUMS](releases/0.1.4/SHA256SUMS) · [逐资源清单](releases/0.1.4/manifest.json)
-
-无模型 API 密钥要求；能否执行取决于客户端的文件读写、Python 执行能力及其权限范围。CSV 可只用标准库完成核对与 Markdown／JSON 交付；缺少 Excel 依赖时明确说明未生成 XLSX。
-
-### 在本地运行合成案例
+## 本地运行与规则复用
 
 ```sh
-python3 skills/excel-reconciliation-assistant/scripts/reconcile_tool.py run \
+git clone https://github.com/zcjunblog/excel-reconciliation-assistant.git
+cd excel-reconciliation-assistant
+python3 -m venv .venv
+.venv/bin/python -m pip install -r skills/excel-reconciliation-assistant/requirements.txt
+
+.venv/bin/python skills/excel-reconciliation-assistant/scripts/reconcile_tool.py run \
   --rules examples/commerce/rules.json \
   --authorize examples/commerce/inputs.xlsx \
   --output outputs/commerce-v001
 ```
+
+以上命令适用于 macOS／Linux；Windows 请将 `.venv/bin/python` 替换为 `.venv\Scripts\python.exe`。
 
 结构预检将 `run` 改为 `inspect`，并使用另一个新输出目录。每个来源逐个传入 `--authorize`；规则引用不能替代授权，已有输出目录拒绝覆盖。
 
@@ -144,8 +158,8 @@ python3 skills/excel-reconciliation-assistant/scripts/reconcile_tool.py run \
 
 | 客户端 | 当前证据 |
 | --- | --- |
-| WorkBuddy V5.9.3 | 最终包导入、显式技能调用、实际 Excel 与报告、本机文件回读通过 |
-| Codex CLI | 已安装技能发现、doctor／inspect／run、实际交付与摘要回读通过 |
+| WorkBuddy V5.9.3 | 0.1.0 原生导入、技能调用与文件回读通过；0.1.4 独立包验证、市场解析与提审已完成 |
+| Codex CLI | 0.1.0 原生技能发现、doctor／inspect／run 与交付回读通过；不将旧版原生证据写成新版实跑 |
 | Claude Code、Cursor、GitHub Copilot CLI、Gemini CLI、OpenCode | 官方目录说明已核对，项目/用户目录隔离安装通过；尚未实跑这些宿主 |
 
 [安装路径与能力边界](docs/installation.md) · [M5 客户端证据](evidence/m5/README.md)
@@ -163,7 +177,8 @@ python3 skills/excel-reconciliation-assistant/scripts/reconcile_tool.py run \
 ## 开发与验证
 
 ```sh
-python3 -m unittest discover -s tests -q
+.venv/bin/python -m pip install -r tools/requirements-m5.txt
+.venv/bin/python -m unittest discover -s tests -q
 ```
 
 开发验证依赖见 `tools/requirements-m5.txt`。用例覆盖授权、原值与坐标、类型、精确差额、歧义隔离、数量守恒、交付摘要、独立解压与安装边界。生产包不包含测试或人工答案。
@@ -175,6 +190,18 @@ python3 -m unittest discover -s tests -q
 - [M5 分发与客户端](evidence/m5/README.md) · [渠道说明](docs/distribution.md)
 - [M6 展示、错误规则盲测与性能样本](evidence/m6/README.md)
 
-当前版本为 0.1.4，采用 [MIT 许可证](LICENSE)，已按免费价格提交 WorkBuddy 审核，尚未审核通过或市场上线。GitHub 仓库将在审核通过后公开；SkillHub 暂缓。发布状态以[发布准备记录](docs/release-readiness.md)为准。
+## 参与贡献
 
-Created by [zcjunblog](https://github.com/zcjunblog)
+欢迎通过 [Issues](https://github.com/zcjunblog/excel-reconciliation-assistant/issues) 反馈问题、提出场景需求或讨论规则扩展，也欢迎提交 Pull Request。
+
+反馈问题时，请说明客户端、Python 版本、实际与预期行为，并提供可公开的最小合成样例。请勿上传真实客户名单、订单、资产台账、访问凭证或其他未获授权的业务资料。涉及核对规则的修改，应附独立预期与验证结果，保留来源定位和数量守恒。
+
+## 版本与发布状态
+
+源码及 v0.1.4 安装包依据 MIT 许可证开放，支持本地使用与二次开发。WorkBuddy 0.1.4 已于 2026-11-06 按免费价格提交审核；审核和市场上线状态以平台为准，GitHub 开源不代表市场审核通过。SkillHub 暂缓。
+
+[发布与审核记录](docs/release-readiness.md) · [提交证据](evidence/releases/0.1.4/workbuddy-submission.json) · [后续计划](memory-bank/todo.md)
+
+## 许可证
+
+本项目采用 [MIT License](LICENSE)。使用、修改和再分发时请保留版权与许可声明。由 [zcjunblog](https://github.com/zcjunblog) 维护。

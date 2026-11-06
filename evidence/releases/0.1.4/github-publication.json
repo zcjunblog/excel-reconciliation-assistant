@@ -1,0 +1,28 @@
+{
+  "status": "prepared_for_publication",
+  "authorization": "Latest user explicitly requested immediate public release, superseding WorkBuddy-approval condition",
+  "version": "0.1.4",
+  "license": "MIT",
+  "repo": "zcjunblog/excel-reconciliation-assistant",
+  "history_audit": {
+    "all_reachable_refs": true,
+    "objects": 713,
+    "blobs": 450,
+    "text_payloads_including_archives": 1107,
+    "credential_pattern_hits": 0,
+    "developer_private_path_hits": 0,
+    "marker_hits_reviewed_as_scan_rules_and_synthetic_tests": 6,
+    "scope": "Known credential formats and developer markers; binary images separately visually reviewed, not a generic PII detector"
+  },
+  "tracked_native_screenshots_visually_reviewed": 6,
+  "fresh_independent_archive_tasks": 10,
+  "archive_python": "3.9.6",
+  "skill_source_and_release_archives_changed": false,
+  "frozen_18_fixtures_and_55_showcase_files_unchanged": true,
+  "visibility_before": "private",
+  "visibility_after": null,
+  "release_url": "https://github.com/zcjunblog/excel-reconciliation-assistant/releases/tag/v0.1.4",
+  "workbuddy_status_source": "evidence/releases/0.1.4/workbuddy-submission.json",
+  "workbuddy_approval_rechecked": false,
+  "skillhub": "deferred_by_author"
+}
