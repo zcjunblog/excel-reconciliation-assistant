@@ -40,7 +40,9 @@
       "sha256": "a712f0ca14d027c9c48e18bdc83be27123f1b2f43e1f14df0c826ee274d6155d"
     }
   ],
-  "marketplace_state": "not_uploaded",
+  "marketplace_state": "parse_rejected_example_limit",
   "repository_visibility": "private_until_workbuddy_approval",
-  "skillhub": "deferred_by_author"
+  "skillhub": "deferred_by_author",
+  "marketplace_error": "examples_zh 最多 3 个示例，当前 4 个；examples_en 最多 3 个示例，当前 4 个",
+  "superseded_by": "0.1.3"
 }

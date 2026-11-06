@@ -57,6 +57,14 @@ class DistributionTests(unittest.TestCase):
                     if href.startswith(('http:','https:','#')):continue
                     self.assertIn(posixpath.normpath(posixpath.join(posixpath.dirname(name),href)),buddy.namelist())
 
+    def test_market_examples_accept_three_and_reject_four_per_language(self):
+        d=tool(self,'distribution');fields,body,version=d.skill_info()
+        profile=json.loads((ROOT/'distribution/workbuddy.json').read_text())
+        three={**profile,'examples_zh':['一','二','三'],'examples_en':['one','two','three']}
+        self.assertTrue(d.workbuddy_entry(fields,body,version,three))
+        four={**three,'examples_zh':three['examples_zh']+['四'],'examples_en':three['examples_en']+['four']}
+        with self.assertRaises(ValueError):d.workbuddy_entry(fields,body,version,four)
+
     def test_license_is_required_and_identical_in_both_archives(self):
         builder=tool(self,'build_release'); folder=self.dir/'licensed'
         builder.build(folder)

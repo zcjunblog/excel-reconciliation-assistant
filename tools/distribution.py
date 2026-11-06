@@ -133,6 +133,7 @@ def workbuddy_entry(fields,body,version,profile=None):
     if any(not isinstance(items,list) or not items or any(not isinstance(v,str) or not v.strip() for v in items) for items in examples):
         raise ValueError('WorkBuddy examples must be nonempty lists of nonempty strings')
     if len(examples[0])!=len(examples[1]): raise ValueError('WorkBuddy examples_zh/examples_en count mismatch')
+    if len(examples[0])>3: raise ValueError('WorkBuddy supports at most 3 examples per language')
     values={**fields,**profile,'version':version}
     return ('---\n'+'\n'.join(k+': '+json.dumps(v,ensure_ascii=False) for k,v in values.items())+'\n---\n'+body).encode('utf-8')
 

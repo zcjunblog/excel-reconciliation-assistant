@@ -7,13 +7,11 @@
   "examples_zh": [
     "按订单号和行号核对订单与交付表的数量、金额，保留前导零并列出差异。",
     "核对库存台账和盘点表，按商品编号与仓位关联，单独列出重复键和单位不一致。",
-    "把报名表与签到表按报名编号核对，找出缺失和字段不同的记录，不按姓名猜测对应关系。",
     "核对两版资产清单，按资产编号比较领用人和状态，生成可回查原行的Excel和报告。"
   ],
   "examples_en": [
     "Reconcile quantities and amounts between orders and deliveries using order and line IDs, preserving leading zeros.",
     "Compare the inventory ledger with the count sheet by SKU and location, isolating duplicate keys and unit mismatches.",
-    "Compare registration and attendance by registration ID, reporting missing rows and field changes without guessing by name.",
     "Compare two asset-list versions by asset ID and produce a workbook and report with original row references."
   ]
 }
