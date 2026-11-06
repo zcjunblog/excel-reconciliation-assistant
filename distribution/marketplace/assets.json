@@ -1,0 +1,53 @@
+{
+  "tool": "built-in imagegen for cover and logo; artifact-tool for read-only workbook ranges",
+  "assets": [
+    {
+      "path": "docs/images/commerce-overview-render.png",
+      "width": 2477,
+      "height": 1670,
+      "bytes": 281675,
+      "sha256": "92abbb3b6227b8dcc7c7a5863d799c8793d980384fdae865cd9059858ee9935d",
+      "kind": "read_only_workbook_render"
+    },
+    {
+      "path": "docs/images/excel-reconciliation-cover.png",
+      "width": 2172,
+      "height": 724,
+      "bytes": 1426411,
+      "sha256": "d7470e56f1dec622adcb1f49aec793b6cfd4a46738629198e3796d9d2a0acdd7",
+      "kind": "generated_concept"
+    },
+    {
+      "path": "docs/images/excel-reconciliation-logo.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 1301341,
+      "sha256": "ddf47ffec56bfdccb5deed8595fdacd5c6d7e2632e3ffbd236ff13a056774d01",
+      "kind": "generated_concept"
+    },
+    {
+      "path": "docs/images/negative-delta-details-render.png",
+      "width": 1721,
+      "height": 578,
+      "bytes": 51290,
+      "sha256": "5daea704d049639bb69519ab96aca00ab1bb35bc6358624027c5576e54fdb2ef",
+      "kind": "read_only_workbook_render"
+    },
+    {
+      "path": "docs/images/negative-delta-overview-render.png",
+      "width": 2477,
+      "height": 1508,
+      "bytes": 256374,
+      "sha256": "21bdadc4ccd0485008792aad90517f5e4737e74593cc02ba331fb729e77e5788",
+      "kind": "read_only_workbook_render"
+    },
+    {
+      "path": "distribution/marketplace/logo-512.png",
+      "width": 512,
+      "height": 512,
+      "bytes": 237554,
+      "sha256": "b73dca816b559e666a3121df18d28001e79852999dfe709407c1019af7ff5c5e",
+      "kind": "technical_resize_of_generated_logo"
+    }
+  ]
+}
