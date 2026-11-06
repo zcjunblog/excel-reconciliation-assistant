@@ -17,6 +17,8 @@ from prepare_showcase import _frozen
 
 
 def main():
+    if not __debug__:
+        print(json.dumps({'status':'blocked','error':'Benchmark validation requires assertions; run without -O or PYTHONOPTIMIZE'}));return 1
     _frozen();out=ROOT/'outputs/m6-performance'/uuid.uuid4().hex[:10];out.mkdir(parents=True)
     for side in ('left','right'):
         with (out/(side+'.csv')).open('w',encoding='utf-8-sig',newline='') as stream:
@@ -49,7 +51,9 @@ def main():
     assert all(hashlib.sha256((out/name).read_bytes()).hexdigest()==value for name,value in hashes.items());_frozen()
     rss=resource.getrusage(resource.RUSAGE_CHILDREN).ru_maxrss;rss=rss/(1024*1024) if platform.system()=='Darwin' else rss/1024
     result={'stage':'M6','passed':True,'scope':'One synthetic full CLI sample on current machine; no largest-capacity, concurrency, cross-OS or arbitrary-customer-data claim','python':platform.python_version(),'os':platform.system(),'architecture':platform.machine(),'input_rows_per_side':5000,'input_columns':6,'matched_pairs':5000,'field_comparisons':15000,'field_counts':{'exact':14930,'different':70,'within_rule':0,'not_comparable':0},'native_cli_status':summary['status'],'cli_exit_code':process.returncode,'full_cli_seconds':round(elapsed,4),'child_max_rss_mib':round(rss,2),'memory_scope':'OS child-process maximum RSS; not total simultaneous process-tree memory','verified_delivery_files':len(receipt['files']),'source_sha256':hashes,'receipt_sha256':hashlib.sha256((out/'result-v001/交付清单.json').read_bytes()).hexdigest(),'output':out.relative_to(ROOT).as_posix(),'m1_and_m5_unchanged':True}
-    (ROOT/'evidence/m6/performance.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf-8');print(json.dumps(result,ensure_ascii=False))
+    record=out/'performance.json';result['output_record']=record.relative_to(ROOT).as_posix()
+    with record.open('x',encoding='utf-8') as stream:stream.write(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
+    print(json.dumps(result,ensure_ascii=False));return 0
 
 
-if __name__=='__main__':main()
+if __name__=='__main__':raise SystemExit(main())

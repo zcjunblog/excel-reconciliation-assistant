@@ -13,3 +13,18 @@
 - Task 2: complete — 3245e0a，完整147测试通过；正式README、品牌原图/512候选、原样提示词、实际XLSX只读预览、中英上架材料/字段及发布清单完成。M5双包不变。
 - Task3：盲测根回读通过：原草稿inspect partial/header_mismatch，另存修订明确表头和1→0.01；41资源、原CSV/草稿不变，2对/6字段和全部逐侧行分类/10文件清单一致。不是新增客户端或真人验收。
 - Task3：本机WPS原生打开五份独立副本，四行业概览、负差额明细与P2原行定位/冻结可读；副本与公开原件字节均未改。原生日志截图仅留outputs，公开图为实际XLSX范围只读渲染。性能样本5000对/15000字段全CLI4.7428秒，14930exact/70different及5000索引/70例外回读通过；不外推最大容量。
+- Final review：一次整分支只读审查发现4项Important、3项标为Minor的问题；原始文件/演示/图像/55文件摘要/盲测/WPS证据均被独立核对一致。4项Important确认修复：恢复Git检出属性、冻结M6合成来源并核对实际登记SHA、实际目标完整性校验、性能重现不覆盖历史。
+- Final re-grade：原3项Minor按实际验收影响纳入本次修复：JSONL非法负例无法证明约定的令牌扫描；不存在/非目录审计会错误显示passed；优化模式关闭assert却仍生成passed。这些影响验收真实性，不作为样式优化延期。均先补可复现失败，再修复。
+- Final: fixed Git检出属性 — test_git_checkout_filters_preserve_all_frozen_and_receipted_bytes RED→GREEN，恢复原有规则并补全字节稳定约束，完整154/154。
+- Final: fixed M6合成来源边界 — test_only_frozen_synthetic_sources_rules_and_oracles_are_accepted及test_registered_source_hash_must_match_approved_bytes_even_after_restoration RED→GREEN，禁止文件/父目录链接、来源/规则/预期漂移并核对登记SHA/实际规则，完整154/154。
+- Final: fixed 实际公开目标漏审 — test_foreign_target_objects_block_publication_and_are_not_deleted（文件/目录/链接、标记前后）RED→GREEN，精确清单+SHA+标记扫描，保留外来对象/清理自有完成标记，完整154/154。
+- Final: fixed 重现覆盖历史 — test_benchmark_reproduction_preserves_historical_record_and_writes_new_run_record RED→GREEN，历史performance.json字节保持，实跑新唯一记录并独立核对，完整154/154。
+- Final: fixed JSONL负例失真 — 旧非法JSONL在新增结构断言下RED，改为合法JSONL并断言具体marker错误后GREEN，完整154/154。
+- Final: fixed 缺失/非目录/空目录假通过 — test_public_audit_rejects_missing_non_directory_or_empty_input三负例RED→GREEN，完整154/154。
+- Final: fixed 优化模式绕过验收 — test_optimized_benchmark_refuses_to_claim_validation RED→GREEN，-O/PYTHONOPTIMIZE明确blocked且无passed，完整154/154。
+- Final: Ruling: 许可/公开/收费/市场接收未判定 — 保留作者决定与实际平台回执，不自动提交 — 代价是本轮交付准备成果，不能称上线。
+- Final: Ruling: 真人、跨系统/设备、其余五宿主及线上GitHub移动端未判定 — 只报告本机/本地预览和已验证宿主 — 代价是这些使用环境仍需后续实测。
+- Final: Ruling: 通用DLP、最大容量及跨机性能未判定 — 仅发布固定合成来源和已知标记扫描，性能限单次样本 — 代价是不能据此保证任意真实资料或规模。
+- Final: Ruling: 原生日志/截图不入库 — 本机保留相对位置与SHA，避免公开账号/侧栏信息 — 代价是外部读者须自行重现，或经授权取得原始证据。
+- Final: Ruling: 0.1.0运行时/归档、最后作者确认未在审查中重做 — 冻结已验收对象，完成收尾后集中交付确认 — 代价是营销Logo不内嵌旧包，升级许可/资源时需新版本验包。
+- 最终复核：154项完整测试通过；普通Python3.9.6的10项新增用例通过。加固后新目录重新生成六任务通过，原showcase-v1的55文件、18份M1/M6资源与两份M5归档均未变。历史4.7428秒记录不变，修正后重现另写唯一记录（5.0549秒追加样本）；未把新测量覆盖成历史。

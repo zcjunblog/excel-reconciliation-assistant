@@ -8,6 +8,7 @@
 | --- | --- |
 | 正式产品说明与七步流程 | [README](../README.md) |
 | 白蓝宽封面 | [封面PNG](images/excel-reconciliation-cover.png)，2172×724 |
+| 真实结果预览 | [商贸概览](images/commerce-overview-render.png) · [负差额概览](images/negative-delta-overview-render.png) · [负差额明细](images/negative-delta-details-render.png) |
 | 原始Logo与上传候选 | [Logo](images/excel-reconciliation-logo.png)；[512px PNG](../distribution/marketplace/logo-512.png)，237,554字节 |
 | 中英文上架说明 | [中文](../distribution/marketplace/description-zh.md) · [英文](../distribution/marketplace/description-en.md) |
 | 展示字段、示例与资源索引 | [listing.json](../distribution/marketplace/listing.json) |
@@ -24,7 +25,7 @@ Logo尺寸是项目提供的上传候选，不是引用平台强制尺寸；当�
 | 核对引擎与分发 | 已验收 | 0.1.0双包、原始14份夹具与M5实际客户端证据 |
 | 真实可下载案例 | 已准备 | 五案例六任务，独立人工预期与实际清单逐项回读 |
 | 正式README、Logo与封面 | 已准备，待用户审阅 | 图片为内置imagegen生成；封面标为概念图，实际工作簿另行预览 |
-| 错误规则盲测、容量样本与办公复核 | 本机检查通过 | [M6证据](../evidence/m6/README.md)：盲测暴露并记录草稿问题，五案例WPS查看，5000对/15000字段完整CLI样本 |
+| 错误规则盲测、容量样本与办公复核 | 本机检查及最终回归通过 | [M6证据](../evidence/m6/README.md)：盲测暴露并记录草稿问题，五案例WPS查看，5000对/15000字段完整CLI样本 |
 | 真人办公用户复核 | 待完成 | 用户或办公同事下载样张，检查差额、原行定位、筛选与确认事项 |
 | 跨设备/操作系统、其余五宿主 | 未验证 | 可在声明当前验证范围后分阶段补测，不声称全平台实跑 |
 | 发布许可证 | 待作者决定 | 当前没有生效的开源许可证，不展示MIT徽章 |

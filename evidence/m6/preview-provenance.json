@@ -1,0 +1,32 @@
+[
+  {
+    "source": "examples/showcase-v1/commerce/核对结果.xlsx",
+    "source_sha256": "801879a4745776622312c418b4b5a7ef535a501e5f2f294c2126e79e39100bb3",
+    "sheet": "核对概览",
+    "range": "A1:L28",
+    "image": "docs/images/commerce-overview-render.png",
+    "image_sha256": "92abbb3b6227b8dcc7c7a5863d799c8793d980384fdae865cd9059858ee9935d",
+    "method": "artifact-tool read-only import and range render; no source workbook write or export",
+    "office_screenshot": false
+  },
+  {
+    "source": "examples/showcase-v1/negative-delta/核对结果.xlsx",
+    "source_sha256": "dc1eec292cb4ec979cb746ee36775ef2efd8f62267556a25640099fa61a30547",
+    "sheet": "核对概览",
+    "range": "A1:L25",
+    "image": "docs/images/negative-delta-overview-render.png",
+    "image_sha256": "21bdadc4ccd0485008792aad90517f5e4737e74593cc02ba331fb729e77e5788",
+    "method": "artifact-tool read-only import and range render; no source workbook write or export",
+    "office_screenshot": false
+  },
+  {
+    "source": "examples/showcase-v1/negative-delta/核对结果.xlsx",
+    "source_sha256": "dc1eec292cb4ec979cb746ee36775ef2efd8f62267556a25640099fa61a30547",
+    "sheet": "差异明细",
+    "range": "C1:G4",
+    "image": "docs/images/negative-delta-details-render.png",
+    "image_sha256": "5daea704d049639bb69519ab96aca00ab1bb35bc6358624027c5576e54fdb2ef",
+    "method": "artifact-tool read-only import and range render; no source workbook write or export",
+    "office_screenshot": false
+  }
+]

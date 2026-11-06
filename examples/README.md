@@ -28,3 +28,5 @@ M6使用同一0.1.0生产CLI重新生成[showcase-v1](showcase-v1)。四行业�
 | 负差额 | [原表/规则/手工预期](release-cases/negative-delta) · [Excel](showcase-v1/negative-delta/核对结果.xlsx) · [报告](showcase-v1/negative-delta/核对报告.md) |
 
 重新生成使用新目录：`python3 tools/prepare_showcase.py --output <新的目录>`。产物运行ID与时间会不同，业务结果及来源摘要应一致。
+
+本版新增负差额案例的输入、规则和手写预期固定于[资源清单](release-cases/manifest.json)。生成器拒绝链接/越界或摘要变化，并对照实际登记来源SHA。重现不覆盖showcase-v1。

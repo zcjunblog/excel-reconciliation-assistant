@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "historical_baseline_sha256": "7bd247b291cbed9bb0c3a34bea8518ec88ffd3cba2ac3cc231da7aaf048223a5",
+  "historical_baseline_preserved": true,
+  "current_reproducer_sha256": "397d8ff6a6b9727eeb2d9c00794bf40a6f7b314264ca9e5dd0e6a6d8312df8ae",
+  "new_record": "outputs/m6-performance/752c452053/performance.json",
+  "new_record_sha256": "74c566351cd43c727e2292bda4a3972a7456fc0cef425fd183947a0eb7370ecd",
+  "new_full_cli_seconds": 5.0549,
+  "matched_pairs": 5000,
+  "field_comparisons": 15000,
+  "validation_scope": "Current reproducer writes only to its unique run; historical4.7428s record is unchanged. New timing is an additional sample, not a replacement."
+}

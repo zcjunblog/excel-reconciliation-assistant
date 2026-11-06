@@ -1,0 +1,67 @@
+{
+  "stage": "M6",
+  "status": "ready_for_author_review_not_published",
+  "skill_version": "0.1.0",
+  "runtime_and_m5_archives_unchanged": true,
+  "tests": {
+    "full": {
+      "python": "3.12.14",
+      "count": 154,
+      "passed": true,
+      "log_sha256": "cd941c8513d0b2ffb5c68f83f629bbdff1eebf4e07920b429a9809000d0708ed"
+    },
+    "new_feature_floor": {
+      "python": "3.9.6",
+      "count": 10,
+      "passed": true,
+      "log_sha256": "838746af01b1c4186958c615654f753d2c6bd06b1ecbe959ef436dd720904205"
+    }
+  },
+  "review": {
+    "independent_rounds": 1,
+    "initial_important": 4,
+    "validation_findings_upgraded": 3,
+    "fixed_with_red_green": 7,
+    "critical": 0,
+    "deferred_minors": 0
+  },
+  "source_controls": {
+    "m1_frozen_resources": 14,
+    "m6_frozen_resources": 4,
+    "m6_manifest_sha256": "2f3ad545c97594a2dfcaccfecf79f175a11b1d5b1c4365c56ba224d25bc7dcc1",
+    "actual_registered_hash_and_used_rules_checked": true,
+    "git_autocrlf_filter_regression_passed": true,
+    "scope": "Git byte-filter simulation, not a Windows native application test"
+  },
+  "public_showcase": {
+    "cases": 5,
+    "tasks": 6,
+    "receipt_files": 55,
+    "unchanged": true,
+    "known_marker_audit": {
+      "passed": true,
+      "files_checked": 56,
+      "office_xml_bytes_checked": 426315,
+      "scope": "Known developer path/token markers plus synthetic-source review; not a general PII detector"
+    }
+  },
+  "fresh_generation": {
+    "path": "outputs/m6-final-showcase-r1",
+    "tasks": 6,
+    "manifest_sha256": "803d7f35fb2886b5c0c7f00fe0028f071f89f04441130434dec52a8c600012c9",
+    "actual_destination_and_source_checks_passed": true
+  },
+  "historical_performance_preserved": true,
+  "reproducer_validation": "evidence/m6/reproducer-validation.json",
+  "pending": [
+    "Real office-user review and feedback",
+    "Other device/OS and five other native Agent hosts",
+    "License, pricing, public-repository timing and channel decision",
+    "Marketplace upload, review submission and launch"
+  ],
+  "code_sha256": {
+    "tools/prepare_showcase.py": "87741e024a25853a81dc7d05ff9705651aa8abc1dfe3417f8cbdfdaa16689e07",
+    "tests/test_showcase.py": "c0b3066e5d7c78767f9e92477e3a8e027c3043149961403ad5678c14d4883be6",
+    "evidence/m6/reproduce_benchmark.py": "397d8ff6a6b9727eeb2d9c00794bf40a6f7b314264ca9e5dd0e6a6d8312df8ae"
+  }
+}

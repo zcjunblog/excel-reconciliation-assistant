@@ -13,5 +13,9 @@
   "new_csv_git_objects_preserve_source_bytes": 2,
   "m5_archives_unchanged": true,
   "image_review": "Generated concept assets contain no user data; public previews render synthetic workbook ranges. Raw native WPS screenshots remain in ignored outputs.",
-  "not_reviewed": "User-specific source data not part of this repository"
+  "not_reviewed": "User-specific source data not part of this repository",
+  "m6_frozen_resources": 4,
+  "m6_manifest_sha256": "2f3ad545c97594a2dfcaccfecf79f175a11b1d5b1c4365c56ba224d25bc7dcc1",
+  "all_five_actual_registered_source_sets_match_approved_bytes": true,
+  "fresh_destination_publication_checks": "New generation passed exact file/directory set, approved SHA and marker checks before/after final marker; adversarial regression tests passed"
 }

@@ -1,2 +1,10 @@
-# Preserve the exact fixture bytes recorded by the synthetic delivery receipts.
+# Preserve checked-in text bytes across Git checkout configurations.
+* text=auto eol=lf
+# 保持合成输入、规则与人工答案的跨平台文件摘要一致。
+*.csv text eol=lf
+*.json text eol=lf
+*.xlsx binary
+*.png binary
+*.zip binary
+# These new fixtures were reviewed and receipted with their original CRLF bytes.
 examples/release-cases/negative-delta/*.csv -text
