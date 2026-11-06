@@ -3,7 +3,7 @@
   "passed": true,
   "python": "3.12.14",
   "os": "Darwin",
-  "unit_tests": 77,
+  "unit_tests": 78,
   "failures": 0,
   "errors": 0,
   "case_tasks": 5,
@@ -509,14 +509,14 @@
       "not_comparable": 0
     },
     "row_order": "right_reversed",
-    "read_seconds": 1.7326,
-    "associate_seconds": 0.3288,
-    "compare_and_coverage_seconds": 2.2863,
+    "read_seconds": 1.7127,
+    "associate_seconds": 0.3361,
+    "compare_and_coverage_seconds": 2.3124,
     "cumulative_budget_rejected_second_task": true,
     "sources_unchanged": true,
     "scope": "CSV输入→关联→比较→覆盖检查；不含结果文件导出或客户端"
   },
-  "process_peak_rss_mib": 509.45,
+  "process_peak_rss_mib": 506.98,
   "code_sha256": {
     "skills/excel-reconciliation-assistant/scripts/checks.py": "79685fa86e826efbd8961924c6d6d5aa0cb7831c381cd6ebb22ee91e7206035d",
     "skills/excel-reconciliation-assistant/scripts/common.py": "49b7bf23f77589cdcb2623abc781f9c9bbf739cba6f279975606ff707f881d93",
@@ -535,7 +535,7 @@
     "tests/test_compare.py": "2c39d8c86050fb3825cf7e511bf52036b3a838aabd23d5a0141562605fc66ef7",
     "tests/test_coverage.py": "dcf0f22d5f5f569b4431b8cb77611a726422742b0c6da57551a2aba5d96c4ed6",
     "tests/test_intake.py": "88a0bcb59f7a4c42e8c4731a5b86b20f5c1341040acdb58a852e9d0e4a0bb613",
-    "tests/test_matching.py": "092e1904d97a6a3b52c2248c40c6079800e7796278aefef3959eec8db556e353",
+    "tests/test_matching.py": "d2bfde604d73cd427a9ab758fddf86d3d0f1b0fda28fcd4eb7f6ffb1a123b75b",
     "tests/test_rules.py": "3c2c4b8ef608cbac7771357082a62e9e313091019dae77585cec0e1a776fdce3",
     "tests/test_source_limits.py": "3c34953a08531fb37c338df64ada7d28aec5552f26b5156e437e0cce5de1d0db"
   },

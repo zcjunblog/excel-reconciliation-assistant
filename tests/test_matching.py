@@ -2,6 +2,12 @@ import copy
 import json
 import unittest
 from dataclasses import replace
+from pathlib import Path
+import tempfile
+from fixture_helpers import csv_case, write_rules, authorize
+from rules import load_rules
+from intake import inspect_sources, read_tables, verify_sources_unchanged
+from common import Budget
 from comparison_helpers import ROOT, read_case, table, task, cell
 from common import IntakeError
 from matching import associate
@@ -87,6 +93,26 @@ class MatchingTests(unittest.TestCase):
             left=table('left',[['a',1]])
             value=left.rows[0].cells['B']; left.rows[0].cells['B']=replace(value,ref=replace(value.ref,**changed))
             with self.assertRaises(IntakeError): associate(left,table('right',[['a',1]]),task())
+
+    def test_real_file_reorder_remap_and_reregister_preserves_business_values(self):
+        from compare import compare_task
+        with tempfile.TemporaryDirectory() as tmp:
+            directory=Path(tmp).resolve(); p=csv_case(directory,'id,value\na,1\nb,2\n','id,value\nb,2\na,1\n')
+            rules=load_rules(p); b=Budget(); intake=inspect_sources(rules,authorize(rules),b); tables=read_tables(intake,rules,b)
+            original=compare_task(associate(tables['left'],tables['right'],rules.tasks[0]),rules.tasks[0],b)
+            self.assertEqual({p.key:(p.left.row,p.right.row) for p in original.association.unique_pairs},{('a',):(2,3),('b',):(3,2)})
+            (directory/'left.csv').write_bytes(b'value,id\n2,b\n1,a\n')
+            self.assertFalse(verify_sources_unchanged(intake,rules,b))
+            data=rules.payload
+            data['tasks'][0]['fields'][0]['left_column']='B'
+            data['tasks'][0]['fields'][1]['left_column']='A'
+            write_rules(directory,data); rules=load_rules(p); b=Budget()
+            fresh=inspect_sources(rules,authorize(rules),b); tables=read_tables(fresh,rules,b)
+            changed=compare_task(associate(tables['left'],tables['right'],rules.tasks[0]),rules.tasks[0],b)
+            self.assertEqual(changed.field_counts,{'exact':2,'within_rule':0,'different':0,'not_comparable':0})
+            self.assertEqual({p.key:(p.left.row,p.right.row) for p in changed.association.unique_pairs},{('a',):(3,3),('b',):(2,2)})
+            self.assertEqual([f.left.ref.column for f in changed.field_results],['A','A'])
+            self.assertTrue(verify_sources_unchanged(fresh,rules,b))
 
 
 if __name__=='__main__': unittest.main()

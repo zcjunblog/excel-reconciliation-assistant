@@ -22,5 +22,6 @@
 - Final: fixed 宿主Decimal指数/trap泄漏 — test_decimal_task_ignores_host_exponent_and_traps RED→GREEN。
 - Final: fixed 1904第一天丢日期 — test_1904_first_day_is_recovered_from_trustworthy_epoch_and_serial RED→GREEN。
 - Final: fixed 混入错误来源/工作表 — test_mixed_source_or_sheet_identity_in_table_rejected RED→GREEN。
-- Final: minor (deferred): 真实源文件重排行列、更新映射并重新登记的专项回归，转M4；现有不同列序/行序案例已通过，不宣称覆盖该专项变更流程。
+- Final: minor resolved in M3 acceptance: 真实源文件重排行列、更新映射并重新登记属于原M3计划验收，收尾时补齐；验证旧快照失效、新业务值一致且源坐标更新。现有生产代码无需修改，不扩展功能范围。
 - Task M3.2: complete — 全套77个测试、四组5任务人工答案及20万字段合成验证通过；第二任务累计预算被拒绝，M1所有14份摘要不变；Python3.9.6 -S CSV完整关联/比较烟测通过。
+- Final acceptance: 补原计划真实文件重排专项回归后，全套78个测试通过；最终证据重跑并更新代码摘要，M3无延期验收项。

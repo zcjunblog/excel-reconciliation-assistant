@@ -104,7 +104,7 @@ Files: export.py、templates/workbook-style.json；测试tests/test_export.py。
 - [ ] 写失败测试`test_sharding_and_failed_export_not_registered`：20,001明细变2片且计数不丢，超总预算/单元格/文件大小时XLSX未生成；所有分片导航可定位。
 - [ ] 确认失败后实现布局规格、单一遍历写入与预估/实时预算。运行export测试和全套测试，随后实际Excel/WPS打开首份结果检查中文/筛选/冻结/编号，证据单列；无法实看则视觉验收保持未完成。
 - [ ] 特别复核M1渲染器局限：Artifact预览曾把文本01/0007显示为1/7，实际源类型和原值正确；不能仅凭预览认证编号显示，也不能从预览推断公式缓存存在。
-- [ ] 展示原日期/数值时采用M3保留的date_lexeme/numeric_lexeme与类型；不能只展示库可能已丢时区或精度的raw值。补M3延期的真实源文件重排行列后重新映射/登记专项回归。
+- [ ] 展示原日期/数值时采用M3保留的date_lexeme/numeric_lexeme与类型；不能只展示库可能已丢时区或精度的raw值。
 - [ ] 提交`feat: export traceable blue and white reconciliation workbook`。
 
 ## M4.2 运行、报告和交付
