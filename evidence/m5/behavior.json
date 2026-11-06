@@ -1,0 +1,71 @@
+{
+  "stage": "M5",
+  "fixture": "11 invented CSV source rows; expected outcome kept from all evaluation agents",
+  "input_sha256": {
+    "旧台账.csv": "a83dedad92ab5a8adc22630fc54eb7545296088b76e1503c846047e707b409e8",
+    "新清单.csv": "b9815738cf8145fa39e72281eea471b37bce6b44f857e2595247d1c3b81a9778"
+  },
+  "results": {
+    "fresh_context_with_installed_skill": {
+      "passed": true,
+      "status": "needs_confirmation",
+      "skill_version": "0.1.0",
+      "matched_pairs": 2,
+      "field_counts": {
+        "exact": 4,
+        "within_rule": 1,
+        "different": 1,
+        "not_comparable": 0
+      },
+      "source_rows": 11,
+      "manifest_files_verified": 10,
+      "inputs_unchanged": true,
+      "installed_resources_match_final_source": false,
+      "changed_from_evaluated_payload": [
+        "scripts/doctor.py"
+      ],
+      "formula_text_inert": true,
+      "leading_zero_identifiers_distinct": true,
+      "manifest_sha256": "ab4f01504a6145ca16a65c733325cd55fd31a66ff3ae6f8e12bac7b9dc24ca64",
+      "workbook_sha256": "a6576f41bae681f4daec489a1abed3b323ea88b0d408984bdb8e441b6d03497e",
+      "output": "outputs/m5-evaluation/forward/核对-v001"
+    },
+    "actual_codex_cli": {
+      "passed": true,
+      "status": "needs_confirmation",
+      "skill_version": "0.1.0",
+      "matched_pairs": 2,
+      "field_counts": {
+        "exact": 4,
+        "within_rule": 1,
+        "different": 1,
+        "not_comparable": 0
+      },
+      "source_rows": 11,
+      "manifest_files_verified": 10,
+      "inputs_unchanged": true,
+      "installed_resources_match_final_source": true,
+      "changed_from_evaluated_payload": [],
+      "formula_text_inert": true,
+      "leading_zero_identifiers_distinct": true,
+      "manifest_sha256": "46334ac0968c874a9d8b5258fb9d3dcfc0d59f1275612ed345aa1a0716f0f1a0",
+      "workbook_sha256": "91d4e1d7225954361a288d7eee1da10714c36ba15b161ab73f07869a6964ec32",
+      "output": "outputs/m5-clients/codex-final-project/核对交付-20261106-v001/正式核对-v001",
+      "client": "Codex CLI",
+      "process_exit_code": 0,
+      "turn_completed": true,
+      "installed_doctor_and_reconcile_tool_observed_in_native_events": true,
+      "native_event_log_sha256": "6e7ebe9d07358673554c8f1f0ea085e94a4366d515c151ac2774b529c5d4b351"
+    },
+    "without_dedicated_skill": {
+      "observed_result": "same two unique pairs and 4 exact / 1 tolerance / 1 different fields",
+      "inputs_unchanged": true,
+      "five_pending_issues": true,
+      "scope": "New context used ad-hoc implementation; no universal accuracy comparison. Baseline report assumes same amount unit despite absent currency, while installed-Skill runs describe a numeric-only comparison."
+    }
+  },
+  "not_verified": [
+    "General skill advantage across arbitrary tasks",
+    "Native spreadsheet application visual review of these M5 outputs"
+  ]
+}

@@ -14,9 +14,9 @@ NAME='excel-reconciliation-assistant'
 SOURCE=ROOT/'skills'/NAME
 sys.path.insert(0,str(SOURCE/'scripts'))
 from delivery_guard import DeliveryGuard
+from doctor import RUNTIME_MODULES
 
-SCRIPTS=('checks common compare csv_reader delivery_guard doctor export export_rows intake matching normalization presentation '
-         'reconcile_tool report rules runner runtime_info source_guard table_data typed_values xlsx_reader').split()
+SCRIPTS=RUNTIME_MODULES
 RESOURCES={'SKILL.md','VERSION','requirements.txt','agents/openai.yaml','templates/workbook-style.json',
            'references/rules.md','references/runtime.md','references/delivery.md','references/examples.md','references/reconciliation-rules.schema.json'}
 RESOURCES.update('scripts/'+name+'.py' for name in SCRIPTS)
@@ -68,8 +68,11 @@ def source_files(source=SOURCE):
                 parsed=urlsplit(link)
                 if parsed.scheme in ('https','http'): continue
                 if parsed.scheme or parsed.netloc: raise ValueError('Unsupported resource link')
-                dest=(path.parent/unquote(parsed.path)).resolve()
-                if source not in dest.parents or not dest.is_file(): raise ValueError('Missing or out-of-skill linked resource: '+link)
+                local=unquote(parsed.path)
+                if Path(local).is_absolute() or '\\' in local: raise ValueError('Skill links must use package-relative paths')
+                dest=(path.parent/local).resolve()
+                if source not in dest.parents or not dest.is_file() or dest.relative_to(source).as_posix() not in RESOURCES:
+                    raise ValueError('Missing or undistributed linked resource: '+link)
         files[key]=path
     if set(files)!=RESOURCES: raise ValueError('Missing Skill resources: '+', '.join(sorted(RESOURCES-set(files))))
     return [files[key] for key in sorted(files)]

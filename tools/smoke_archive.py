@@ -82,8 +82,14 @@ def _workbook_counts(path):
 def _oracle(folder,case):
     wanted=_json(ROOT/'examples'/case/'expected.json')['tasks']
     fields=_jsonl(folder/'工作资料/字段结果.jsonl'); rows=_jsonl(folder/'工作资料/关联结果.jsonl'); tasks=[]
+    rules={t['id']:t for t in _json(ROOT/'examples'/case/'rules.json')['tasks']}
     for want in wanted:
         found=[f for f in fields if f['task_id']==want['id']]
+        rule=rules[want['id']]; columns={f['id']:(f['left_column'],f['right_column']) for f in rule['fields'] if f['id'] not in rule['keys']}
+        expected={(left,right,field) for left,right in want['matched_pairs'] for field in columns}
+        actual=[(f['left']['ref']['row'],f['right']['ref']['row'],f['field_id']) for f in found]
+        _require(len(actual)==len(expected) and set(actual)==expected,'Exact matched pairs or field coverage differ from manual oracle')
+        _require(all((f['left']['ref']['column'],f['right']['ref']['column'])==columns[f['field_id']] for f in found),'Field columns differ from explicit rules')
         counts={s:sum(f['status']==s for f in found) for s in ('exact','within_rule','different','not_comparable')}
         _require(counts==want['field_counts'],'Field counts differ from independent oracle')
         exceptions=[{'left_row':f['left']['ref']['row'],'right_row':f['right']['ref']['row'],'field':f['field_id'],'status':f['status'],'delta':f['delta'],
@@ -111,6 +117,18 @@ def verify(release,output,python=None):
     _require(manifest.get('name')==NAME and manifest.get('version')==version,'Release identity/version mismatch')
     packages=manifest['packages']
     _require([p['profile'] for p in packages]==['standard','workbuddy'],'Expected one standard and one WorkBuddy package')
+    sums=release/'SHA256SUMS'
+    _require(not sums.is_symlink() and sums.is_file() and sums.stat().st_size<=1024,'Missing or unsafe SHA256SUMS')
+    wanted={NAME+'-'+version+'.zip',NAME+'-workbuddy-'+version+'.zip'}; checksums={}
+    for line in sums.read_text(encoding='utf-8').splitlines():
+        match=re.fullmatch(r'([0-9a-f]{64})  ([^/\\]+)',line)
+        _require(match is not None,'Invalid SHA256SUMS line')
+        checksum,name=match.groups()
+        _require(name in wanted and name not in checksums,'Unexpected or duplicate SHA256SUMS entry')
+        archive=release/name
+        _require(not archive.is_symlink() and archive.stat().st_size<=20*1024*1024 and digest(archive.read_bytes())==checksum,'SHA256SUMS archive digest mismatch')
+        checksums[name]=checksum
+    _require(set(checksums)==wanted,'Incomplete SHA256SUMS')
     # Preserve the venv entrypoint: resolving its symlink would select the base interpreter.
     python=Path(python or sys.executable).expanduser().absolute(); profiles=[]
     output.parent.mkdir(parents=True,exist_ok=True)

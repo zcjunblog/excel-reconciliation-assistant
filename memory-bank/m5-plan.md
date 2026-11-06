@@ -44,25 +44,25 @@
 
 ## Task 1: 自包含技能入口与运行信息
 
-- [ ] 先写tests/test_skill.py：入口/链接/Schema/示例自包含且无expected；doctor正常和-S能力真实；新交付版本与VERSION相等。先运行确认因入口/doctor/版本字段缺失失败。
-- [ ] 完成最小SKILL、条件参考、Schema/原始样例字节复制、可选依赖与UI元数据；不添加基线未出现的纪律强化词条。
-- [ ] 实现runtime_info/doctor并把skill_version加入新执行摘要、清单与stdout；不改变旧产物或比较结果。
-- [ ] 运行test_skill与全部既有测试；Expected: 全绿，原始14份SHA不变。提交`feat: add portable reconciliation skill and runtime diagnostics`。
+- [x] 先写tests/test_skill.py：入口/链接/Schema/示例自包含且无expected；doctor正常和-S能力真实；新交付版本与VERSION相等。先运行确认因入口/doctor/版本字段缺失失败。
+- [x] 完成最小SKILL、条件参考、Schema/原始样例字节复制、可选依赖与UI元数据；不添加基线未出现的纪律强化词条。
+- [x] 实现runtime_info/doctor并把skill_version加入新执行摘要、清单与stdout；不改变旧产物或比较结果。
+- [x] 运行test_skill与全部既有测试；Expected: 全绿，原始14份SHA不变。提交`feat: add portable reconciliation skill and runtime diagnostics`。
 
 ## Task 2: 可重复构建与可逆安装边界
 
-- [ ] 先写tests/test_distribution.py：两配置可重复/摘要一致/只有入口差异，中英示例等长；非法元数据、缺资源、符号链接、私密/意外文件拒绝。先确认因新构建接口缺失失败。
-- [ ] 先写tests/test_install.py：六客户端project/user路径；dry-run无写入；真实完整安装；已存在目标/并发内容/写入失败保护；入口最后发布。先确认因安装器缺失失败。
-- [ ] 实现共享选源、平台注入、双包构建和安装器，沿用已验证的身份清理机制，完整入口最后发布。
-- [ ] 运行分发/安装与全套；Expected: 全绿。提交`feat: build and install standard and WorkBuddy skill packages`。
+- [x] 先写tests/test_distribution.py：两配置可重复/摘要一致/只有入口差异，中英示例等长；非法元数据、缺资源、符号链接、私密/意外文件拒绝。先确认因新构建接口缺失失败。
+- [x] 先写tests/test_install.py：六客户端project/user路径；dry-run无写入；真实完整安装；已存在目标/并发内容/写入失败保护；入口最后发布。先确认因安装器缺失失败。
+- [x] 实现共享选源、平台注入、双包构建和安装器，沿用已验证的身份清理机制，完整入口最后发布。
+- [x] 运行分发/安装与全套；Expected: 全绿。提交`feat: build and install standard and WorkBuddy skill packages`。
 
 ## Task 3: 独立解压、真实宿主与分发记录
 
-- [ ] tests/test_archive.py先覆盖篡改摘要、路径越界/重复ZIP成员、缺资源及现有输出拒绝；先确认验包接口缺失失败。
-- [ ] 实现smoke_archive，独立解压两个包，分别跑doctor、四案例CLI及CSV缺依赖，核对原始人工答案/实际文件SHA；Expected: 8案例10任务均与oracle一致，-S降级明确、无仓库运行时路径依赖。
-- [ ] 新上下文只获原始虚构CSV与已安装Skill，完成规则构造和实际工具调用；不提供预期答案。基线已在无专用Skill下运行，只用于证明复用价值，不捏造失败。
+- [x] tests/test_archive.py先覆盖篡改摘要、路径越界/重复ZIP成员、缺资源及现有输出拒绝；先确认验包接口缺失失败。
+- [x] 实现smoke_archive，独立解压两个包，分别跑doctor、四案例CLI及CSV缺依赖，核对原始人工答案/实际文件SHA；Expected: 8案例10任务均与oracle一致，-S降级明确、无仓库运行时路径依赖。
+- [x] 新上下文只获原始虚构CSV与已安装Skill，完成规则构造和实际工具调用；不提供预期答案。基线已在无专用Skill下运行，只用于证明复用价值，不捏造失败。
 - [ ] 在本机可用WorkBuddy/Codex实际导入/发现与调用；不自动改账号权限或发布。记录实际软件/入口/结果/失败原因，无法运行的客户端仅文档/安装验证。
-- [ ] 用当前官方资料维护六客户端安装矩阵及SkillHub独立发布/标识归属要求；实际账号归属须以后登录实名验证，不能预先保证slug可用。
+- [x] 用当前官方资料维护六客户端安装矩阵及SkillHub独立发布/标识归属要求；实际账号归属须以后登录实名验证，不能预先保证slug可用。
 - [ ] 全套验证、一次独立整分支只读审查、必要失败回归、生成最终releases/0.1.0与摘要；更新memory-bank/README并同步GitHub。Expected: 可下载包、证据、已验证与待验证边界一致。
 
 ## 自检

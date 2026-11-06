@@ -70,5 +70,14 @@ class SkillTests(unittest.TestCase):
             self.assertEqual(json.loads((output/'交付清单.json').read_text()).get('skill_version'),'2.3.4')
             self.assertEqual(json.loads((output/'工作资料/执行摘要.json').read_text()).get('skill_version'),'2.3.4')
 
+    def test_missing_runtime_modules_always_produce_structured_blocked(self):
+        for name in ('rules.py','runtime_info.py','csv_reader.py'):
+            with self.subTest(name=name), tempfile.TemporaryDirectory() as tmp:
+                source=Path(tmp)/NAME; shutil.copytree(SOURCE,source)
+                (source/'scripts'/name).unlink()
+                code,data=self.doctor(source); self.assertEqual(code,1,data)
+                self.assertFalse(data['capabilities']['csv']); self.assertFalse(data['capabilities']['xlsx'])
+                self.assertTrue(any(i['code']=='missing_resource' and i['path']=='scripts/'+name for i in data['issues']))
+
 
 if __name__=='__main__': unittest.main()

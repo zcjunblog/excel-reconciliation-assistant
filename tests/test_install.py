@@ -73,5 +73,48 @@ class InstallTests(unittest.TestCase):
             with self.assertRaises(ValueError): installer.install(target)
         self.assertFalse((target/'SKILL.md').exists())
 
+    def test_deep_ancestor_symlinks_are_rejected_before_dest_or_project_resolution(self):
+        installer=tool(self,'install'); outside=self.dir/'outside'; outside.mkdir()
+        alias=self.dir/'alias'; alias.symlink_to(outside,target_is_directory=True)
+        for mode in ('dest','project'):
+            with self.subTest(mode=mode):
+                with self.assertRaises(ValueError):
+                    target=alias/'project/skills'/NAME if mode=='dest' else installer.destination('codex','project',project=alias/'project')
+                    installer.install(target)
+                self.assertEqual(list(outside.iterdir()),[])
+
+    def test_cli_rejects_aliased_project_with_structured_error(self):
+        import json,subprocess,sys
+        tool(self,'install'); outside=self.dir/'outside'; outside.mkdir()
+        alias=self.dir/'alias'; alias.symlink_to(outside,target_is_directory=True)
+        cli=SOURCE.parents[1]/'tools/install.py'
+        process=subprocess.run([sys.executable,str(cli),'--client','codex','--project',str(alias/'project')],capture_output=True)
+        self.assertEqual(process.returncode,1)
+        self.assertTrue(process.stdout,process.stderr)
+        self.assertEqual(json.loads(process.stdout)['status'],'blocked')
+        self.assertEqual(list(outside.iterdir()),[])
+
+    def test_foreign_file_directory_or_link_blocks_complete_install_and_survives_cleanup(self):
+        installer=tool(self,'install'); from delivery_guard import DeliveryGuard
+        original_open=DeliveryGuard.open; original_entry=DeliveryGuard.publish_entry
+        for phase in ('before','after'):
+            for kind in ('file','directory','link'):
+                with self.subTest(phase=phase,kind=kind):
+                    target=self.dir/(phase+kind)/NAME; foreign=target/'scripts/foreign'
+                    def add():
+                        if kind=='file': foreign.write_text('foreign')
+                        elif kind=='directory': foreign.mkdir()
+                        else: foreign.symlink_to(self.dir,target_is_directory=True)
+                    def opening(guard,name):
+                        stream=original_open(guard,name)
+                        if phase=='before' and name=='templates/workbook-style.json': add()
+                        return stream
+                    def entry(guard,name,data):
+                        if phase=='before': raise AssertionError('Foreign resource reached entry publication')
+                        original_entry(guard,name,data); add()
+                    with patch.object(DeliveryGuard,'open',opening),patch.object(DeliveryGuard,'publish_entry',entry):
+                        with self.assertRaises(ValueError): installer.install(target)
+                    self.assertTrue(foreign.exists()); self.assertFalse((target/'SKILL.md').exists())
+
 
 if __name__=='__main__': unittest.main()

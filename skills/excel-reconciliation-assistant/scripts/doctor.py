@@ -5,18 +5,21 @@ import json
 from pathlib import Path
 import re
 import sys
-from runtime_info import skill_version
+RUNTIME_MODULES=('checks common compare csv_reader delivery_guard doctor export export_rows intake matching normalization presentation '
+                 'reconcile_tool report rules runner runtime_info source_guard table_data typed_values xlsx_reader').split()
 
 
 def diagnose(require_xlsx=False):
     root=Path(__file__).resolve().parents[1]; issues=[]
     python_ok=sys.version_info>=(3,9)
     if not python_ok: issues.append({'code':'unsupported_python','message':'Python 3.9+ required'})
-    try: version=skill_version(root)
-    except ValueError:
+    try:
+        from runtime_info import skill_version
+        version=skill_version(root)
+    except (ImportError,ValueError):
         version=None; issues.append({'code':'invalid_version','message':'Skill VERSION missing or invalid'})
-    required=['SKILL.md','scripts/reconcile_tool.py','scripts/common.py','scripts/runner.py','scripts/report.py',
-              'references/reconciliation-rules.schema.json','references/rules.md','references/runtime.md','references/delivery.md','templates/workbook-style.json']
+    required=['SKILL.md','references/reconciliation-rules.schema.json','references/rules.md','references/runtime.md',
+              'references/delivery.md','templates/workbook-style.json']+['scripts/'+name+'.py' for name in RUNTIME_MODULES]
     for path in required:
         if not (root/path).is_file(): issues.append({'code':'missing_resource','path':path,'message':'Installed skill is incomplete'})
     xlsx=False; dependency=None

@@ -86,5 +86,17 @@ class DistributionTests(unittest.TestCase):
             with self.assertRaises(ValueError): builder.build(target)
         self.assertFalse((target/'manifest.json').exists())
 
+    def test_links_must_be_relative_to_resources_that_are_actually_packaged(self):
+        d=tool(self,'distribution')
+        for kind in ('absolute','cache'):
+            with self.subTest(kind=kind):
+                base=self.dir/kind; base.mkdir(); source=source_copy(base)
+                if kind=='absolute': link=(source/'scripts/checks.py').as_posix()
+                else:
+                    cache=source/'scripts/__pycache__'; cache.mkdir(); (cache/'notes.md').write_text('not packaged')
+                    link='scripts/__pycache__/notes.md'
+                with (source/'SKILL.md').open('a') as f: f.write('\n[local]('+link+')\n')
+                with self.assertRaises(ValueError): d.snapshot(source)
+
 
 if __name__=='__main__': unittest.main()

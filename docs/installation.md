@@ -34,7 +34,7 @@ python3 tools/install.py --client codex --scope project --project "<项目目录
 
 ## WorkBuddy
 
-使用`excel-reconciliation-assistant-workbuddy-0.1.0.zip`。本机V5.9.3入口为“专家·技能·连接器 → 技能 → 添加技能 → 上传技能 → 选择 ZIP 文件”。检查导入结果和技能名/版本，再在新任务中通过`/`技能菜单或明确名称调用。
+使用`excel-reconciliation-assistant-workbuddy-0.1.0.zip`。本机V5.9.3入口为“专家·技能·连接器 → 技能 → 添加技能 → 上传技能 → 选择 ZIP 文件”。当前本机导入尚未观察到成功：选择候选包后Mac锁定，最终包须解锁后重新核验。检查导入结果和技能名/版本，再在新任务中通过`/`技能菜单或明确名称调用。
 
 此包只增加[WorkBuddy官方元数据](https://open.workbuddy.cn/docs/skill)：中文/英文展示名、介绍、作者、版本及等长非空中英示例；正文、脚本和业务样例与通用包相同。客户端本地导入与市场提审/上线是不同操作，本阶段不提交市场。
 

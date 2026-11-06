@@ -65,5 +65,32 @@ class ArchiveTests(unittest.TestCase):
                 with self.assertRaises(ValueError): smoke.verify(release,self.dir/(kind+'-out'))
                 self.assertFalse((self.dir/'escape.txt').exists()); self.assertFalse((self.dir/(kind+'-out')).exists())
 
+    def test_missing_wrong_duplicate_or_extra_sha256sums_block_before_execution(self):
+        from unittest.mock import patch
+        smoke=tool(self,'smoke_archive')
+        for kind in ('missing','wrong','duplicate','extra'):
+            with self.subTest(kind=kind):
+                release=self.dir/kind; tool(self,'build_release').build(release); sums=release/'SHA256SUMS'
+                text=sums.read_text()
+                if kind=='missing': sums.unlink()
+                elif kind=='wrong': sums.write_text('0'*64+text[64:])
+                elif kind=='duplicate': sums.write_text(text+text.splitlines()[0]+'\n')
+                else: sums.write_text(text+'0'*64+'  extra.zip\n')
+                with patch.object(smoke,'_run',side_effect=AssertionError('Archive executed before checksum-list validation')):
+                    with self.assertRaises((ValueError,OSError)): smoke.verify(release,self.dir/(kind+'-out'))
+
+    def test_oracle_verifies_exact_pairs_and_full_field_set_not_separate_row_sets(self):
+        smoke=tool(self,'smoke_archive'); result=smoke.verify(self.release(),self.dir/'replay')
+        folder=self.dir/'replay/standard/cases/inventory-v001'
+        p=folder/'工作资料/字段结果.jsonl'; fields=[json.loads(l) for l in p.read_text().splitlines()]
+        import copy
+        for mutation in ('pair','field-set'):
+            with self.subTest(mutation=mutation):
+                changed=copy.deepcopy(fields)
+                if mutation=='pair': next(f for f in changed if f['left']['ref']['row']==2 and f['status']=='exact')['right']['ref']['row']=2
+                else: changed[0]=changed[1].copy()
+                p.write_text(''.join(json.dumps(f)+'\n' for f in changed))
+                with self.assertRaises(ValueError): smoke._oracle(folder,'inventory')
+
 
 if __name__=='__main__': unittest.main()

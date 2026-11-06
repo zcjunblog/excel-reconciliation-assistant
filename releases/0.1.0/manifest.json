@@ -1,0 +1,433 @@
+{
+  "schema_version": "1.0",
+  "name": "excel-reconciliation-assistant",
+  "version": "0.1.0",
+  "packages": [
+    {
+      "profile": "standard",
+      "archive": "excel-reconciliation-assistant-0.1.0.zip",
+      "bytes": 78679,
+      "sha256": "9261bacbfee7e0614d33e15fafc29a59b1c083a7f8d7775fba1db93ab2c8d37f",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "bytes": 4074,
+          "sha256": "f03e8e284354ae261638fb8e1a9b223082ed264df9e547aa58b2f661b514b407"
+        },
+        {
+          "path": "VERSION",
+          "bytes": 6,
+          "sha256": "e9dd8507f4bf0c6f42458e41aea833ad0bd3f6127272335eee9bf4d58541ed67"
+        },
+        {
+          "path": "agents/openai.yaml",
+          "bytes": 289,
+          "sha256": "86cbbb2509b6ec1418accf4098b5b1e8f4535e4bacb810b2ff78f38983be961c"
+        },
+        {
+          "path": "references/delivery.md",
+          "bytes": 3067,
+          "sha256": "798d7317242c943f79efbcdc3e33493f6763b58b00be7a58619fe361b68ea438"
+        },
+        {
+          "path": "references/examples.md",
+          "bytes": 1266,
+          "sha256": "be84dc202d464744d84f75dded1898ecd9d97b1a917e7d89166306bfff291585"
+        },
+        {
+          "path": "references/examples/administration/inputs.xlsx",
+          "bytes": 5379,
+          "sha256": "377aea79e49f6a13771799270890005dc45a694e56010af52fd4d7bbdf9de004"
+        },
+        {
+          "path": "references/examples/administration/rules.json",
+          "bytes": 2835,
+          "sha256": "1e450cd727ba6f86d6f934b18390daf65d2f0f97978a17a641b9d20171fd6185"
+        },
+        {
+          "path": "references/examples/commerce/inputs.xlsx",
+          "bytes": 5126,
+          "sha256": "aa6118f5ca835a472e6128c9551d33624735f986a2dd848732db59c5e42f9ded"
+        },
+        {
+          "path": "references/examples/commerce/rules.json",
+          "bytes": 2123,
+          "sha256": "dc18503290b64f116b58e79c4eaa730b7151c40c9e41c115b417212d999a31c6"
+        },
+        {
+          "path": "references/examples/inventory/count.csv",
+          "bytes": 140,
+          "sha256": "b8e27546cd8c4186eaaf567e807997ff97bfac8bfaaee9e872657437a972e21f"
+        },
+        {
+          "path": "references/examples/inventory/ledger.csv",
+          "bytes": 149,
+          "sha256": "03b5e5202048539493c4beb027fab90b97685586c28d06f1d75d7dbe7cecb503"
+        },
+        {
+          "path": "references/examples/inventory/rules.json",
+          "bytes": 1933,
+          "sha256": "acffbab873dc049d261260f7ffb248bb2ce761ea17704c2c52bad07d06060c56"
+        },
+        {
+          "path": "references/examples/training/attendance.csv",
+          "bytes": 213,
+          "sha256": "3fbd52698b3fff6cb64aa0a2cfd124eb1bca7f1043392d91930b44cabddf11b8"
+        },
+        {
+          "path": "references/examples/training/registration.csv",
+          "bytes": 205,
+          "sha256": "a2ef783dd00dedd034bf0bc67cca6a1c312daceb8450dbb8bfb7fdf2e4a45fe6"
+        },
+        {
+          "path": "references/examples/training/rules.json",
+          "bytes": 1844,
+          "sha256": "ad8a867b8507d70215e3148dc815def946d0b322d5c7be8405a953bea471d1e3"
+        },
+        {
+          "path": "references/reconciliation-rules.schema.json",
+          "bytes": 5046,
+          "sha256": "dd24b9b0a67e366190d0f893fbb0e817cffffba6f9473ba7300634661308e4c2"
+        },
+        {
+          "path": "references/rules.md",
+          "bytes": 3694,
+          "sha256": "ffa3a0af1ecc43ab8e7e169afe5835b4ec8b93ed6d6a736795aae4244f6c0a82"
+        },
+        {
+          "path": "references/runtime.md",
+          "bytes": 1473,
+          "sha256": "9af0e81a6d39b982a77b2bce3008098028c08ec8f25c7044037fb402ad2c228d"
+        },
+        {
+          "path": "requirements.txt",
+          "bytes": 93,
+          "sha256": "1f875cf0b55fdffb4c4cefd3b6d37203606ceeaf8c4b54981996bb26fb1b4680"
+        },
+        {
+          "path": "scripts/checks.py",
+          "bytes": 6649,
+          "sha256": "79685fa86e826efbd8961924c6d6d5aa0cb7831c381cd6ebb22ee91e7206035d"
+        },
+        {
+          "path": "scripts/common.py",
+          "bytes": 7557,
+          "sha256": "bfac8e37c9226f079dc036c3f9dfe84bcbe2577b1a9ff6fc7b33f960dec8b340"
+        },
+        {
+          "path": "scripts/compare.py",
+          "bytes": 8871,
+          "sha256": "b5490bec52724a7d13920b077ddf215a82662b6f1aaa8e938a2c093faf350d4b"
+        },
+        {
+          "path": "scripts/csv_reader.py",
+          "bytes": 2815,
+          "sha256": "ecf0c4199cb3989d109549bd555cfb038c931224c897b8a070b8ea33fc3bb2d8"
+        },
+        {
+          "path": "scripts/delivery_guard.py",
+          "bytes": 6485,
+          "sha256": "8f9edb4a210eecd7032cb004b65f2acf15545f20328583e2a810de1a74db8b12"
+        },
+        {
+          "path": "scripts/doctor.py",
+          "bytes": 2482,
+          "sha256": "040f6135c653832ce415aaf2fcdf1ab0a77380a226e017fe248afa7a1717cf7c"
+        },
+        {
+          "path": "scripts/export.py",
+          "bytes": 13147,
+          "sha256": "9e5a7973c651e8856cbd16b62ac617740266f82e6cede854a2f0cd25dcbe8c9e"
+        },
+        {
+          "path": "scripts/export_rows.py",
+          "bytes": 14039,
+          "sha256": "ab4e6f86db02ca3a21ef94cf09dfeb80bd05cd6590df9d0a927b65baddec3385"
+        },
+        {
+          "path": "scripts/intake.py",
+          "bytes": 7044,
+          "sha256": "df890786dcf6729678b0a399028d2d489a5ef5d857920b208ac0b17f6f304bf7"
+        },
+        {
+          "path": "scripts/matching.py",
+          "bytes": 5360,
+          "sha256": "f923c96501180fd42272f2e2aa637136cdb06565abc279070195d26e1fbad275"
+        },
+        {
+          "path": "scripts/normalization.py",
+          "bytes": 457,
+          "sha256": "c46d38ddbc6c09fd0946ddef8d411a8b89cf1c56e46b66c7a95f0d6ca6f7e427"
+        },
+        {
+          "path": "scripts/presentation.py",
+          "bytes": 5673,
+          "sha256": "0d2df5a97cefbc2fef5a68fbc3b29c5d7068b77bb03b7543d8517a35296e0523"
+        },
+        {
+          "path": "scripts/reconcile_tool.py",
+          "bytes": 6176,
+          "sha256": "02e81ef78c367ca9c1a39353e8d4485c9338c66914d4e8a78d221ff713548ce6"
+        },
+        {
+          "path": "scripts/report.py",
+          "bytes": 15434,
+          "sha256": "c859801d485a3bedbc641906f906cffbd9ab23d60bd63f253197437d48437aae"
+        },
+        {
+          "path": "scripts/rules.py",
+          "bytes": 11524,
+          "sha256": "c8105bd876196f32addcd6cf11805ffe96c0c040690f8c18a3953ac61df5acf4"
+        },
+        {
+          "path": "scripts/runner.py",
+          "bytes": 2619,
+          "sha256": "c9caa1c49edbe5dacf4930190dd8b612c2824bd72383c07aa26499e2caf5060b"
+        },
+        {
+          "path": "scripts/runtime_info.py",
+          "bytes": 585,
+          "sha256": "7f4d779552f0d8e77f346d21c9666a2222b63aa79723b0088194bcd5129b5682"
+        },
+        {
+          "path": "scripts/source_guard.py",
+          "bytes": 4899,
+          "sha256": "c5342069979ef1510f55f52a364ff78e94f5b48dd9e44b638f26d7e274ef5e71"
+        },
+        {
+          "path": "scripts/table_data.py",
+          "bytes": 4084,
+          "sha256": "b04c8de6aebd198387530c964ce743131e70a748449c798e5892201ba42149b6"
+        },
+        {
+          "path": "scripts/typed_values.py",
+          "bytes": 6253,
+          "sha256": "cdd36a69b5ed9e3a917410acf971bea76a83437f5bbe22c3a21b212c0d3e4f85"
+        },
+        {
+          "path": "scripts/xlsx_reader.py",
+          "bytes": 11325,
+          "sha256": "0502fbb4d379c0f1bf66e9079feb98be5ef4e95744c65acc1c11cb7de3911bb5"
+        },
+        {
+          "path": "templates/workbook-style.json",
+          "bytes": 302,
+          "sha256": "b34ebd3e8d7a301dab4293de30aef9feeb1d08ff686d1c7ad914bd48267969e2"
+        }
+      ]
+    },
+    {
+      "profile": "workbuddy",
+      "archive": "excel-reconciliation-assistant-workbuddy-0.1.0.zip",
+      "bytes": 79423,
+      "sha256": "86426ae73a0e1f68c768bec5eda4406ecf0316a139f1f96a34012ad737eab637",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "bytes": 5728,
+          "sha256": "dead1a13770f12422dbba1262f584035aa11b31ca52ff06d720f5553347dbeb3"
+        },
+        {
+          "path": "VERSION",
+          "bytes": 6,
+          "sha256": "e9dd8507f4bf0c6f42458e41aea833ad0bd3f6127272335eee9bf4d58541ed67"
+        },
+        {
+          "path": "agents/openai.yaml",
+          "bytes": 289,
+          "sha256": "86cbbb2509b6ec1418accf4098b5b1e8f4535e4bacb810b2ff78f38983be961c"
+        },
+        {
+          "path": "references/delivery.md",
+          "bytes": 3067,
+          "sha256": "798d7317242c943f79efbcdc3e33493f6763b58b00be7a58619fe361b68ea438"
+        },
+        {
+          "path": "references/examples.md",
+          "bytes": 1266,
+          "sha256": "be84dc202d464744d84f75dded1898ecd9d97b1a917e7d89166306bfff291585"
+        },
+        {
+          "path": "references/examples/administration/inputs.xlsx",
+          "bytes": 5379,
+          "sha256": "377aea79e49f6a13771799270890005dc45a694e56010af52fd4d7bbdf9de004"
+        },
+        {
+          "path": "references/examples/administration/rules.json",
+          "bytes": 2835,
+          "sha256": "1e450cd727ba6f86d6f934b18390daf65d2f0f97978a17a641b9d20171fd6185"
+        },
+        {
+          "path": "references/examples/commerce/inputs.xlsx",
+          "bytes": 5126,
+          "sha256": "aa6118f5ca835a472e6128c9551d33624735f986a2dd848732db59c5e42f9ded"
+        },
+        {
+          "path": "references/examples/commerce/rules.json",
+          "bytes": 2123,
+          "sha256": "dc18503290b64f116b58e79c4eaa730b7151c40c9e41c115b417212d999a31c6"
+        },
+        {
+          "path": "references/examples/inventory/count.csv",
+          "bytes": 140,
+          "sha256": "b8e27546cd8c4186eaaf567e807997ff97bfac8bfaaee9e872657437a972e21f"
+        },
+        {
+          "path": "references/examples/inventory/ledger.csv",
+          "bytes": 149,
+          "sha256": "03b5e5202048539493c4beb027fab90b97685586c28d06f1d75d7dbe7cecb503"
+        },
+        {
+          "path": "references/examples/inventory/rules.json",
+          "bytes": 1933,
+          "sha256": "acffbab873dc049d261260f7ffb248bb2ce761ea17704c2c52bad07d06060c56"
+        },
+        {
+          "path": "references/examples/training/attendance.csv",
+          "bytes": 213,
+          "sha256": "3fbd52698b3fff6cb64aa0a2cfd124eb1bca7f1043392d91930b44cabddf11b8"
+        },
+        {
+          "path": "references/examples/training/registration.csv",
+          "bytes": 205,
+          "sha256": "a2ef783dd00dedd034bf0bc67cca6a1c312daceb8450dbb8bfb7fdf2e4a45fe6"
+        },
+        {
+          "path": "references/examples/training/rules.json",
+          "bytes": 1844,
+          "sha256": "ad8a867b8507d70215e3148dc815def946d0b322d5c7be8405a953bea471d1e3"
+        },
+        {
+          "path": "references/reconciliation-rules.schema.json",
+          "bytes": 5046,
+          "sha256": "dd24b9b0a67e366190d0f893fbb0e817cffffba6f9473ba7300634661308e4c2"
+        },
+        {
+          "path": "references/rules.md",
+          "bytes": 3694,
+          "sha256": "ffa3a0af1ecc43ab8e7e169afe5835b4ec8b93ed6d6a736795aae4244f6c0a82"
+        },
+        {
+          "path": "references/runtime.md",
+          "bytes": 1473,
+          "sha256": "9af0e81a6d39b982a77b2bce3008098028c08ec8f25c7044037fb402ad2c228d"
+        },
+        {
+          "path": "requirements.txt",
+          "bytes": 93,
+          "sha256": "1f875cf0b55fdffb4c4cefd3b6d37203606ceeaf8c4b54981996bb26fb1b4680"
+        },
+        {
+          "path": "scripts/checks.py",
+          "bytes": 6649,
+          "sha256": "79685fa86e826efbd8961924c6d6d5aa0cb7831c381cd6ebb22ee91e7206035d"
+        },
+        {
+          "path": "scripts/common.py",
+          "bytes": 7557,
+          "sha256": "bfac8e37c9226f079dc036c3f9dfe84bcbe2577b1a9ff6fc7b33f960dec8b340"
+        },
+        {
+          "path": "scripts/compare.py",
+          "bytes": 8871,
+          "sha256": "b5490bec52724a7d13920b077ddf215a82662b6f1aaa8e938a2c093faf350d4b"
+        },
+        {
+          "path": "scripts/csv_reader.py",
+          "bytes": 2815,
+          "sha256": "ecf0c4199cb3989d109549bd555cfb038c931224c897b8a070b8ea33fc3bb2d8"
+        },
+        {
+          "path": "scripts/delivery_guard.py",
+          "bytes": 6485,
+          "sha256": "8f9edb4a210eecd7032cb004b65f2acf15545f20328583e2a810de1a74db8b12"
+        },
+        {
+          "path": "scripts/doctor.py",
+          "bytes": 2482,
+          "sha256": "040f6135c653832ce415aaf2fcdf1ab0a77380a226e017fe248afa7a1717cf7c"
+        },
+        {
+          "path": "scripts/export.py",
+          "bytes": 13147,
+          "sha256": "9e5a7973c651e8856cbd16b62ac617740266f82e6cede854a2f0cd25dcbe8c9e"
+        },
+        {
+          "path": "scripts/export_rows.py",
+          "bytes": 14039,
+          "sha256": "ab4e6f86db02ca3a21ef94cf09dfeb80bd05cd6590df9d0a927b65baddec3385"
+        },
+        {
+          "path": "scripts/intake.py",
+          "bytes": 7044,
+          "sha256": "df890786dcf6729678b0a399028d2d489a5ef5d857920b208ac0b17f6f304bf7"
+        },
+        {
+          "path": "scripts/matching.py",
+          "bytes": 5360,
+          "sha256": "f923c96501180fd42272f2e2aa637136cdb06565abc279070195d26e1fbad275"
+        },
+        {
+          "path": "scripts/normalization.py",
+          "bytes": 457,
+          "sha256": "c46d38ddbc6c09fd0946ddef8d411a8b89cf1c56e46b66c7a95f0d6ca6f7e427"
+        },
+        {
+          "path": "scripts/presentation.py",
+          "bytes": 5673,
+          "sha256": "0d2df5a97cefbc2fef5a68fbc3b29c5d7068b77bb03b7543d8517a35296e0523"
+        },
+        {
+          "path": "scripts/reconcile_tool.py",
+          "bytes": 6176,
+          "sha256": "02e81ef78c367ca9c1a39353e8d4485c9338c66914d4e8a78d221ff713548ce6"
+        },
+        {
+          "path": "scripts/report.py",
+          "bytes": 15434,
+          "sha256": "c859801d485a3bedbc641906f906cffbd9ab23d60bd63f253197437d48437aae"
+        },
+        {
+          "path": "scripts/rules.py",
+          "bytes": 11524,
+          "sha256": "c8105bd876196f32addcd6cf11805ffe96c0c040690f8c18a3953ac61df5acf4"
+        },
+        {
+          "path": "scripts/runner.py",
+          "bytes": 2619,
+          "sha256": "c9caa1c49edbe5dacf4930190dd8b612c2824bd72383c07aa26499e2caf5060b"
+        },
+        {
+          "path": "scripts/runtime_info.py",
+          "bytes": 585,
+          "sha256": "7f4d779552f0d8e77f346d21c9666a2222b63aa79723b0088194bcd5129b5682"
+        },
+        {
+          "path": "scripts/source_guard.py",
+          "bytes": 4899,
+          "sha256": "c5342069979ef1510f55f52a364ff78e94f5b48dd9e44b638f26d7e274ef5e71"
+        },
+        {
+          "path": "scripts/table_data.py",
+          "bytes": 4084,
+          "sha256": "b04c8de6aebd198387530c964ce743131e70a748449c798e5892201ba42149b6"
+        },
+        {
+          "path": "scripts/typed_values.py",
+          "bytes": 6253,
+          "sha256": "cdd36a69b5ed9e3a917410acf971bea76a83437f5bbe22c3a21b212c0d3e4f85"
+        },
+        {
+          "path": "scripts/xlsx_reader.py",
+          "bytes": 11325,
+          "sha256": "0502fbb4d379c0f1bf66e9079feb98be5ef4e95744c65acc1c11cb7de3911bb5"
+        },
+        {
+          "path": "templates/workbook-style.json",
+          "bytes": 302,
+          "sha256": "b34ebd3e8d7a301dab4293de30aef9feeb1d08ff686d1c7ad914bd48267969e2"
+        }
+      ]
+    }
+  ]
+}

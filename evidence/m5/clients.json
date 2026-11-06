@@ -1,0 +1,30 @@
+{
+  "stage": "M5",
+  "checked_on": "2026-11-06",
+  "clients": [
+    {
+      "client": "Codex CLI",
+      "actual_host_test": "passed",
+      "details": "Ephemeral native CLI session discovered final project .agents/skills entry, ran final installed doctor/inspect/run and produced actual XLSX. Final source41 resources match byte-for-byte. Output independently re-read against hidden hand expectation; process exit0 and turn.completed.",
+      "evidence": "behavior.json"
+    },
+    {
+      "client": "WorkBuddy",
+      "version": "5.9.3",
+      "actual_host_test": "pending_unlock",
+      "details": "Selected pre-review candidate ZIP in native upload dialog. Mac locked before parse/import acceptance could be observed. Final archive has updated doctor; awaiting manual unlock to reselect final ZIP and run actual task."
+    },
+    {
+      "client": "Claude Code / Cursor / Copilot CLI / Gemini CLI / OpenCode",
+      "actual_host_test": "not_run",
+      "details": "Official directory docs checked and isolated install/hash checks passed. No native end-to-end invocation in this stage. Claude desktop presence is not a Claude Code test."
+    }
+  ],
+  "negative_environment_attempt": {
+    "client": "Codex CLI",
+    "outcome": "partial delivery correctly omitted unavailable XLSX",
+    "reason": "Harness resolved venv executable to Python base path, removing optional dependency; outer session timeout240s. Preserved as diagnostic only, not positive acceptance."
+  },
+  "marketplace_submission": "not_performed",
+  "public_repository": "not_enabled"
+}

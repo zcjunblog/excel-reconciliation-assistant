@@ -1,0 +1,103 @@
+{
+  "version": "0.1.0",
+  "passed": true,
+  "scope": "12 isolated local directory installs; does not execute the six client hosts or write their real user settings",
+  "layouts": [
+    {
+      "client": "codex",
+      "scope": "project",
+      "relative_destination": ".agents/skills/excel-reconciliation-assistant",
+      "files": 41,
+      "hashes_verified": true,
+      "dry_run_no_write": true
+    },
+    {
+      "client": "codex",
+      "scope": "user",
+      "relative_destination": ".agents/skills/excel-reconciliation-assistant",
+      "files": 41,
+      "hashes_verified": true,
+      "dry_run_no_write": true
+    },
+    {
+      "client": "claude",
+      "scope": "project",
+      "relative_destination": ".claude/skills/excel-reconciliation-assistant",
+      "files": 41,
+      "hashes_verified": true,
+      "dry_run_no_write": true
+    },
+    {
+      "client": "claude",
+      "scope": "user",
+      "relative_destination": ".claude/skills/excel-reconciliation-assistant",
+      "files": 41,
+      "hashes_verified": true,
+      "dry_run_no_write": true
+    },
+    {
+      "client": "cursor",
+      "scope": "project",
+      "relative_destination": ".cursor/skills/excel-reconciliation-assistant",
+      "files": 41,
+      "hashes_verified": true,
+      "dry_run_no_write": true
+    },
+    {
+      "client": "cursor",
+      "scope": "user",
+      "relative_destination": ".cursor/skills/excel-reconciliation-assistant",
+      "files": 41,
+      "hashes_verified": true,
+      "dry_run_no_write": true
+    },
+    {
+      "client": "copilot",
+      "scope": "project",
+      "relative_destination": ".github/skills/excel-reconciliation-assistant",
+      "files": 41,
+      "hashes_verified": true,
+      "dry_run_no_write": true
+    },
+    {
+      "client": "copilot",
+      "scope": "user",
+      "relative_destination": ".copilot/skills/excel-reconciliation-assistant",
+      "files": 41,
+      "hashes_verified": true,
+      "dry_run_no_write": true
+    },
+    {
+      "client": "gemini",
+      "scope": "project",
+      "relative_destination": ".gemini/skills/excel-reconciliation-assistant",
+      "files": 41,
+      "hashes_verified": true,
+      "dry_run_no_write": true
+    },
+    {
+      "client": "gemini",
+      "scope": "user",
+      "relative_destination": ".gemini/skills/excel-reconciliation-assistant",
+      "files": 41,
+      "hashes_verified": true,
+      "dry_run_no_write": true
+    },
+    {
+      "client": "opencode",
+      "scope": "project",
+      "relative_destination": ".opencode/skills/excel-reconciliation-assistant",
+      "files": 41,
+      "hashes_verified": true,
+      "dry_run_no_write": true
+    },
+    {
+      "client": "opencode",
+      "scope": "user",
+      "relative_destination": ".config/opencode/skills/excel-reconciliation-assistant",
+      "files": 41,
+      "hashes_verified": true,
+      "dry_run_no_write": true
+    }
+  ]
+}
