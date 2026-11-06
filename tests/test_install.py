@@ -61,5 +61,17 @@ class InstallTests(unittest.TestCase):
             with self.assertRaises(IntakeError): guard.publish_entry('SKILL.md',b'our entry')
         guard.cleanup(); self.assertEqual((out/'SKILL.md').read_bytes(),b'foreign replacement')
 
+    def test_modified_resource_blocks_entry_before_a_loader_can_discover_it(self):
+        installer=tool(self,'install'); from delivery_guard import DeliveryGuard
+        original=DeliveryGuard.open; target=self.dir/'skills'/NAME
+        def mutate(guard,name):
+            stream=original(guard,name)
+            if name=='templates/workbook-style.json': (guard.root/'scripts/checks.py').write_bytes(b'changed')
+            return stream
+        def publish(*args,**kwargs): raise AssertionError('Entry published with an already-corrupt resource')
+        with patch.object(DeliveryGuard,'open',mutate),patch.object(DeliveryGuard,'publish_entry',side_effect=publish):
+            with self.assertRaises(ValueError): installer.install(target)
+        self.assertFalse((target/'SKILL.md').exists())
+
 
 if __name__=='__main__': unittest.main()

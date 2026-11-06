@@ -1,6 +1,7 @@
 import copy
 import hashlib
 import json
+import shutil
 from pathlib import Path
 import tempfile
 import unittest
@@ -74,6 +75,16 @@ class DistributionTests(unittest.TestCase):
         with patch('zipfile.ZipFile.writestr',side_effect=OSError('disk full')):
             with self.assertRaises(OSError): builder.build(target)
         self.assertFalse(target.exists()); self.assertEqual(list(self.dir.glob('.skill-build-*')),[])
+
+    def test_package_changed_during_publication_cannot_be_registered_as_complete(self):
+        builder=tool(self,'build_release'); target=self.dir/'release'; copy_file=shutil.copyfileobj
+        first=target/(NAME+'-0.1.0.zip')
+        def mutate(src,dst,*args):
+            copy_file(src,dst,*args)
+            if Path(dst.name).parent==target and '-workbuddy-' in Path(dst.name).name: first.write_bytes(b'changed')
+        with patch('distribution.shutil.copyfileobj',side_effect=mutate):
+            with self.assertRaises(ValueError): builder.build(target)
+        self.assertFalse((target/'manifest.json').exists())
 
 
 if __name__=='__main__': unittest.main()

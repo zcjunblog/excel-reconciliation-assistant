@@ -99,12 +99,21 @@ def workbuddy_entry(fields,body,version,profile=None):
 
 def publish_files(stage,names,target):
     guard=DeliveryGuard(target,stage,uuid.uuid4().hex)
+    verified={}
+    def recheck():
+        for name,expected in verified.items():
+            guard.validate(name)
+            if digest((guard.root/name).read_bytes())!=expected: raise ValueError('Published resource changed before completion')
     try:
-        for name in names:
+        for index,name in enumerate(names):
+            if index==len(names)-1: recheck()
             source=Path(stage)/name
             with source.open('rb') as src,guard.open(name) as dst: shutil.copyfileobj(src,dst)
             guard.validate(name)
-            if digest((guard.root/name).read_bytes())!=digest(source.read_bytes()): raise ValueError('Published resource checksum mismatch')
+            expected=digest(source.read_bytes())
+            if digest((guard.root/name).read_bytes())!=expected: raise ValueError('Published resource checksum mismatch')
+            verified[name]=expected
+        recheck()
         return guard.root
     except BaseException:
         guard.cleanup(); raise

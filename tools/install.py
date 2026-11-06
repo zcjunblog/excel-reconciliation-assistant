@@ -39,6 +39,10 @@ def install(target,source=SOURCE,dry_run=False):
                 guard.validate(name)
                 if digest((guard.root/name).read_bytes())!=digest(data): raise ValueError('Installed resource checksum mismatch')
             if snapshot(source)[0]!=payloads: raise ValueError('Skill source changed during installation')
+            for name,data in payloads.items():
+                if name=='SKILL.md': continue
+                guard.validate(name)
+                if digest((guard.root/name).read_bytes())!=digest(data): raise ValueError('Installed resource changed before entry publication')
             guard.publish_entry('SKILL.md',payloads['SKILL.md'])
             for name,data in payloads.items():
                 guard.validate(name)

@@ -10,3 +10,7 @@
 - Task 1: complete — bb4d380；4项新入口/资源/doctor/安装副本版本测试先失败，实施后全套120测试通过；quick_validate已通过。开发验证工具缺PyYAML时仅装到忽略目录tmp/m5-validator-deps，未写全局或打入包。
 - Task2实施调整：M2已有requirements.txt作为Excel可选依赖声明，删除Task1新增重复的requirements-optional.txt，继续使用原文件。构建与安装采用同一精确资源集合；先出现的未登记资源拒绝证明了收集检查生效。
 - Task2自测：源根链接在提前resolve后绕过检查、入口发布后被替换的inode可能被误认，两项均先补失败回归并修复；主逻辑不认领其他写入者对象。完整入口通过独占硬链接最后发布，底层文件系统不支持该操作时明确失败，仍可按官方目录手动完整复制。
+- Task 2: complete — cbe682b；单一选源、确定性双包、六客户端目录与安装保护，全套131测试通过。
+- Task3自测：独立解压/校验新增4项，普通Python3.9虚拟环境完成双包四行业10任务及-S降级；解释器resolve丢失venv和相对解释器切换cwd问题已先复现后修复。发布过程中早期ZIP被修改、安装资源在入口发布前被修改两项先出现失败后补逐项回读；完整137测试通过。
+- 真实Codex CLI正向测试已结束(exit0，turn.completed)，使用已安装Skill与指定项目venv，产出Excel和needs_confirmation结果。此前误用解析后的base Python正确降级但外层超时，不计作正向客户端通过。新上下文有Skill/无Skill均正确完成该虚构案例，不声称相对准确率提升。
+- WorkBuddy：已选择候选ZIP进入导入，Mac随后锁定；未观察到导入成功，等待用户解锁，不将候选构建冒充平台接受。
