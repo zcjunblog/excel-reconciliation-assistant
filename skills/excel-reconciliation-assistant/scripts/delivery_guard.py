@@ -4,6 +4,7 @@ import json
 import os
 from pathlib import Path
 import stat
+import tempfile
 from common import IntakeError
 
 JOURNAL='.delivery-ownership.json'
@@ -101,6 +102,20 @@ class DeliveryGuard:
         relative=Path(name); entry=next(e for e in self.data['files'] if e['path']==relative.as_posix())
         if not _within_owned_parents(self.root,relative,self.data['directories']) or identity(self.root/relative)!=entry['identity']:
             raise IntakeError('unsafe_output','已复制的交付文件或其父目录被替换')
+
+    def publish_entry(self,name,data):
+        """Expose a complete root entry in one exclusive link, after its resources exist."""
+        relative=Path(name)
+        if len(relative.parts)!=1 or name in ('.','..') or relative.is_absolute(): raise IntakeError('unsafe_output','入口必须位于交付根目录')
+        if identity(self.root)!=self.data['directories']['.']: raise IntakeError('unsafe_output','交付根目录被替换')
+        with tempfile.NamedTemporaryFile(prefix='.entry-',dir=self.stage,delete=False) as stream:
+            staged=Path(stream.name); stream.write(data)
+        try:
+            owned=identity(staged)
+            os.link(staged,self.root/name)
+            self.data['files'].append({'path':name,'identity':owned})
+            self._persist(); self.validate(name)
+        finally: staged.unlink(missing_ok=True)
 
     def cleanup(self): cleanup_owned(self.data)
 

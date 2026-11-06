@@ -8,7 +8,7 @@
 - XLSX读取/输出：同一个解释器中的`openpyxl>=3.1,<4`。
 - 不需要模型API密钥、桌面Excel/WPS、网络账号、开发机字体或特定客户端工具名。
 
-缺少Excel依赖时，先检查工作区已有虚拟环境或宿主提供的解释器。需要安装时仅在已获授权的项目环境中，用该环境的Python执行`-m pip install -r <skill_dir>/requirements-optional.txt`；不安装到全局或自动修改客户端配置。
+缺少Excel依赖时，先检查工作区已有虚拟环境或宿主提供的解释器。需要安装时仅在已获授权的项目环境中，用该环境的Python执行`-m pip install -r <skill_dir>/requirements.txt`；不安装到全局或自动修改客户端配置。
 
 无法获得Excel依赖：XLSX来源阻断；CSV仍可核对并生成完整MD/JSON，Excel实际未生成，整批partial。没有文件执行能力的聊天客户端只能讨论已提供内容，不能声称扫描了未读文件或产生了附件。
 

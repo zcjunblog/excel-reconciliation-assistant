@@ -32,7 +32,7 @@
 
 | 文件 | 职责/接口 |
 | --- | --- |
-| Skill/SKILL.md、VERSION、requirements-optional.txt、agents/openai.yaml | 发现、最小工作流、版本与运行/UI说明；不含平台专用权限配置。 |
+| Skill/SKILL.md、VERSION、requirements.txt、agents/openai.yaml | 发现、最小工作流、版本与运行/UI说明；沿用M2依赖文件，不重复维护，不含平台专用权限配置。 |
 | Skill/references/*.md、schema、examples | 规则构造、能力边界、实际调用、行业示例；无人工答案。 |
 | Skill/scripts/runtime_info.py、doctor.py | `skill_version(base=None)->str`；`diagnose(require_xlsx=False)->dict`，只检查当前Python与资源，不安装依赖。 |
 | 既有report.py/reconcile_tool.py | 新输出的执行摘要、清单与stdout附加skill_version，不改变业务判定。 |
