@@ -1,0 +1,33 @@
+{
+  "stage": "M1",
+  "passed": true,
+  "checks": 153,
+  "cases": [
+    {
+      "case": "commerce",
+      "tasks": 1,
+      "source_files": 1,
+      "oracle": "explicit_coordinates_and_counts"
+    },
+    {
+      "case": "inventory",
+      "tasks": 1,
+      "source_files": 2,
+      "oracle": "explicit_coordinates_and_counts"
+    },
+    {
+      "case": "training",
+      "tasks": 1,
+      "source_files": 2,
+      "oracle": "explicit_coordinates_and_counts"
+    },
+    {
+      "case": "administration",
+      "tasks": 2,
+      "source_files": 1,
+      "oracle": "explicit_coordinates_and_counts"
+    }
+  ],
+  "schema_negative_cases": 4,
+  "scope": "材料结构、原坐标事实、人工答案分区及守恒；未执行生产关联、比较、导出或客户端测试"
+}

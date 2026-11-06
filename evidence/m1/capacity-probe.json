@@ -1,0 +1,36 @@
+{
+  "stage": "M1",
+  "date": "2026-11-06",
+  "environment": {
+    "os": "Darwin",
+    "machine": "arm64",
+    "python": "3.12.14"
+  },
+  "csv": {
+    "physical_files": 1,
+    "logical_reads": 2,
+    "data_rows_per_read": 50000,
+    "columns": 20,
+    "aggregate_materialized_cells": 2000000,
+    "file_bytes": 4145571,
+    "read_and_materialize_seconds": 0.078,
+    "process_peak_rss_mib": 157.62
+  },
+  "xlsx": {
+    "data_rows": 10000,
+    "columns": 10,
+    "data_cells": 100000,
+    "views": [
+      100010,
+      100010
+    ],
+    "file_bytes": 411954,
+    "expanded_bytes": 4385278,
+    "dual_stream_read_seconds": 0.4674
+  },
+  "limitations": [
+    "一次本机合成读取探测，不含关联、比较、导出或客户端开销",
+    "XLSX只测10万数据单元格，不证明200万单元格全链路容量",
+    "峰值RSS含Python与库开销；双CSV读取同一合成物理文件，受缓存影响"
+  ]
+}

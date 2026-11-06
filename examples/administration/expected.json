@@ -1,0 +1,26 @@
+{
+  "oracle_version":"1.0",
+  "authorship":"M1人工按原表坐标指定，未由核对引擎生成",
+  "tasks":[
+    {"id":"assets_default","selected":{"left":3,"right":3},"excluded_rows":{"left":[],"right":[]},"matched_pairs":[[2,3],[3,2],[4,4]],"only_rows":{"left":[],"right":[]},"duplicate_rows":{"left":[],"right":[]},"invalid_rows":{"left":[],"right":[]},"field_counts":{"exact":3,"within_rule":0,"different":0,"not_comparable":3},"different_pairs":0,"not_comparable_pairs":3,
+     "exceptions":[
+       {"left_row":2,"right_row":3,"field":"value","status":"not_comparable","delta":null,"left_cell":"C2","right_cell":"C3","reason":"formula_cache_missing"},
+       {"left_row":3,"right_row":2,"field":"value","status":"not_comparable","delta":null,"left_cell":"C3","right_cell":"C2","reason":"formula_requires_confirmation"},
+       {"left_row":4,"right_row":4,"field":"value","status":"not_comparable","delta":null,"left_cell":"C4","right_cell":"C4","reason":"formula_error"}
+     ]},
+    {"id":"assets_cached","selected":{"left":3,"right":3},"excluded_rows":{"left":[],"right":[]},"matched_pairs":[[2,3],[3,2],[4,4]],"only_rows":{"left":[],"right":[]},"duplicate_rows":{"left":[],"right":[]},"invalid_rows":{"left":[],"right":[]},"field_counts":{"exact":4,"within_rule":0,"different":0,"not_comparable":2},"different_pairs":0,"not_comparable_pairs":2,
+     "exceptions":[
+       {"left_row":2,"right_row":3,"field":"value","status":"not_comparable","delta":null,"left_cell":"C2","right_cell":"C3","reason":"formula_cache_missing"},
+       {"left_row":4,"right_row":4,"field":"value","status":"not_comparable","delta":null,"left_cell":"C4","right_cell":"C4","reason":"formula_error"}
+     ],"required_warnings":["cache_freshness_unverified"]}
+  ],
+  "cell_checks":[{"table":"baseline","cell":"A2","value":"A-001"},{"table":"handover","cell":"B2","value":"A-002"}],
+  "formula_checks":[
+    {"table":"handover","cell":"C2","formula":"=100+100","cached":200},
+    {"table":"handover","cell":"C3","formula":"=50+50","cached":null},
+    {"table":"handover","cell":"C4","formula":"=1/0","cached":"#DIV/0!"},
+    {"table":"revision","cell":"C2","formula":"=100+100","cached":200},
+    {"table":"revision","cell":"C3","formula":"=50+50","cached":null},
+    {"table":"revision","cell":"C4","formula":"=1/0","cached":"#DIV/0!"}
+  ]
+}

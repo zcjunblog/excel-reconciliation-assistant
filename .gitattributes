@@ -1,0 +1,4 @@
+# 保持合成输入、规则与人工答案的跨平台文件摘要一致。
+*.csv text eol=lf
+*.json text eol=lf
+*.xlsx binary

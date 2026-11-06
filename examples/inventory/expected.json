@@ -1,0 +1,23 @@
+{
+  "oracle_version":"1.0",
+  "authorship":"M1人工按原表坐标指定，未由核对引擎生成",
+  "tasks":[{
+    "id":"stock_check",
+    "selected":{"left":5,"right":5},
+    "excluded_rows":{"left":[],"right":[]},
+    "matched_pairs":[[2,3],[3,2],[4,4],[6,6]],
+    "only_rows":{"left":[5],"right":[5]},
+    "duplicate_rows":{"left":[],"right":[]},
+    "invalid_rows":{"left":[],"right":[]},
+    "field_counts":{"exact":4,"within_rule":0,"different":2,"not_comparable":2},
+    "different_pairs":2,"not_comparable_pairs":2,
+    "exceptions":[
+      {"left_row":3,"right_row":2,"field":"quantity","status":"different","delta":"1","left_cell":"D3","right_cell":"C2","reason":"tolerance_exceeded"},
+      {"left_row":4,"right_row":4,"field":"unit","status":"different","delta":null,"left_cell":"C4","right_cell":"D4","reason":"value_mismatch"},
+      {"left_row":4,"right_row":4,"field":"quantity","status":"not_comparable","delta":null,"left_cell":"D4","right_cell":"C4","reason":"unit_mismatch"},
+      {"left_row":6,"right_row":6,"field":"quantity","status":"not_comparable","delta":null,"left_cell":"D6","right_cell":"C6","reason":"required_value_missing"}
+    ]
+  }],
+  "cell_checks":[{"table":"ledger","cell":"A2","value":"0007"},{"table":"ledger","cell":"A5","value":"0010"},{"table":"count","cell":"B5","value":"10"},{"table":"ledger","cell":"D6","value":""},{"table":"count","cell":"C6","value":"0"}],
+  "formula_checks":[]
+}

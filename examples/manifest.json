@@ -1,0 +1,75 @@
+{
+  "synthetic": true,
+  "files": [
+    {
+      "path": "examples/commerce/expected.json",
+      "bytes": 1524,
+      "sha256": "e581859e3529599be7f13fce413c48af7c6f247e3351425a0994c3b85d17860f"
+    },
+    {
+      "path": "examples/commerce/inputs.xlsx",
+      "bytes": 5126,
+      "sha256": "aa6118f5ca835a472e6128c9551d33624735f986a2dd848732db59c5e42f9ded"
+    },
+    {
+      "path": "examples/commerce/rules.json",
+      "bytes": 2123,
+      "sha256": "dc18503290b64f116b58e79c4eaa730b7151c40c9e41c115b417212d999a31c6"
+    },
+    {
+      "path": "examples/inventory/count.csv",
+      "bytes": 140,
+      "sha256": "b8e27546cd8c4186eaaf567e807997ff97bfac8bfaaee9e872657437a972e21f"
+    },
+    {
+      "path": "examples/inventory/expected.json",
+      "bytes": 1437,
+      "sha256": "d861dbf28a11271771e8c84d6d5857da410366e94e5aff7b6ab13be86b196694"
+    },
+    {
+      "path": "examples/inventory/ledger.csv",
+      "bytes": 149,
+      "sha256": "03b5e5202048539493c4beb027fab90b97685586c28d06f1d75d7dbe7cecb503"
+    },
+    {
+      "path": "examples/inventory/rules.json",
+      "bytes": 1933,
+      "sha256": "acffbab873dc049d261260f7ffb248bb2ce761ea17704c2c52bad07d06060c56"
+    },
+    {
+      "path": "examples/training/attendance.csv",
+      "bytes": 213,
+      "sha256": "3fbd52698b3fff6cb64aa0a2cfd124eb1bca7f1043392d91930b44cabddf11b8"
+    },
+    {
+      "path": "examples/training/expected.json",
+      "bytes": 1130,
+      "sha256": "850b32ee424db0c7867685b2d565b50d7fef05c59e327c416e2123a767f8c648"
+    },
+    {
+      "path": "examples/training/registration.csv",
+      "bytes": 205,
+      "sha256": "a2ef783dd00dedd034bf0bc67cca6a1c312daceb8450dbb8bfb7fdf2e4a45fe6"
+    },
+    {
+      "path": "examples/training/rules.json",
+      "bytes": 1844,
+      "sha256": "ad8a867b8507d70215e3148dc815def946d0b322d5c7be8405a953bea471d1e3"
+    },
+    {
+      "path": "examples/administration/expected.json",
+      "bytes": 2332,
+      "sha256": "cd8099b152a1821a99bd3b2f1e4dba458af3b4e9467d3c1c2cf40716b5b48caf"
+    },
+    {
+      "path": "examples/administration/inputs.xlsx",
+      "bytes": 5379,
+      "sha256": "377aea79e49f6a13771799270890005dc45a694e56010af52fd4d7bbdf9de004"
+    },
+    {
+      "path": "examples/administration/rules.json",
+      "bytes": 2835,
+      "sha256": "1e450cd727ba6f86d6f934b18390daf65d2f0f97978a17a641b9d20171fd6185"
+    }
+  ]
+}

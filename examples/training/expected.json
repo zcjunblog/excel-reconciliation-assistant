@@ -1,0 +1,21 @@
+{
+  "oracle_version":"1.0",
+  "authorship":"M1人工按原表坐标指定，未由核对引擎生成",
+  "tasks":[{
+    "id":"roster_check",
+    "selected":{"left":5,"right":5},
+    "excluded_rows":{"left":[],"right":[]},
+    "matched_pairs":[[2,3],[3,2],[4,4]],
+    "only_rows":{"left":[6],"right":[5]},
+    "duplicate_rows":{"left":[],"right":[]},
+    "invalid_rows":{"left":[5],"right":[6]},
+    "field_counts":{"exact":7,"within_rule":1,"different":0,"not_comparable":1},
+    "different_pairs":0,"not_comparable_pairs":1,
+    "exceptions":[
+      {"left_row":2,"right_row":3,"field":"name","status":"within_rule","delta":null,"left_cell":"B2","right_cell":"D3","reason":"explicit_normalization"},
+      {"left_row":4,"right_row":4,"field":"date","status":"not_comparable","delta":null,"left_cell":"D4","right_cell":"C4","reason":"date_format_mismatch"}
+    ]
+  }],
+  "cell_checks":[{"table":"registration","cell":"B2","value":"王宁"},{"table":"registration","cell":"B3","value":"王宁"},{"table":"attendance","cell":"D3","value":" 王宁 "},{"table":"attendance","cell":"C4","value":"01/02/2026"}],
+  "formula_checks":[]
+}

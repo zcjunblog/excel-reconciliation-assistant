@@ -1,0 +1,30 @@
+{
+  "oracle_version": "1.0",
+  "authorship": "M1人工按原表坐标指定，未由核对引擎生成",
+  "tasks": [{
+    "id": "order_delivery",
+    "selected": {"left": 8, "right": 7},
+    "excluded_rows": {"left": [9], "right": []},
+    "matched_pairs": [[2,2],[3,4],[4,3]],
+    "only_rows": {"left": [8], "right": [6,8]},
+    "duplicate_rows": {"left": [5,6], "right": [5]},
+    "invalid_rows": {"left": [7], "right": [7]},
+    "field_counts": {"exact": 5, "within_rule": 1, "different": 2, "not_comparable": 1},
+    "different_pairs": 1,
+    "not_comparable_pairs": 1,
+    "exceptions": [
+      {"left_row":2,"right_row":2,"field":"amount","status":"within_rule","delta":"0.01","left_cell":"E2","right_cell":"B2","reason":"absolute_tolerance"},
+      {"left_row":3,"right_row":4,"field":"quantity","status":"different","delta":"1","left_cell":"D3","right_cell":"E4","reason":"tolerance_exceeded"},
+      {"left_row":3,"right_row":4,"field":"amount","status":"different","delta":"0.02","left_cell":"E3","right_cell":"B4","reason":"tolerance_exceeded"},
+      {"left_row":4,"right_row":3,"field":"amount","status":"not_comparable","delta":null,"left_cell":"E4","right_cell":"B3","reason":"currency_mismatch"}
+    ]
+  }],
+  "cell_checks": [
+    {"table":"orders","cell":"B2","value":"01"},
+    {"table":"orders","cell":"D4","value":0},
+    {"table":"orders","cell":"F4","value":"USD"},
+    {"table":"delivery","cell":"B2","value":100.01},
+    {"table":"orders","cell":"A9","value":"合计"}
+  ],
+  "formula_checks": []
+}

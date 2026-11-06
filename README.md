@@ -4,7 +4,7 @@
 
 将用户提供的业务表格按明确的字段与匹配规则进行核对，整理缺失记录、重复编号和字段差异，形成便于筛选的结果工作簿与可追溯报告。
 
-**项目初始化已完成，当前处于设计阶段，尚无可安装Skill、运行脚本或已验证的兼容列表。** 以下能力为首版设计方向。
+**M1规格与合成验收材料已完成，当前准备进入核心开发。尚无可安装Skill、生产核对工具或已验证的客户端兼容列表。** 以下能力为首版设计方向。
 
 ## 计划解决的问题
 
@@ -34,6 +34,11 @@
 
 - [产品设计与核对规则](memory-bank/design.md)
 - [初始化与后续开发待办](memory-bank/todo.md)
+- [规则协议与数据结构](docs/rules-protocol.md)
+- [四组跨行业合成验收案例](examples/README.md)
+- [结果工作簿布局](docs/workbook-layout.md)
+- [模块接口与分步实施计划](memory-bank/implementation-plan.md)
+- [M1验证证据与容量边界](evidence/m1/README.md)
 - [项目协作约定](Agent.md)
 - [GitHub仓库](https://github.com/zcjunblog/excel-reconciliation-assistant)
 

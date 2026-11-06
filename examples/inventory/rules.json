@@ -1,0 +1,92 @@
+{
+  "schema_version": "1.0",
+  "sources": [
+    {
+      "id": "ledger",
+      "path": "ledger.csv",
+      "format": "csv",
+      "encoding": "utf-8-sig"
+    },
+    {
+      "id": "count",
+      "path": "count.csv",
+      "format": "csv",
+      "encoding": "utf-8-sig"
+    }
+  ],
+  "tables": [
+    {
+      "id": "ledger",
+      "source_id": "ledger",
+      "sheet": null,
+      "header_row": 1,
+      "data_range": "A2:D6",
+      "exclusions": []
+    },
+    {
+      "id": "count",
+      "source_id": "count",
+      "sheet": null,
+      "header_row": 1,
+      "data_range": "A2:D6",
+      "exclusions": []
+    }
+  ],
+  "tasks": [
+    {
+      "id": "stock_check",
+      "left_table": "ledger",
+      "right_table": "count",
+      "keys": [
+        "sku",
+        "location"
+      ],
+      "fields": [
+        {
+          "id": "sku",
+          "left_column": "A",
+          "right_column": "B",
+          "left_header": "SKU",
+          "right_header": "sku",
+          "type": "identifier"
+        },
+        {
+          "id": "location",
+          "left_column": "B",
+          "right_column": "A",
+          "left_header": "仓位",
+          "right_header": "仓位",
+          "type": "identifier"
+        },
+        {
+          "id": "unit",
+          "left_column": "C",
+          "right_column": "D",
+          "left_header": "单位",
+          "right_header": "单位",
+          "type": "text"
+        },
+        {
+          "id": "quantity",
+          "left_column": "D",
+          "right_column": "C",
+          "left_header": "账面数量",
+          "right_header": "实盘",
+          "type": "decimal",
+          "parse_numeric_text": true,
+          "context": {
+            "unit": {
+              "left": {
+                "column": "C"
+              },
+              "right": {
+                "column": "D"
+              }
+            }
+          }
+        }
+      ],
+      "formula_policy": "pending"
+    }
+  ]
+}
