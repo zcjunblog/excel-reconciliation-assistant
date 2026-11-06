@@ -4,7 +4,7 @@
 
 将用户提供的业务表格按明确的字段与匹配规则进行核对，整理缺失记录、重复编号和字段差异，形成便于筛选的结果工作簿与可追溯报告。
 
-**M2来源读取与规则预检已完成，正在为关联与比较引擎准备下一阶段。尚无可安装Skill、完整核对交付工具或已验证的客户端兼容列表。** 以下业务能力仍为首版设计方向。
+**M3核心核对引擎已完成，下一阶段制作结果工作簿与交付报告。尚无可安装Skill、完整交付CLI或已验证的客户端兼容列表。** 当前可通过Python模块读取、匹配并比较表格；以下文件交付能力仍为首版设计方向。
 
 ## 计划解决的问题
 
@@ -41,6 +41,8 @@
 - [M1验证证据与容量边界](evidence/m1/README.md)
 - [M2读取接口与运行边界](docs/intake.md)
 - [M2测试与来源验证记录](evidence/m2/README.md)
+- [M3关联、比较与状态说明](docs/comparison.md)
+- [M3独立答案与边界验证](evidence/m3/README.md)
 - [项目协作约定](Agent.md)
 - [GitHub仓库](https://github.com/zcjunblog/excel-reconciliation-assistant)
 

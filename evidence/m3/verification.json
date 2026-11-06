@@ -1,0 +1,547 @@
+{
+  "stage": "M3",
+  "passed": true,
+  "python": "3.12.14",
+  "os": "Darwin",
+  "unit_tests": 77,
+  "failures": 0,
+  "errors": 0,
+  "case_tasks": 5,
+  "m1_manifest_unchanged": true,
+  "cases": [
+    {
+      "case": "commerce",
+      "task_id": "order_delivery",
+      "status": "needs_confirmation",
+      "manual_oracle_matches": true,
+      "row_counts": {
+        "left": {
+          "selected": 8,
+          "included": 7,
+          "excluded": 1,
+          "unique_matched": 3,
+          "only": 1,
+          "duplicate_ambiguous": 2,
+          "invalid_key": 1
+        },
+        "right": {
+          "selected": 7,
+          "included": 7,
+          "excluded": 0,
+          "unique_matched": 3,
+          "only": 2,
+          "duplicate_ambiguous": 1,
+          "invalid_key": 1
+        },
+        "unique_pairs": 3,
+        "different_pairs": 1,
+        "not_comparable_pairs": 1,
+        "row_status_counts": {
+          "exact": 0,
+          "within_rule": 1,
+          "different": 1,
+          "not_comparable": 1
+        }
+      },
+      "field_counts": {
+        "exact": 5,
+        "within_rule": 1,
+        "different": 2,
+        "not_comparable": 1
+      },
+      "exceptions": [
+        {
+          "left_row": 2,
+          "right_row": 2,
+          "field": "amount",
+          "status": "within_rule",
+          "delta": "0.01",
+          "left_cell": "E2",
+          "right_cell": "B2",
+          "reason": "absolute_tolerance"
+        },
+        {
+          "left_row": 3,
+          "right_row": 4,
+          "field": "quantity",
+          "status": "different",
+          "delta": "1",
+          "left_cell": "D3",
+          "right_cell": "E4",
+          "reason": "tolerance_exceeded"
+        },
+        {
+          "left_row": 3,
+          "right_row": 4,
+          "field": "amount",
+          "status": "different",
+          "delta": "0.02",
+          "left_cell": "E3",
+          "right_cell": "B4",
+          "reason": "tolerance_exceeded"
+        },
+        {
+          "left_row": 4,
+          "right_row": 3,
+          "field": "amount",
+          "status": "not_comparable",
+          "delta": null,
+          "left_cell": "E4",
+          "right_cell": "B3",
+          "reason": "currency_mismatch"
+        }
+      ],
+      "warnings": [],
+      "totals": [
+        {
+          "task_id": "order_delivery",
+          "field_id": "quantity",
+          "context": {},
+          "comparable_context": true,
+          "included_pairs": 3,
+          "excluded_pairs": 0,
+          "left_total": "3",
+          "right_total": "4",
+          "delta_sum": "1"
+        },
+        {
+          "task_id": "order_delivery",
+          "field_id": "amount",
+          "context": {
+            "currency": {
+              "left": "CNY",
+              "right": "CNY"
+            }
+          },
+          "comparable_context": true,
+          "included_pairs": 2,
+          "excluded_pairs": 0,
+          "left_total": "150",
+          "right_total": "150.03",
+          "delta_sum": "0.03"
+        },
+        {
+          "task_id": "order_delivery",
+          "field_id": "amount",
+          "context": {
+            "currency": {
+              "left": "USD",
+              "right": "CNY"
+            }
+          },
+          "comparable_context": false,
+          "included_pairs": 0,
+          "excluded_pairs": 1,
+          "left_total": null,
+          "right_total": null,
+          "delta_sum": null
+        }
+      ]
+    },
+    {
+      "case": "inventory",
+      "task_id": "stock_check",
+      "status": "needs_confirmation",
+      "manual_oracle_matches": true,
+      "row_counts": {
+        "left": {
+          "selected": 5,
+          "included": 5,
+          "excluded": 0,
+          "unique_matched": 4,
+          "only": 1,
+          "duplicate_ambiguous": 0,
+          "invalid_key": 0
+        },
+        "right": {
+          "selected": 5,
+          "included": 5,
+          "excluded": 0,
+          "unique_matched": 4,
+          "only": 1,
+          "duplicate_ambiguous": 0,
+          "invalid_key": 0
+        },
+        "unique_pairs": 4,
+        "different_pairs": 2,
+        "not_comparable_pairs": 2,
+        "row_status_counts": {
+          "exact": 1,
+          "within_rule": 0,
+          "different": 1,
+          "not_comparable": 2
+        }
+      },
+      "field_counts": {
+        "exact": 4,
+        "within_rule": 0,
+        "different": 2,
+        "not_comparable": 2
+      },
+      "exceptions": [
+        {
+          "left_row": 3,
+          "right_row": 2,
+          "field": "quantity",
+          "status": "different",
+          "delta": "1",
+          "left_cell": "D3",
+          "right_cell": "C2",
+          "reason": "tolerance_exceeded"
+        },
+        {
+          "left_row": 4,
+          "right_row": 4,
+          "field": "unit",
+          "status": "different",
+          "delta": null,
+          "left_cell": "C4",
+          "right_cell": "D4",
+          "reason": "value_mismatch"
+        },
+        {
+          "left_row": 4,
+          "right_row": 4,
+          "field": "quantity",
+          "status": "not_comparable",
+          "delta": null,
+          "left_cell": "D4",
+          "right_cell": "C4",
+          "reason": "unit_mismatch"
+        },
+        {
+          "left_row": 6,
+          "right_row": 6,
+          "field": "quantity",
+          "status": "not_comparable",
+          "delta": null,
+          "left_cell": "D6",
+          "right_cell": "C6",
+          "reason": "required_value_missing"
+        }
+      ],
+      "warnings": [],
+      "totals": [
+        {
+          "task_id": "stock_check",
+          "field_id": "quantity",
+          "context": {
+            "unit": {
+              "left": "件",
+              "right": "件"
+            }
+          },
+          "comparable_context": true,
+          "included_pairs": 2,
+          "excluded_pairs": 1,
+          "left_total": "15",
+          "right_total": "16",
+          "delta_sum": "1"
+        },
+        {
+          "task_id": "stock_check",
+          "field_id": "quantity",
+          "context": {
+            "unit": {
+              "left": "箱",
+              "right": "件"
+            }
+          },
+          "comparable_context": false,
+          "included_pairs": 0,
+          "excluded_pairs": 1,
+          "left_total": null,
+          "right_total": null,
+          "delta_sum": null
+        }
+      ]
+    },
+    {
+      "case": "training",
+      "task_id": "roster_check",
+      "status": "needs_confirmation",
+      "manual_oracle_matches": true,
+      "row_counts": {
+        "left": {
+          "selected": 5,
+          "included": 5,
+          "excluded": 0,
+          "unique_matched": 3,
+          "only": 1,
+          "duplicate_ambiguous": 0,
+          "invalid_key": 1
+        },
+        "right": {
+          "selected": 5,
+          "included": 5,
+          "excluded": 0,
+          "unique_matched": 3,
+          "only": 1,
+          "duplicate_ambiguous": 0,
+          "invalid_key": 1
+        },
+        "unique_pairs": 3,
+        "different_pairs": 0,
+        "not_comparable_pairs": 1,
+        "row_status_counts": {
+          "exact": 1,
+          "within_rule": 1,
+          "different": 0,
+          "not_comparable": 1
+        }
+      },
+      "field_counts": {
+        "exact": 7,
+        "within_rule": 1,
+        "different": 0,
+        "not_comparable": 1
+      },
+      "exceptions": [
+        {
+          "left_row": 2,
+          "right_row": 3,
+          "field": "name",
+          "status": "within_rule",
+          "delta": null,
+          "left_cell": "B2",
+          "right_cell": "D3",
+          "reason": "explicit_normalization"
+        },
+        {
+          "left_row": 4,
+          "right_row": 4,
+          "field": "date",
+          "status": "not_comparable",
+          "delta": null,
+          "left_cell": "D4",
+          "right_cell": "C4",
+          "reason": "date_format_mismatch"
+        }
+      ],
+      "warnings": [],
+      "totals": []
+    },
+    {
+      "case": "administration",
+      "task_id": "assets_default",
+      "status": "needs_confirmation",
+      "manual_oracle_matches": true,
+      "row_counts": {
+        "left": {
+          "selected": 3,
+          "included": 3,
+          "excluded": 0,
+          "unique_matched": 3,
+          "only": 0,
+          "duplicate_ambiguous": 0,
+          "invalid_key": 0
+        },
+        "right": {
+          "selected": 3,
+          "included": 3,
+          "excluded": 0,
+          "unique_matched": 3,
+          "only": 0,
+          "duplicate_ambiguous": 0,
+          "invalid_key": 0
+        },
+        "unique_pairs": 3,
+        "different_pairs": 0,
+        "not_comparable_pairs": 3,
+        "row_status_counts": {
+          "exact": 0,
+          "within_rule": 0,
+          "different": 0,
+          "not_comparable": 3
+        }
+      },
+      "field_counts": {
+        "exact": 3,
+        "within_rule": 0,
+        "different": 0,
+        "not_comparable": 3
+      },
+      "exceptions": [
+        {
+          "left_row": 2,
+          "right_row": 3,
+          "field": "value",
+          "status": "not_comparable",
+          "delta": null,
+          "left_cell": "C2",
+          "right_cell": "C3",
+          "reason": "formula_cache_missing"
+        },
+        {
+          "left_row": 3,
+          "right_row": 2,
+          "field": "value",
+          "status": "not_comparable",
+          "delta": null,
+          "left_cell": "C3",
+          "right_cell": "C2",
+          "reason": "formula_requires_confirmation"
+        },
+        {
+          "left_row": 4,
+          "right_row": 4,
+          "field": "value",
+          "status": "not_comparable",
+          "delta": null,
+          "left_cell": "C4",
+          "right_cell": "C4",
+          "reason": "formula_error"
+        }
+      ],
+      "warnings": [],
+      "totals": [
+        {
+          "task_id": "assets_default",
+          "field_id": "value",
+          "context": {
+            "currency": {
+              "left": "CNY",
+              "right": "CNY"
+            }
+          },
+          "comparable_context": true,
+          "included_pairs": 0,
+          "excluded_pairs": 3,
+          "left_total": null,
+          "right_total": null,
+          "delta_sum": null
+        }
+      ]
+    },
+    {
+      "case": "administration",
+      "task_id": "assets_cached",
+      "status": "needs_confirmation",
+      "manual_oracle_matches": true,
+      "row_counts": {
+        "left": {
+          "selected": 3,
+          "included": 3,
+          "excluded": 0,
+          "unique_matched": 3,
+          "only": 0,
+          "duplicate_ambiguous": 0,
+          "invalid_key": 0
+        },
+        "right": {
+          "selected": 3,
+          "included": 3,
+          "excluded": 0,
+          "unique_matched": 3,
+          "only": 0,
+          "duplicate_ambiguous": 0,
+          "invalid_key": 0
+        },
+        "unique_pairs": 3,
+        "different_pairs": 0,
+        "not_comparable_pairs": 2,
+        "row_status_counts": {
+          "exact": 1,
+          "within_rule": 0,
+          "different": 0,
+          "not_comparable": 2
+        }
+      },
+      "field_counts": {
+        "exact": 4,
+        "within_rule": 0,
+        "different": 0,
+        "not_comparable": 2
+      },
+      "exceptions": [
+        {
+          "left_row": 2,
+          "right_row": 3,
+          "field": "value",
+          "status": "not_comparable",
+          "delta": null,
+          "left_cell": "C2",
+          "right_cell": "C3",
+          "reason": "formula_cache_missing"
+        },
+        {
+          "left_row": 4,
+          "right_row": 4,
+          "field": "value",
+          "status": "not_comparable",
+          "delta": null,
+          "left_cell": "C4",
+          "right_cell": "C4",
+          "reason": "formula_error"
+        }
+      ],
+      "warnings": [
+        "cache_freshness_unverified"
+      ],
+      "totals": [
+        {
+          "task_id": "assets_cached",
+          "field_id": "value",
+          "context": {
+            "currency": {
+              "left": "CNY",
+              "right": "CNY"
+            }
+          },
+          "comparable_context": true,
+          "included_pairs": 1,
+          "excluded_pairs": 2,
+          "left_total": "200",
+          "right_total": "200",
+          "delta_sum": "0"
+        }
+      ]
+    }
+  ],
+  "probe": {
+    "rows_per_side": 50000,
+    "fields_per_pair": 4,
+    "field_comparisons": 200000,
+    "field_counts": {
+      "exact": 199999,
+      "within_rule": 0,
+      "different": 1,
+      "not_comparable": 0
+    },
+    "row_order": "right_reversed",
+    "read_seconds": 1.7326,
+    "associate_seconds": 0.3288,
+    "compare_and_coverage_seconds": 2.2863,
+    "cumulative_budget_rejected_second_task": true,
+    "sources_unchanged": true,
+    "scope": "CSV输入→关联→比较→覆盖检查；不含结果文件导出或客户端"
+  },
+  "process_peak_rss_mib": 509.45,
+  "code_sha256": {
+    "skills/excel-reconciliation-assistant/scripts/checks.py": "79685fa86e826efbd8961924c6d6d5aa0cb7831c381cd6ebb22ee91e7206035d",
+    "skills/excel-reconciliation-assistant/scripts/common.py": "49b7bf23f77589cdcb2623abc781f9c9bbf739cba6f279975606ff707f881d93",
+    "skills/excel-reconciliation-assistant/scripts/compare.py": "b5490bec52724a7d13920b077ddf215a82662b6f1aaa8e938a2c093faf350d4b",
+    "skills/excel-reconciliation-assistant/scripts/csv_reader.py": "ecf0c4199cb3989d109549bd555cfb038c931224c897b8a070b8ea33fc3bb2d8",
+    "skills/excel-reconciliation-assistant/scripts/intake.py": "c3958d53ef37f78991ebfd30ad45a7f3be7396e62ffbc53cf605f2f20caac3ae",
+    "skills/excel-reconciliation-assistant/scripts/matching.py": "f923c96501180fd42272f2e2aa637136cdb06565abc279070195d26e1fbad275",
+    "skills/excel-reconciliation-assistant/scripts/normalization.py": "c46d38ddbc6c09fd0946ddef8d411a8b89cf1c56e46b66c7a95f0d6ca6f7e427",
+    "skills/excel-reconciliation-assistant/scripts/rules.py": "c8105bd876196f32addcd6cf11805ffe96c0c040690f8c18a3953ac61df5acf4",
+    "skills/excel-reconciliation-assistant/scripts/source_guard.py": "c5342069979ef1510f55f52a364ff78e94f5b48dd9e44b638f26d7e274ef5e71",
+    "skills/excel-reconciliation-assistant/scripts/table_data.py": "b04c8de6aebd198387530c964ce743131e70a748449c798e5892201ba42149b6",
+    "skills/excel-reconciliation-assistant/scripts/typed_values.py": "cdd36a69b5ed9e3a917410acf971bea76a83437f5bbe22c3a21b212c0d3e4f85",
+    "skills/excel-reconciliation-assistant/scripts/xlsx_reader.py": "0502fbb4d379c0f1bf66e9079feb98be5ef4e95744c65acc1c11cb7de3911bb5",
+    "tests/comparison_helpers.py": "efa7aa36aa49b69fdddf1f80bd8202ff5b7c4cb78efad2a213b14ecc5056e960",
+    "tests/fixture_helpers.py": "40824ee44e63647708f89caa07c80896e8c58d1d439635add94807e8462f4f42",
+    "tests/test_compare.py": "2c39d8c86050fb3825cf7e511bf52036b3a838aabd23d5a0141562605fc66ef7",
+    "tests/test_coverage.py": "dcf0f22d5f5f569b4431b8cb77611a726422742b0c6da57551a2aba5d96c4ed6",
+    "tests/test_intake.py": "88a0bcb59f7a4c42e8c4731a5b86b20f5c1341040acdb58a852e9d0e4a0bb613",
+    "tests/test_matching.py": "092e1904d97a6a3b52c2248c40c6079800e7796278aefef3959eec8db556e353",
+    "tests/test_rules.py": "3c2c4b8ef608cbac7771357082a62e9e313091019dae77585cec0e1a776fdce3",
+    "tests/test_source_limits.py": "3c34953a08531fb37c338df64ada7d28aec5552f26b5156e437e0cce5de1d0db"
+  },
+  "not_verified": [
+    "M4导出及Excel/WPS视觉",
+    "M5包与客户端",
+    "最大宽表/不同系统/复杂样式完整性能"
+  ]
+}

@@ -16,6 +16,8 @@ def _validate_inputs(left,right,task):
     if len(set(keys))!=len(keys) or any(k not in mapping or mapping[k]['type'] not in ('identifier','text') for k in keys):
         raise IntakeError('invalid_association_rule','键引用无效或类型不支持')
     for side,table in (('left',left),('right',right)):
+        if not table.rows or not table.selected_rows:
+            raise IntakeError('empty_table','空范围或全排除表不能作为已核对输入',{'table_id':table.id})
         for f in fields:
             if table.header.get(f[side+'_column'])!=f[side+'_header']:
                 raise IntakeError('invalid_association_input','映射字段或实际表头不匹配',{'table_id':table.id,'field':f['id']})
@@ -23,6 +25,9 @@ def _validate_inputs(left,right,task):
         selected=set(table.selected_rows); excluded=set(table.excluded_rows)
         if len(set(row_ids))!=len(row_ids) or len(selected)!=len(table.selected_rows) or set(row_ids)&excluded or set(row_ids)|excluded!=selected:
             raise IntakeError('invalid_association_input','输入行号、纳入与排除范围不守恒',{'table_id':table.id})
+        identities={(c.ref.source_id,c.ref.sheet) for row in table.rows for c in row.cells.values()}
+        if len(identities)!=1:
+            raise IntakeError('invalid_association_input','同一逻辑表包含不一致的来源或工作表',{'table_id':table.id})
         for row in table.rows:
             for column,c in row.cells.items():
                 if c.ref.row!=row.row or c.ref.column!=column or c.ref.table_id!=table.id:
@@ -70,7 +75,7 @@ def associate(left,right,task):
         a=groups['left'].get(key,[]); b=groups['right'].get(key,[])
         display_key=tuple(value for kind,value in key)
         if len(a)>1 or len(b)>1: ambiguous.append(AmbiguousGroup(display_key,a,b))
-        elif a and b: pairs.append(MatchedPair(a[0],b[0],display_key))
+        elif a and b: pairs.append(MatchedPair(a[0],b[0],display_key,{s:t.metadata.get('date_system') for s,t in (('left',left),('right',right))}))
         else: only['left'].extend(a); only['right'].extend(b)
     pairs.sort(key=lambda p:(p.left.row,p.right.row))
     for side in only: only[side].sort(key=lambda r:r.row)

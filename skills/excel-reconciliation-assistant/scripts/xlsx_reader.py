@@ -114,7 +114,7 @@ def _read_table_values(formula_book,cache_book,table,grid,raw,budget):
                 if entry['type']=='inlineStr': value=entry['inline']
                 kind='formula' if entry['formula_present'] else _kind(value,a)
                 lex=entry['numeric'] if entry['type']=='n' else None
-                grid.cells[(row,col)]=RawCell(value,kind,lex,a.number_format,formula,b.value if entry['formula_present'] else None,_kind(b.value,b) if entry['formula_present'] else None)
+                grid.cells[(row,col)]=RawCell(value,kind,lex,a.number_format,formula,b.value if entry['formula_present'] else None,_kind(b.value,b) if entry['formula_present'] else None,date_lexeme=entry['numeric'] if entry['type']=='d' else None)
 
 
 def read_xlsx(snapshot, tables, budget):

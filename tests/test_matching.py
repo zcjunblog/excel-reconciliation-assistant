@@ -1,6 +1,7 @@
 import copy
 import json
 import unittest
+from dataclasses import replace
 from comparison_helpers import ROOT, read_case, table, task, cell
 from common import IntakeError
 from matching import associate
@@ -74,6 +75,18 @@ class MatchingTests(unittest.TestCase):
         with self.assertRaises(IntakeError): associate(table('right',[['a',1]]),table('left',[['a',1]]),rule)
         rule['keys']=['absent']
         with self.assertRaises(IntakeError): associate(table('left',[['a',1]]),table('right',[['a',1]]),rule)
+
+    def test_empty_or_fully_excluded_input_never_completes(self):
+        empty=table('left',[])
+        with self.assertRaises(IntakeError): associate(empty,table('right',[['a',1]]),task())
+        empty.selected_rows=[2]; empty.excluded_rows={2:'排除全部'}
+        with self.assertRaises(IntakeError): associate(empty,table('right',[['a',1]]),task())
+
+    def test_mixed_source_or_sheet_identity_in_table_rejected(self):
+        for changed in ({'source_id':'another_source'},{'sheet':'another_sheet'}):
+            left=table('left',[['a',1]])
+            value=left.rows[0].cells['B']; left.rows[0].cells['B']=replace(value,ref=replace(value.ref,**changed))
+            with self.assertRaises(IntakeError): associate(left,table('right',[['a',1]]),task())
 
 
 if __name__=='__main__': unittest.main()

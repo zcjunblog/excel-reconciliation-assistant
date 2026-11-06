@@ -143,6 +143,7 @@ class CellValue:
     formula: Optional[str] = None
     cached: Any = None
     cache_type: Optional[str] = None
+    date_lexeme: Optional[str] = None
 
 
 @dataclass
@@ -195,6 +196,7 @@ class MatchedPair:
     left: RowData
     right: RowData
     key: tuple[str, ...]
+    date_systems: dict[str, str] = field(default_factory=dict)
 
 
 @dataclass

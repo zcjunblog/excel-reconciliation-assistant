@@ -15,6 +15,7 @@ class RawCell:
     cached: Any = None
     cache_type: Optional[str] = None
     physical_lines: Optional[tuple[int,int]] = None
+    date_lexeme: Optional[str] = None
 
 
 @dataclass
@@ -61,7 +62,7 @@ def build_table(table, grid, source_id, expected_headers):
         for col in range(c1,c2+1):
             value=grid.cells.get((row,col),RawCell())
             address=CellRef(source_id,tid,table['sheet'],row,column_name(col),value.physical_lines)
-            cells[address.column]=CellValue(address,value.raw,value.raw_type,value.numeric_lexeme,value.number_format,value.formula,value.cached,value.cache_type)
+            cells[address.column]=CellValue(address,value.raw,value.raw_type,value.numeric_lexeme,value.number_format,value.formula,value.cached,value.cache_type,value.date_lexeme)
             if value.raw is not None and value.raw!='': has_content=True
         rows.append(RowData(row,cells))
     if not rows or not has_content: raise IntakeError('empty_table','纳入范围没有可读取的数据内容',ref)
