@@ -1,0 +1,80 @@
+[
+  {
+    "table_id": "ledger",
+    "definition": {
+      "id": "ledger",
+      "source_id": "ledger",
+      "sheet": null,
+      "header_row": 1,
+      "data_range": "A2:D6",
+      "exclusions": []
+    },
+    "blocked": false,
+    "preview": {
+      "header": {
+        "A": "SKU",
+        "B": "仓位",
+        "C": "单位",
+        "D": "账面数量"
+      },
+      "selected_rows": 5,
+      "included_rows": 5,
+      "excluded_rows": {},
+      "metadata": {
+        "format": "csv",
+        "encoding": "utf-8-sig",
+        "scanned_rows": 6,
+        "scanned_cells": 24,
+        "physical_lines": 6,
+        "hidden_rows": [],
+        "auto_filter": null,
+        "hidden_columns": [],
+        "range": "A2:D6",
+        "selected_count": 5,
+        "included_count": 5,
+        "source_sha256": "03b5e5202048539493c4beb027fab90b97685586c28d06f1d75d7dbe7cecb503",
+        "source_bytes": 149,
+        "source_name": "ledger.csv"
+      }
+    }
+  },
+  {
+    "table_id": "count",
+    "definition": {
+      "id": "count",
+      "source_id": "count",
+      "sheet": null,
+      "header_row": 1,
+      "data_range": "A2:D6",
+      "exclusions": []
+    },
+    "blocked": false,
+    "preview": {
+      "header": {
+        "A": "仓位",
+        "B": "sku",
+        "C": "实盘",
+        "D": "单位"
+      },
+      "selected_rows": 5,
+      "included_rows": 5,
+      "excluded_rows": {},
+      "metadata": {
+        "format": "csv",
+        "encoding": "utf-8-sig",
+        "scanned_rows": 6,
+        "scanned_cells": 24,
+        "physical_lines": 6,
+        "hidden_rows": [],
+        "auto_filter": null,
+        "hidden_columns": [],
+        "range": "A2:D6",
+        "selected_count": 5,
+        "included_count": 5,
+        "source_sha256": "b8e27546cd8c4186eaaf567e807997ff97bfac8bfaaee9e872657437a972e21f",
+        "source_bytes": 140,
+        "source_name": "count.csv"
+      }
+    }
+  }
+]

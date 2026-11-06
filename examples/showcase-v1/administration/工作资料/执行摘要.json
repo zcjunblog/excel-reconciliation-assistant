@@ -1,0 +1,18 @@
+{
+  "skill_version": "0.1.0",
+  "mode": "run",
+  "status": "needs_confirmation",
+  "tasks": [
+    {
+      "task_id": "assets_default",
+      "status": "needs_confirmation"
+    },
+    {
+      "task_id": "assets_cached",
+      "status": "needs_confirmation"
+    }
+  ],
+  "issues": [],
+  "unavailable_formats": [],
+  "run_id": "e2f2974dd584444e9bbd56fde245e6a8"
+}

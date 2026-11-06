@@ -1,0 +1,75 @@
+[
+  {
+    "task_id": "asset_variance",
+    "coverage_issues": [],
+    "row_counts": {
+      "left": {
+        "selected": 2,
+        "included": 2,
+        "excluded": 0,
+        "unique_matched": 2,
+        "only": 0,
+        "duplicate_ambiguous": 0,
+        "invalid_key": 0
+      },
+      "right": {
+        "selected": 2,
+        "included": 2,
+        "excluded": 0,
+        "unique_matched": 2,
+        "only": 0,
+        "duplicate_ambiguous": 0,
+        "invalid_key": 0
+      },
+      "unique_pairs": 2,
+      "different_pairs": 2,
+      "not_comparable_pairs": 0,
+      "row_status_counts": {
+        "exact": 0,
+        "within_rule": 0,
+        "different": 2,
+        "not_comparable": 0
+      }
+    },
+    "field_counts": {
+      "exact": 3,
+      "within_rule": 0,
+      "different": 3,
+      "not_comparable": 0
+    },
+    "totals": [
+      {
+        "task_id": "asset_variance",
+        "field_id": "quantity",
+        "context": {
+          "unit": {
+            "left": "台",
+            "right": "台"
+          }
+        },
+        "comparable_context": true,
+        "included_pairs": 2,
+        "excluded_pairs": 0,
+        "left_total": "11",
+        "right_total": "9",
+        "delta_sum": "-2"
+      },
+      {
+        "task_id": "asset_variance",
+        "field_id": "amount",
+        "context": {
+          "currency": {
+            "left": "CNY",
+            "right": "CNY"
+          }
+        },
+        "comparable_context": true,
+        "included_pairs": 2,
+        "excluded_pairs": 0,
+        "left_total": "100.10",
+        "right_total": "90.05",
+        "delta_sum": "-10.05"
+      }
+    ]
+  }
+]

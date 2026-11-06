@@ -1,0 +1,14 @@
+{
+  "skill_version": "0.1.0",
+  "mode": "run",
+  "status": "needs_confirmation",
+  "tasks": [
+    {
+      "task_id": "stock_check",
+      "status": "needs_confirmation"
+    }
+  ],
+  "issues": [],
+  "unavailable_formats": [],
+  "run_id": "116241c66a044d1c92030a7ec4f55e98"
+}

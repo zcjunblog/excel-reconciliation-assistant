@@ -1,0 +1,20 @@
+[
+  {
+    "id": "registration",
+    "name": "registration.csv",
+    "format": "csv",
+    "registered": true,
+    "sha256": "a2ef783dd00dedd034bf0bc67cca6a1c312daceb8450dbb8bfb7fdf2e4a45fe6",
+    "bytes": 205,
+    "metadata": {}
+  },
+  {
+    "id": "attendance",
+    "name": "attendance.csv",
+    "format": "csv",
+    "registered": true,
+    "sha256": "3fbd52698b3fff6cb64aa0a2cfd124eb1bca7f1043392d91930b44cabddf11b8",
+    "bytes": 213,
+    "metadata": {}
+  }
+]

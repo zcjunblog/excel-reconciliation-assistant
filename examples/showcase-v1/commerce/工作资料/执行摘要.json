@@ -1,0 +1,41 @@
+{
+  "skill_version": "0.1.0",
+  "mode": "run",
+  "status": "needs_confirmation",
+  "tasks": [
+    {
+      "task_id": "order_delivery",
+      "status": "needs_confirmation"
+    }
+  ],
+  "issues": [
+    {
+      "code": "missing_key",
+      "message": "业务键无效，保留原行待确认",
+      "source_ref": {
+        "source_id": "book",
+        "table_id": "orders",
+        "sheet": "订单",
+        "row": 7,
+        "column": "A",
+        "physical_lines": null
+      },
+      "severity": "error"
+    },
+    {
+      "code": "missing_key",
+      "message": "业务键无效，保留原行待确认",
+      "source_ref": {
+        "source_id": "book",
+        "table_id": "delivery",
+        "sheet": "交付",
+        "row": 7,
+        "column": "A",
+        "physical_lines": null
+      },
+      "severity": "error"
+    }
+  ],
+  "unavailable_formats": [],
+  "run_id": "1b1b7ae51c734ce88bb750d5d832d39b"
+}

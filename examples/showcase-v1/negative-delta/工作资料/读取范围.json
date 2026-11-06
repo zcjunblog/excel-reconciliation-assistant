@@ -1,0 +1,84 @@
+[
+  {
+    "table_id": "left",
+    "definition": {
+      "id": "left",
+      "source_id": "left",
+      "sheet": null,
+      "header_row": 1,
+      "data_range": "A2:F3",
+      "exclusions": []
+    },
+    "blocked": false,
+    "preview": {
+      "header": {
+        "A": "资产编号",
+        "B": "领用人",
+        "C": "数量",
+        "D": "单位",
+        "E": "金额",
+        "F": "币种"
+      },
+      "selected_rows": 2,
+      "included_rows": 2,
+      "excluded_rows": {},
+      "metadata": {
+        "format": "csv",
+        "encoding": "utf-8-sig",
+        "scanned_rows": 3,
+        "scanned_cells": 18,
+        "physical_lines": 3,
+        "hidden_rows": [],
+        "auto_filter": null,
+        "hidden_columns": [],
+        "range": "A2:F3",
+        "selected_count": 2,
+        "included_count": 2,
+        "source_sha256": "e8ba51b222692e62d41dd1a375c219f644e889640e4f01d492276e5a0e106676",
+        "source_bytes": 114,
+        "source_name": "基准清单.csv"
+      }
+    }
+  },
+  {
+    "table_id": "right",
+    "definition": {
+      "id": "right",
+      "source_id": "right",
+      "sheet": null,
+      "header_row": 1,
+      "data_range": "A2:F3",
+      "exclusions": []
+    },
+    "blocked": false,
+    "preview": {
+      "header": {
+        "A": "资产编号",
+        "B": "领用人",
+        "C": "数量",
+        "D": "单位",
+        "E": "金额",
+        "F": "币种"
+      },
+      "selected_rows": 2,
+      "included_rows": 2,
+      "excluded_rows": {},
+      "metadata": {
+        "format": "csv",
+        "encoding": "utf-8-sig",
+        "scanned_rows": 3,
+        "scanned_cells": 18,
+        "physical_lines": 3,
+        "hidden_rows": [],
+        "auto_filter": null,
+        "hidden_columns": [],
+        "range": "A2:F3",
+        "selected_count": 2,
+        "included_count": 2,
+        "source_sha256": "9c02699ac0042f062da847c93e0ee603d34590ea4ea02385c1cabc2ddbc419fa",
+        "source_bytes": 112,
+        "source_name": "比较清单.csv"
+      }
+    }
+  }
+]

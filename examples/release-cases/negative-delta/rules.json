@@ -1,0 +1,102 @@
+{
+  "schema_version": "1.0",
+  "sources": [
+    {
+      "id": "left",
+      "path": "基准清单.csv",
+      "format": "csv",
+      "encoding": "utf-8-sig"
+    },
+    {
+      "id": "right",
+      "path": "比较清单.csv",
+      "format": "csv",
+      "encoding": "utf-8-sig"
+    }
+  ],
+  "tables": [
+    {
+      "id": "left",
+      "source_id": "left",
+      "sheet": null,
+      "header_row": 1,
+      "data_range": "A2:F3",
+      "exclusions": []
+    },
+    {
+      "id": "right",
+      "source_id": "right",
+      "sheet": null,
+      "header_row": 1,
+      "data_range": "A2:F3",
+      "exclusions": []
+    }
+  ],
+  "tasks": [
+    {
+      "id": "asset_variance",
+      "left_table": "left",
+      "right_table": "right",
+      "keys": [
+        "asset_id"
+      ],
+      "fields": [
+        {
+          "id": "asset_id",
+          "left_column": "A",
+          "right_column": "A",
+          "left_header": "资产编号",
+          "right_header": "资产编号",
+          "type": "identifier"
+        },
+        {
+          "id": "owner",
+          "left_column": "B",
+          "right_column": "B",
+          "left_header": "领用人",
+          "right_header": "领用人",
+          "type": "text"
+        },
+        {
+          "id": "quantity",
+          "left_column": "C",
+          "right_column": "C",
+          "left_header": "数量",
+          "right_header": "数量",
+          "type": "decimal",
+          "parse_numeric_text": true,
+          "context": {
+            "unit": {
+              "left": {
+                "column": "D"
+              },
+              "right": {
+                "column": "D"
+              }
+            }
+          }
+        },
+        {
+          "id": "amount",
+          "left_column": "E",
+          "right_column": "E",
+          "left_header": "金额",
+          "right_header": "金额",
+          "type": "decimal",
+          "parse_numeric_text": true,
+          "context": {
+            "currency": {
+              "left": {
+                "column": "F"
+              },
+              "right": {
+                "column": "F"
+              }
+            }
+          }
+        }
+      ],
+      "formula_policy": "pending"
+    }
+  ]
+}

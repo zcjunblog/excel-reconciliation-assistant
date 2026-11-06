@@ -1,0 +1,399 @@
+{
+  "stage": "M6",
+  "skill_version": "0.1.0",
+  "passed": true,
+  "synthetic": true,
+  "case_tasks": 6,
+  "cases": [
+    {
+      "case": "commerce",
+      "input_rules": "examples/commerce/rules.json",
+      "status": "needs_confirmation",
+      "tasks": [
+        {
+          "task_id": "order_delivery",
+          "manual_oracle_matches": true,
+          "field_counts": {
+            "exact": 5,
+            "within_rule": 1,
+            "different": 2,
+            "not_comparable": 1
+          }
+        }
+      ],
+      "delivery_files": 11,
+      "receipt_sha256": "e3c1576fa2aa23ef5dbe5d7cb42cbd1a0fba9df38d6d531d8d9ae3fdcbe1a5c1"
+    },
+    {
+      "case": "inventory",
+      "input_rules": "examples/inventory/rules.json",
+      "status": "needs_confirmation",
+      "tasks": [
+        {
+          "task_id": "stock_check",
+          "manual_oracle_matches": true,
+          "field_counts": {
+            "exact": 4,
+            "within_rule": 0,
+            "different": 2,
+            "not_comparable": 2
+          }
+        }
+      ],
+      "delivery_files": 11,
+      "receipt_sha256": "226bd01040954d904514160b7dce49c37bb8afebb60192df4075b3ca0247da75"
+    },
+    {
+      "case": "training",
+      "input_rules": "examples/training/rules.json",
+      "status": "needs_confirmation",
+      "tasks": [
+        {
+          "task_id": "roster_check",
+          "manual_oracle_matches": true,
+          "field_counts": {
+            "exact": 7,
+            "within_rule": 1,
+            "different": 0,
+            "not_comparable": 1
+          }
+        }
+      ],
+      "delivery_files": 11,
+      "receipt_sha256": "595e93ead28d9e0b29963e757aca570971a4cd70fb1d0105841937cd09fab707"
+    },
+    {
+      "case": "administration",
+      "input_rules": "examples/administration/rules.json",
+      "status": "needs_confirmation",
+      "tasks": [
+        {
+          "task_id": "assets_default",
+          "manual_oracle_matches": true,
+          "field_counts": {
+            "exact": 3,
+            "within_rule": 0,
+            "different": 0,
+            "not_comparable": 3
+          }
+        },
+        {
+          "task_id": "assets_cached",
+          "manual_oracle_matches": true,
+          "field_counts": {
+            "exact": 4,
+            "within_rule": 0,
+            "different": 0,
+            "not_comparable": 2
+          }
+        }
+      ],
+      "delivery_files": 11,
+      "receipt_sha256": "5bae8ce8ef3d7515e6b1f4901a9a4153d1bbff3fda1ba173bbd0a0f863e1acd5"
+    },
+    {
+      "case": "negative-delta",
+      "input_rules": "examples/release-cases/negative-delta/rules.json",
+      "status": "complete",
+      "tasks": [
+        {
+          "task_id": "asset_variance",
+          "manual_oracle_matches": true,
+          "field_counts": {
+            "exact": 3,
+            "within_rule": 0,
+            "different": 3,
+            "not_comparable": 0
+          }
+        }
+      ],
+      "delivery_files": 11,
+      "receipt_sha256": "593c0b76422197944d4f2f2070c38b58fc022225ce404cc5db630c461843c5a2"
+    }
+  ],
+  "files": [
+    {
+      "path": "administration/交付清单.json",
+      "bytes": 2584,
+      "sha256": "5bae8ce8ef3d7515e6b1f4901a9a4153d1bbff3fda1ba173bbd0a0f863e1acd5"
+    },
+    {
+      "path": "administration/工作资料/关联结果.jsonl",
+      "bytes": 11176,
+      "sha256": "1c9cd4821294b7ef5f4bc5afed8215ab37d91008ba21f3a87eee82fd3e7250d9"
+    },
+    {
+      "path": "administration/工作资料/字段结果.jsonl",
+      "bytes": 9956,
+      "sha256": "44d5abfb0e13473cbf3acab1aba229f61a980a180bca559080d40590fdd00818"
+    },
+    {
+      "path": "administration/工作资料/执行摘要.json",
+      "bytes": 361,
+      "sha256": "e4b35ba2974008fac2311e6c302ca0eb28ccc4535a1def61ae93775c501ff0dc"
+    },
+    {
+      "path": "administration/工作资料/来源索引.json",
+      "bytes": 285,
+      "sha256": "4705d55afda2f00c7d981e3ce64edcfc1d26d3511d52df3dab2134a9f9cf3f40"
+    },
+    {
+      "path": "administration/工作资料/核对规则.json",
+      "bytes": 3305,
+      "sha256": "6e35165a19cce4db25f09d8851f142689daa41e3eaa13c8f7a905c8e345fa75f"
+    },
+    {
+      "path": "administration/工作资料/检查记录.json",
+      "bytes": 2486,
+      "sha256": "686232255f6eb60b28d53562847a328cb6dc055705c1e177dcea615d1d1e9549"
+    },
+    {
+      "path": "administration/工作资料/读取范围.json",
+      "bytes": 3379,
+      "sha256": "4b401c0977978aa72da72b8366a615f270ed01155468dce5fe68a9a4843527aa"
+    },
+    {
+      "path": "administration/待确认事项.md",
+      "bytes": 1189,
+      "sha256": "c1068943e0a21334de51a63f19d61d15364ec60a2a84c250d35f679ea6409a69"
+    },
+    {
+      "path": "administration/核对报告.md",
+      "bytes": 2231,
+      "sha256": "5c4be468c2c14357c3671afd57bcf388497a2a7b498471bd655f1659f5c45b8f"
+    },
+    {
+      "path": "administration/核对结果.xlsx",
+      "bytes": 17712,
+      "sha256": "fe37a766e2ae37d77d5e571b7f7bd459d11baff9a66708b1d2c2e71792acfa8b"
+    },
+    {
+      "path": "commerce/交付清单.json",
+      "bytes": 2499,
+      "sha256": "e3c1576fa2aa23ef5dbe5d7cb42cbd1a0fba9df38d6d531d8d9ae3fdcbe1a5c1"
+    },
+    {
+      "path": "commerce/工作资料/关联结果.jsonl",
+      "bytes": 23379,
+      "sha256": "425e48588eabd23f9ced2ee4ee58dbcc9bfef58f6a608de70e204e76efad6137"
+    },
+    {
+      "path": "commerce/工作资料/字段结果.jsonl",
+      "bytes": 7159,
+      "sha256": "b50614cb1a95944e0ef994ddd8ea81b6ae39bc8b3e51a14151476de0b70e6b11"
+    },
+    {
+      "path": "commerce/工作资料/执行摘要.json",
+      "bytes": 915,
+      "sha256": "eed1f133ca1016af327de0381f2a70cd9f1bdccc8f1bcf5190b62877a9d07e2b"
+    },
+    {
+      "path": "commerce/工作资料/来源索引.json",
+      "bytes": 282,
+      "sha256": "5d9496b75320fdf9615768ec11ee3648b9fe8ee60e334bbb8777891e8afbd4ef"
+    },
+    {
+      "path": "commerce/工作资料/核对规则.json",
+      "bytes": 2537,
+      "sha256": "1880e332c68dfdcca16aed64d02ae5d0ebbd31dc1509b559e2cf84f9702aa031"
+    },
+    {
+      "path": "commerce/工作资料/检查记录.json",
+      "bytes": 1920,
+      "sha256": "86f65c893f7b7b0ee207faf694d11c3e1e113bd5dadf149d42164598c6b534c6"
+    },
+    {
+      "path": "commerce/工作资料/读取范围.json",
+      "bytes": 2546,
+      "sha256": "f5980b64bc9e0b7253fb2aaf7f313c66eb10e544a4b7dc5fda137cdc02a1f8a5"
+    },
+    {
+      "path": "commerce/待确认事项.md",
+      "bytes": 873,
+      "sha256": "04ee31231672c36b8b837fe09e4b32e37e316933ac638f9cc878d75ec72420a8"
+    },
+    {
+      "path": "commerce/核对报告.md",
+      "bytes": 1681,
+      "sha256": "5eb58c5e2a6d995f052610cc9d07b565d76797a2202683dc32fd3a2fb1e4cccd"
+    },
+    {
+      "path": "commerce/核对结果.xlsx",
+      "bytes": 19650,
+      "sha256": "801879a4745776622312c418b4b5a7ef535a501e5f2f294c2126e79e39100bb3"
+    },
+    {
+      "path": "inventory/交付清单.json",
+      "bytes": 2496,
+      "sha256": "226bd01040954d904514160b7dce49c37bb8afebb60192df4075b3ca0247da75"
+    },
+    {
+      "path": "inventory/工作资料/关联结果.jsonl",
+      "bytes": 11261,
+      "sha256": "8fe3ee6bf2966eaf322033793db62a2247fa50a5da9b4a9334f5c3c0d5226e9b"
+    },
+    {
+      "path": "inventory/工作资料/字段结果.jsonl",
+      "bytes": 6180,
+      "sha256": "515c996af8d14a82043871a09838db8b0a1d6c53a052b417bd26a61903840e73"
+    },
+    {
+      "path": "inventory/工作资料/执行摘要.json",
+      "bytes": 274,
+      "sha256": "193c9de24d6c131fd81cfee9f38b2d0ac061b5c338cf6e028a3a33cda6cab9a7"
+    },
+    {
+      "path": "inventory/工作资料/来源索引.json",
+      "bytes": 439,
+      "sha256": "9af34bcc10c8c429e50b1aa556117d0a9868faf05535a4e9d42a115facf0d360"
+    },
+    {
+      "path": "inventory/工作资料/核对规则.json",
+      "bytes": 2331,
+      "sha256": "0ab2f1a960b35f2ac4b827f06e63693c1bf2920da5318985d6cd7c8de75df272"
+    },
+    {
+      "path": "inventory/工作资料/检查记录.json",
+      "bytes": 1616,
+      "sha256": "bfb633890e92954a258b34258793995344b2af54403d2e60b17736cca99b00da"
+    },
+    {
+      "path": "inventory/工作资料/读取范围.json",
+      "bytes": 1899,
+      "sha256": "aafde6099e94ea21f62f0e7ac871d3beecad519f6775946191a5fc6a33a397b0"
+    },
+    {
+      "path": "inventory/待确认事项.md",
+      "bytes": 406,
+      "sha256": "74c313dc2df70da73d2fd092f3bfef1427537fdd9d9c064e86e1666cc857e5cf"
+    },
+    {
+      "path": "inventory/核对报告.md",
+      "bytes": 1310,
+      "sha256": "f9def89258939799dfcb0a29bece0da14798da27d88188df80a786b83fb611a4"
+    },
+    {
+      "path": "inventory/核对结果.xlsx",
+      "bytes": 18909,
+      "sha256": "65e501a2f1d001324ded5226c1d35d9e5c5e67200f069c5890e4a271254c61f2"
+    },
+    {
+      "path": "negative-delta/交付清单.json",
+      "bytes": 2478,
+      "sha256": "593c0b76422197944d4f2f2070c38b58fc022225ce404cc5db630c461843c5a2"
+    },
+    {
+      "path": "negative-delta/工作资料/关联结果.jsonl",
+      "bytes": 6500,
+      "sha256": "20743db5df033a65808bc9861defa4328c3c568e08940fdbc6f7405dcddd6c07"
+    },
+    {
+      "path": "negative-delta/工作资料/字段结果.jsonl",
+      "bytes": 4702,
+      "sha256": "56fd1e1081c15a958962b353469c20d12cee9e01fa15a6d35aa2f25fa71d7070"
+    },
+    {
+      "path": "negative-delta/工作资料/执行摘要.json",
+      "bytes": 257,
+      "sha256": "458baf8cc8889a6bb28a5bd2b4649892a243849e26ab372e87187a22278e8902"
+    },
+    {
+      "path": "negative-delta/工作资料/来源索引.json",
+      "bytes": 450,
+      "sha256": "91219780f50badd3ab1969b01500206dfe49eca46c8fb2a1488acfddc1e6a032"
+    },
+    {
+      "path": "negative-delta/工作资料/核对规则.json",
+      "bytes": 2619,
+      "sha256": "4d6ffdd68314e9e8148153eaa8d14a528f4528b0e6df5f4af41a8d2647e92189"
+    },
+    {
+      "path": "negative-delta/工作资料/检查记录.json",
+      "bytes": 1637,
+      "sha256": "8f72928ca56a089211aa093d0b157f409f1e1db16f57d7d14d38c859bc282be0"
+    },
+    {
+      "path": "negative-delta/工作资料/读取范围.json",
+      "bytes": 2016,
+      "sha256": "124d0c27d851cde8333a91762277af025924292cbb43f1b11b8108be476d2201"
+    },
+    {
+      "path": "negative-delta/待确认事项.md",
+      "bytes": 245,
+      "sha256": "892e4ec21ceb3398b3946a7badf4a5cd26aadf81f8986d8ff130cbbebb5d0cd5"
+    },
+    {
+      "path": "negative-delta/核对报告.md",
+      "bytes": 1201,
+      "sha256": "c18d2d258fede45f0521078d6b1b6d127de4a7bbf25549db2f3cf34abc89c4e6"
+    },
+    {
+      "path": "negative-delta/核对结果.xlsx",
+      "bytes": 15003,
+      "sha256": "dc1eec292cb4ec979cb746ee36775ef2efd8f62267556a25640099fa61a30547"
+    },
+    {
+      "path": "training/交付清单.json",
+      "bytes": 2496,
+      "sha256": "595e93ead28d9e0b29963e757aca570971a4cd70fb1d0105841937cd09fab707"
+    },
+    {
+      "path": "training/工作资料/关联结果.jsonl",
+      "bytes": 11838,
+      "sha256": "03491694c978882e2f6080f52f8b9ff912a52b0917e5390151b51192070f02cc"
+    },
+    {
+      "path": "training/工作资料/字段结果.jsonl",
+      "bytes": 7151,
+      "sha256": "82d71f6253dc3ca8a04626298a5340ea2ee0a2318fa4505b62c928827c640e95"
+    },
+    {
+      "path": "training/工作资料/执行摘要.json",
+      "bytes": 991,
+      "sha256": "cb9aabfe9cb0f5be3ab40a22b9723938c90e8e073ffc103d8cdd22c5002f6096"
+    },
+    {
+      "path": "training/工作资料/来源索引.json",
+      "bytes": 461,
+      "sha256": "80d888b14dfadae5fe1966e67c22580b1faca6f864b6ed00dee9510d1b25ad45"
+    },
+    {
+      "path": "training/工作资料/核对规则.json",
+      "bytes": 2228,
+      "sha256": "4af703f22cfa068cd4cc8b404157ffd703ac873e9f39416e09cb6bb30f666433"
+    },
+    {
+      "path": "training/工作资料/检查记录.json",
+      "bytes": 857,
+      "sha256": "3e0f325b9a5f71a9f147703d16733e2b2369c8f3a8c856d9f169763a5c651796"
+    },
+    {
+      "path": "training/工作资料/读取范围.json",
+      "bytes": 1955,
+      "sha256": "1e665e8d9a591915f49f4c4f2a97f0b6c7c17109fbdbc265f294785d69c54d99"
+    },
+    {
+      "path": "training/待确认事项.md",
+      "bytes": 662,
+      "sha256": "7a797e33f3ec40c49939fc6c9cb4fbe9d0367377a27a444465c3ae97a8678ed0"
+    },
+    {
+      "path": "training/核对报告.md",
+      "bytes": 1549,
+      "sha256": "181f0c57630eba604fefba99c9066a2fa571120171466e40ebd9cf21a4c3a37a"
+    },
+    {
+      "path": "training/核对结果.xlsx",
+      "bytes": 17577,
+      "sha256": "12ec67a6d77538047ad09f0bf12dfdce47b78d83eb8b8826e1c04e313396a1d9"
+    }
+  ],
+  "audit": {
+    "passed": true,
+    "files_checked": 55,
+    "office_xml_bytes_checked": 426315,
+    "scope": "Known developer path/token markers plus synthetic-source review; not a general PII detector"
+  },
+  "m1_originals_unchanged": true,
+  "m5_packages_unchanged": true
+}

@@ -1,0 +1,116 @@
+[
+  {
+    "task_id": "assets_default",
+    "coverage_issues": [],
+    "row_counts": {
+      "left": {
+        "selected": 3,
+        "included": 3,
+        "excluded": 0,
+        "unique_matched": 3,
+        "only": 0,
+        "duplicate_ambiguous": 0,
+        "invalid_key": 0
+      },
+      "right": {
+        "selected": 3,
+        "included": 3,
+        "excluded": 0,
+        "unique_matched": 3,
+        "only": 0,
+        "duplicate_ambiguous": 0,
+        "invalid_key": 0
+      },
+      "unique_pairs": 3,
+      "different_pairs": 0,
+      "not_comparable_pairs": 3,
+      "row_status_counts": {
+        "exact": 0,
+        "within_rule": 0,
+        "different": 0,
+        "not_comparable": 3
+      }
+    },
+    "field_counts": {
+      "exact": 3,
+      "within_rule": 0,
+      "different": 0,
+      "not_comparable": 3
+    },
+    "totals": [
+      {
+        "task_id": "assets_default",
+        "field_id": "value",
+        "context": {
+          "currency": {
+            "left": "CNY",
+            "right": "CNY"
+          }
+        },
+        "comparable_context": true,
+        "included_pairs": 0,
+        "excluded_pairs": 3,
+        "left_total": null,
+        "right_total": null,
+        "delta_sum": null
+      }
+    ]
+  },
+  {
+    "task_id": "assets_cached",
+    "coverage_issues": [],
+    "row_counts": {
+      "left": {
+        "selected": 3,
+        "included": 3,
+        "excluded": 0,
+        "unique_matched": 3,
+        "only": 0,
+        "duplicate_ambiguous": 0,
+        "invalid_key": 0
+      },
+      "right": {
+        "selected": 3,
+        "included": 3,
+        "excluded": 0,
+        "unique_matched": 3,
+        "only": 0,
+        "duplicate_ambiguous": 0,
+        "invalid_key": 0
+      },
+      "unique_pairs": 3,
+      "different_pairs": 0,
+      "not_comparable_pairs": 2,
+      "row_status_counts": {
+        "exact": 1,
+        "within_rule": 0,
+        "different": 0,
+        "not_comparable": 2
+      }
+    },
+    "field_counts": {
+      "exact": 4,
+      "within_rule": 0,
+      "different": 0,
+      "not_comparable": 2
+    },
+    "totals": [
+      {
+        "task_id": "assets_cached",
+        "field_id": "value",
+        "context": {
+          "currency": {
+            "left": "CNY",
+            "right": "CNY"
+          }
+        },
+        "comparable_context": true,
+        "included_pairs": 1,
+        "excluded_pairs": 2,
+        "left_total": "200",
+        "right_total": "200",
+        "delta_sum": "0"
+      }
+    ]
+  }
+]

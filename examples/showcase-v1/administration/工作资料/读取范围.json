@@ -1,0 +1,131 @@
+[
+  {
+    "table_id": "baseline",
+    "definition": {
+      "id": "baseline",
+      "source_id": "assets",
+      "sheet": "资产台账",
+      "header_row": 1,
+      "data_range": "A2:C4",
+      "exclusions": []
+    },
+    "blocked": false,
+    "preview": {
+      "header": {
+        "A": "资产编号",
+        "B": "领用人",
+        "C": "登记值"
+      },
+      "selected_rows": 3,
+      "included_rows": 3,
+      "excluded_rows": {},
+      "metadata": {
+        "hidden_rows": [],
+        "hidden_column_ranges": [],
+        "merged_ranges": [],
+        "unsupported_formula_ranges": [],
+        "auto_filter": null,
+        "declared_dimension": null,
+        "actual_max_row": 4,
+        "actual_max_column": 3,
+        "format": "xlsx",
+        "date_system": "1900",
+        "scanned_rows": 4,
+        "scanned_cells": 12,
+        "hidden_columns": [],
+        "range": "A2:C4",
+        "selected_count": 3,
+        "included_count": 3,
+        "source_sha256": "377aea79e49f6a13771799270890005dc45a694e56010af52fd4d7bbdf9de004",
+        "source_bytes": 5379,
+        "source_name": "inputs.xlsx"
+      }
+    }
+  },
+  {
+    "table_id": "handover",
+    "definition": {
+      "id": "handover",
+      "source_id": "assets",
+      "sheet": "领用核对",
+      "header_row": 1,
+      "data_range": "A2:C4",
+      "exclusions": []
+    },
+    "blocked": false,
+    "preview": {
+      "header": {
+        "A": "领用人",
+        "B": "编号",
+        "C": "登记值"
+      },
+      "selected_rows": 3,
+      "included_rows": 3,
+      "excluded_rows": {},
+      "metadata": {
+        "hidden_rows": [],
+        "hidden_column_ranges": [],
+        "merged_ranges": [],
+        "unsupported_formula_ranges": [],
+        "auto_filter": null,
+        "declared_dimension": null,
+        "actual_max_row": 4,
+        "actual_max_column": 3,
+        "format": "xlsx",
+        "date_system": "1900",
+        "scanned_rows": 8,
+        "scanned_cells": 24,
+        "hidden_columns": [],
+        "range": "A2:C4",
+        "selected_count": 3,
+        "included_count": 3,
+        "source_sha256": "377aea79e49f6a13771799270890005dc45a694e56010af52fd4d7bbdf9de004",
+        "source_bytes": 5379,
+        "source_name": "inputs.xlsx"
+      }
+    }
+  },
+  {
+    "table_id": "revision",
+    "definition": {
+      "id": "revision",
+      "source_id": "assets",
+      "sheet": "修订核对",
+      "header_row": 1,
+      "data_range": "A2:C4",
+      "exclusions": []
+    },
+    "blocked": false,
+    "preview": {
+      "header": {
+        "A": "领用人",
+        "B": "编号",
+        "C": "登记值"
+      },
+      "selected_rows": 3,
+      "included_rows": 3,
+      "excluded_rows": {},
+      "metadata": {
+        "hidden_rows": [],
+        "hidden_column_ranges": [],
+        "merged_ranges": [],
+        "unsupported_formula_ranges": [],
+        "auto_filter": null,
+        "declared_dimension": null,
+        "actual_max_row": 4,
+        "actual_max_column": 3,
+        "format": "xlsx",
+        "date_system": "1900",
+        "scanned_rows": 12,
+        "scanned_cells": 36,
+        "hidden_columns": [],
+        "range": "A2:C4",
+        "selected_count": 3,
+        "included_count": 3,
+        "source_sha256": "377aea79e49f6a13771799270890005dc45a694e56010af52fd4d7bbdf9de004",
+        "source_bytes": 5379,
+        "source_name": "inputs.xlsx"
+      }
+    }
+  }
+]

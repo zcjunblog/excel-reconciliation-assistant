@@ -1,0 +1,42 @@
+[
+  {
+    "task_id": "roster_check",
+    "coverage_issues": [],
+    "row_counts": {
+      "left": {
+        "selected": 5,
+        "included": 5,
+        "excluded": 0,
+        "unique_matched": 3,
+        "only": 1,
+        "duplicate_ambiguous": 0,
+        "invalid_key": 1
+      },
+      "right": {
+        "selected": 5,
+        "included": 5,
+        "excluded": 0,
+        "unique_matched": 3,
+        "only": 1,
+        "duplicate_ambiguous": 0,
+        "invalid_key": 1
+      },
+      "unique_pairs": 3,
+      "different_pairs": 0,
+      "not_comparable_pairs": 1,
+      "row_status_counts": {
+        "exact": 1,
+        "within_rule": 1,
+        "different": 0,
+        "not_comparable": 1
+      }
+    },
+    "field_counts": {
+      "exact": 7,
+      "within_rule": 1,
+      "different": 0,
+      "not_comparable": 1
+    },
+    "totals": []
+  }
+]

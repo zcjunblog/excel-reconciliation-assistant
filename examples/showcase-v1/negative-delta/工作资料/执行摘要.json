@@ -1,0 +1,14 @@
+{
+  "skill_version": "0.1.0",
+  "mode": "run",
+  "status": "complete",
+  "tasks": [
+    {
+      "task_id": "asset_variance",
+      "status": "complete"
+    }
+  ],
+  "issues": [],
+  "unavailable_formats": [],
+  "run_id": "24b57d217f3145598e762b2a0385c4a6"
+}

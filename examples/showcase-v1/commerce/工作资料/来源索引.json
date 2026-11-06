@@ -1,0 +1,14 @@
+[
+  {
+    "id": "book",
+    "name": "inputs.xlsx",
+    "format": "xlsx",
+    "registered": true,
+    "sha256": "aa6118f5ca835a472e6128c9551d33624735f986a2dd848732db59c5e42f9ded",
+    "bytes": 5126,
+    "metadata": {
+      "zip_members": 9,
+      "expanded_bytes": 16028
+    }
+  }
+]

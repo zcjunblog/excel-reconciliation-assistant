@@ -1,0 +1,79 @@
+{
+  "oracle_version": "1.0",
+  "authorship": "M6人工按两份CSV原行坐标指定，非生产比较器生成",
+  "tasks": [
+    {
+      "id": "asset_variance",
+      "selected": {
+        "left": 2,
+        "right": 2
+      },
+      "excluded_rows": {
+        "left": [],
+        "right": []
+      },
+      "matched_pairs": [
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "only_rows": {
+        "left": [],
+        "right": []
+      },
+      "duplicate_rows": {
+        "left": [],
+        "right": []
+      },
+      "invalid_rows": {
+        "left": [],
+        "right": []
+      },
+      "field_counts": {
+        "exact": 3,
+        "within_rule": 0,
+        "different": 3,
+        "not_comparable": 0
+      },
+      "different_pairs": 2,
+      "not_comparable_pairs": 0,
+      "exceptions": [
+        {
+          "left_row": 2,
+          "right_row": 3,
+          "field": "quantity",
+          "status": "different",
+          "delta": "-2",
+          "left_cell": "C2",
+          "right_cell": "C3",
+          "reason": "tolerance_exceeded"
+        },
+        {
+          "left_row": 2,
+          "right_row": 3,
+          "field": "amount",
+          "status": "different",
+          "delta": "-10.25",
+          "left_cell": "E2",
+          "right_cell": "E3",
+          "reason": "tolerance_exceeded"
+        },
+        {
+          "left_row": 3,
+          "right_row": 2,
+          "field": "amount",
+          "status": "different",
+          "delta": "0.20",
+          "left_cell": "E3",
+          "right_cell": "E2",
+          "reason": "tolerance_exceeded"
+        }
+      ]
+    }
+  ]
+}

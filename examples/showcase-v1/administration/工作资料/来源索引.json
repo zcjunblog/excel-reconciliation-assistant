@@ -1,0 +1,14 @@
+[
+  {
+    "id": "assets",
+    "name": "inputs.xlsx",
+    "format": "xlsx",
+    "registered": true,
+    "sha256": "377aea79e49f6a13771799270890005dc45a694e56010af52fd4d7bbdf9de004",
+    "bytes": 5379,
+    "metadata": {
+      "zip_members": 10,
+      "expanded_bytes": 13198
+    }
+  }
+]

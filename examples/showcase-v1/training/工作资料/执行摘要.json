@@ -1,0 +1,47 @@
+{
+  "skill_version": "0.1.0",
+  "mode": "run",
+  "status": "needs_confirmation",
+  "tasks": [
+    {
+      "task_id": "roster_check",
+      "status": "needs_confirmation"
+    }
+  ],
+  "issues": [
+    {
+      "code": "missing_key",
+      "message": "业务键无效，保留原行待确认",
+      "source_ref": {
+        "source_id": "registration",
+        "table_id": "registration",
+        "sheet": null,
+        "row": 5,
+        "column": "A",
+        "physical_lines": [
+          5,
+          5
+        ]
+      },
+      "severity": "error"
+    },
+    {
+      "code": "missing_key",
+      "message": "业务键无效，保留原行待确认",
+      "source_ref": {
+        "source_id": "attendance",
+        "table_id": "attendance",
+        "sheet": null,
+        "row": 6,
+        "column": "B",
+        "physical_lines": [
+          6,
+          6
+        ]
+      },
+      "severity": "error"
+    }
+  ],
+  "unavailable_formats": [],
+  "run_id": "6bb844b945c14df288e43197be8b8d2f"
+}

@@ -1,0 +1,89 @@
+{
+  "rules": {
+    "schema_version": "1.0",
+    "sources": [
+      {
+        "id": "registration",
+        "path": "registration.csv",
+        "format": "csv"
+      },
+      {
+        "id": "attendance",
+        "path": "attendance.csv",
+        "format": "csv"
+      }
+    ],
+    "tables": [
+      {
+        "id": "registration",
+        "source_id": "registration",
+        "sheet": null,
+        "header_row": 1,
+        "data_range": "A2:D6",
+        "exclusions": []
+      },
+      {
+        "id": "attendance",
+        "source_id": "attendance",
+        "sheet": null,
+        "header_row": 1,
+        "data_range": "A2:D6",
+        "exclusions": []
+      }
+    ],
+    "tasks": [
+      {
+        "id": "roster_check",
+        "left_table": "registration",
+        "right_table": "attendance",
+        "keys": [
+          "registration_id"
+        ],
+        "fields": [
+          {
+            "id": "registration_id",
+            "left_column": "A",
+            "right_column": "B",
+            "left_header": "报名号",
+            "right_header": "报名号",
+            "type": "identifier"
+          },
+          {
+            "id": "name",
+            "left_column": "B",
+            "right_column": "D",
+            "left_header": "姓名",
+            "right_header": "姓名",
+            "type": "text",
+            "normalize": [
+              "trim"
+            ]
+          },
+          {
+            "id": "session",
+            "left_column": "C",
+            "right_column": "A",
+            "left_header": "场次",
+            "right_header": "场次",
+            "type": "identifier"
+          },
+          {
+            "id": "date",
+            "left_column": "D",
+            "right_column": "C",
+            "left_header": "日期",
+            "right_header": "出席日期",
+            "type": "date",
+            "date_format": {
+              "left": "%Y-%m-%d",
+              "right": "%Y-%m-%d"
+            }
+          }
+        ],
+        "formula_policy": "pending"
+      }
+    ]
+  },
+  "source_locations": "仅保留原文件名与文件ID；重跑时需重新指定并授权来源位置",
+  "execution_fingerprint": "971e488ab280b84e595038fa5a002661ae286bef4e1b5bea509e43175091fae5"
+}

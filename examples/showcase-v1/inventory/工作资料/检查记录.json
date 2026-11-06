@@ -1,0 +1,75 @@
+[
+  {
+    "task_id": "stock_check",
+    "coverage_issues": [],
+    "row_counts": {
+      "left": {
+        "selected": 5,
+        "included": 5,
+        "excluded": 0,
+        "unique_matched": 4,
+        "only": 1,
+        "duplicate_ambiguous": 0,
+        "invalid_key": 0
+      },
+      "right": {
+        "selected": 5,
+        "included": 5,
+        "excluded": 0,
+        "unique_matched": 4,
+        "only": 1,
+        "duplicate_ambiguous": 0,
+        "invalid_key": 0
+      },
+      "unique_pairs": 4,
+      "different_pairs": 2,
+      "not_comparable_pairs": 2,
+      "row_status_counts": {
+        "exact": 1,
+        "within_rule": 0,
+        "different": 1,
+        "not_comparable": 2
+      }
+    },
+    "field_counts": {
+      "exact": 4,
+      "within_rule": 0,
+      "different": 2,
+      "not_comparable": 2
+    },
+    "totals": [
+      {
+        "task_id": "stock_check",
+        "field_id": "quantity",
+        "context": {
+          "unit": {
+            "left": "件",
+            "right": "件"
+          }
+        },
+        "comparable_context": true,
+        "included_pairs": 2,
+        "excluded_pairs": 1,
+        "left_total": "15",
+        "right_total": "16",
+        "delta_sum": "1"
+      },
+      {
+        "task_id": "stock_check",
+        "field_id": "quantity",
+        "context": {
+          "unit": {
+            "left": "箱",
+            "right": "件"
+          }
+        },
+        "comparable_context": false,
+        "included_pairs": 0,
+        "excluded_pairs": 1,
+        "left_total": null,
+        "right_total": null,
+        "delta_sum": null
+      }
+    ]
+  }
+]

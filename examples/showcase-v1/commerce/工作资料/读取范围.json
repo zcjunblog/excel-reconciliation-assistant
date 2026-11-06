@@ -1,0 +1,105 @@
+[
+  {
+    "table_id": "orders",
+    "definition": {
+      "id": "orders",
+      "source_id": "book",
+      "sheet": "订单",
+      "header_row": 1,
+      "data_range": "A2:F9",
+      "exclusions": [
+        {
+          "rows": [
+            9
+          ],
+          "reason": "显式排除合计行"
+        }
+      ]
+    },
+    "blocked": false,
+    "preview": {
+      "header": {
+        "A": "订单号",
+        "B": "行号",
+        "C": "品名",
+        "D": "数量",
+        "E": "金额",
+        "F": "币种"
+      },
+      "selected_rows": 8,
+      "included_rows": 7,
+      "excluded_rows": {
+        "9": "显式排除合计行"
+      },
+      "metadata": {
+        "hidden_rows": [
+          4
+        ],
+        "hidden_column_ranges": [],
+        "merged_ranges": [],
+        "unsupported_formula_ranges": [],
+        "auto_filter": "A1:F8",
+        "declared_dimension": null,
+        "actual_max_row": 9,
+        "actual_max_column": 6,
+        "format": "xlsx",
+        "date_system": "1900",
+        "scanned_rows": 9,
+        "scanned_cells": 54,
+        "hidden_columns": [],
+        "range": "A2:F9",
+        "selected_count": 8,
+        "included_count": 7,
+        "source_sha256": "aa6118f5ca835a472e6128c9551d33624735f986a2dd848732db59c5e42f9ded",
+        "source_bytes": 5126,
+        "source_name": "inputs.xlsx"
+      }
+    }
+  },
+  {
+    "table_id": "delivery",
+    "definition": {
+      "id": "delivery",
+      "source_id": "book",
+      "sheet": "交付",
+      "header_row": 1,
+      "data_range": "A2:F8",
+      "exclusions": []
+    },
+    "blocked": false,
+    "preview": {
+      "header": {
+        "A": "编号",
+        "B": "金额",
+        "C": "行号",
+        "D": "币种",
+        "E": "数量",
+        "F": "品名"
+      },
+      "selected_rows": 7,
+      "included_rows": 7,
+      "excluded_rows": {},
+      "metadata": {
+        "hidden_rows": [],
+        "hidden_column_ranges": [],
+        "merged_ranges": [],
+        "unsupported_formula_ranges": [],
+        "auto_filter": null,
+        "declared_dimension": null,
+        "actual_max_row": 8,
+        "actual_max_column": 6,
+        "format": "xlsx",
+        "date_system": "1900",
+        "scanned_rows": 17,
+        "scanned_cells": 102,
+        "hidden_columns": [],
+        "range": "A2:F8",
+        "selected_count": 7,
+        "included_count": 7,
+        "source_sha256": "aa6118f5ca835a472e6128c9551d33624735f986a2dd848732db59c5e42f9ded",
+        "source_bytes": 5126,
+        "source_name": "inputs.xlsx"
+      }
+    }
+  }
+]

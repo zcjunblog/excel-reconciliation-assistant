@@ -1,0 +1,80 @@
+[
+  {
+    "table_id": "registration",
+    "definition": {
+      "id": "registration",
+      "source_id": "registration",
+      "sheet": null,
+      "header_row": 1,
+      "data_range": "A2:D6",
+      "exclusions": []
+    },
+    "blocked": false,
+    "preview": {
+      "header": {
+        "A": "报名号",
+        "B": "姓名",
+        "C": "场次",
+        "D": "日期"
+      },
+      "selected_rows": 5,
+      "included_rows": 5,
+      "excluded_rows": {},
+      "metadata": {
+        "format": "csv",
+        "encoding": "utf-8-sig",
+        "scanned_rows": 6,
+        "scanned_cells": 24,
+        "physical_lines": 6,
+        "hidden_rows": [],
+        "auto_filter": null,
+        "hidden_columns": [],
+        "range": "A2:D6",
+        "selected_count": 5,
+        "included_count": 5,
+        "source_sha256": "a2ef783dd00dedd034bf0bc67cca6a1c312daceb8450dbb8bfb7fdf2e4a45fe6",
+        "source_bytes": 205,
+        "source_name": "registration.csv"
+      }
+    }
+  },
+  {
+    "table_id": "attendance",
+    "definition": {
+      "id": "attendance",
+      "source_id": "attendance",
+      "sheet": null,
+      "header_row": 1,
+      "data_range": "A2:D6",
+      "exclusions": []
+    },
+    "blocked": false,
+    "preview": {
+      "header": {
+        "A": "场次",
+        "B": "报名号",
+        "C": "出席日期",
+        "D": "姓名"
+      },
+      "selected_rows": 5,
+      "included_rows": 5,
+      "excluded_rows": {},
+      "metadata": {
+        "format": "csv",
+        "encoding": "utf-8-sig",
+        "scanned_rows": 6,
+        "scanned_cells": 24,
+        "physical_lines": 6,
+        "hidden_rows": [],
+        "auto_filter": null,
+        "hidden_columns": [],
+        "range": "A2:D6",
+        "selected_count": 5,
+        "included_count": 5,
+        "source_sha256": "3fbd52698b3fff6cb64aa0a2cfd124eb1bca7f1043392d91930b44cabddf11b8",
+        "source_bytes": 213,
+        "source_name": "attendance.csv"
+      }
+    }
+  }
+]

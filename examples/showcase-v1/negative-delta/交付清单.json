@@ -1,0 +1,87 @@
+{
+  "schema_version": "1.0",
+  "skill_version": "0.1.0",
+  "run_id": "24b57d217f3145598e762b2a0385c4a6",
+  "mode": "run",
+  "status": "complete",
+  "tasks": [
+    {
+      "task_id": "asset_variance",
+      "status": "complete"
+    }
+  ],
+  "files": [
+    {
+      "path": "核对结果.xlsx",
+      "kind": "xlsx",
+      "status": "generated",
+      "bytes": 15003,
+      "sha256": "dc1eec292cb4ec979cb746ee36775ef2efd8f62267556a25640099fa61a30547"
+    },
+    {
+      "path": "核对报告.md",
+      "kind": "md",
+      "status": "generated",
+      "bytes": 1201,
+      "sha256": "c18d2d258fede45f0521078d6b1b6d127de4a7bbf25549db2f3cf34abc89c4e6"
+    },
+    {
+      "path": "待确认事项.md",
+      "kind": "md",
+      "status": "generated",
+      "bytes": 245,
+      "sha256": "892e4ec21ceb3398b3946a7badf4a5cd26aadf81f8986d8ff130cbbebb5d0cd5"
+    },
+    {
+      "path": "工作资料/字段结果.jsonl",
+      "kind": "jsonl",
+      "status": "generated",
+      "bytes": 4702,
+      "sha256": "56fd1e1081c15a958962b353469c20d12cee9e01fa15a6d35aa2f25fa71d7070"
+    },
+    {
+      "path": "工作资料/关联结果.jsonl",
+      "kind": "jsonl",
+      "status": "generated",
+      "bytes": 6500,
+      "sha256": "20743db5df033a65808bc9861defa4328c3c568e08940fdbc6f7405dcddd6c07"
+    },
+    {
+      "path": "工作资料/检查记录.json",
+      "kind": "json",
+      "status": "generated",
+      "bytes": 1637,
+      "sha256": "8f72928ca56a089211aa093d0b157f409f1e1db16f57d7d14d38c859bc282be0"
+    },
+    {
+      "path": "工作资料/来源索引.json",
+      "kind": "json",
+      "status": "generated",
+      "bytes": 450,
+      "sha256": "91219780f50badd3ab1969b01500206dfe49eca46c8fb2a1488acfddc1e6a032"
+    },
+    {
+      "path": "工作资料/读取范围.json",
+      "kind": "json",
+      "status": "generated",
+      "bytes": 2016,
+      "sha256": "124d0c27d851cde8333a91762277af025924292cbb43f1b11b8108be476d2201"
+    },
+    {
+      "path": "工作资料/核对规则.json",
+      "kind": "json",
+      "status": "generated",
+      "bytes": 2619,
+      "sha256": "4d6ffdd68314e9e8148153eaa8d14a528f4528b0e6df5f4af41a8d2647e92189"
+    },
+    {
+      "path": "工作资料/执行摘要.json",
+      "kind": "json",
+      "status": "generated",
+      "bytes": 257,
+      "sha256": "458baf8cc8889a6bb28a5bd2b4649892a243849e26ab372e87187a22278e8902"
+    }
+  ],
+  "unavailable_formats": [],
+  "scope": "指定任务、字段与范围；状态不代表业务一致"
+}

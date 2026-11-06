@@ -1,0 +1,20 @@
+[
+  {
+    "id": "left",
+    "name": "基准清单.csv",
+    "format": "csv",
+    "registered": true,
+    "sha256": "e8ba51b222692e62d41dd1a375c219f644e889640e4f01d492276e5a0e106676",
+    "bytes": 114,
+    "metadata": {}
+  },
+  {
+    "id": "right",
+    "name": "比较清单.csv",
+    "format": "csv",
+    "registered": true,
+    "sha256": "9c02699ac0042f062da847c93e0ee603d34590ea4ea02385c1cabc2ddbc419fa",
+    "bytes": 112,
+    "metadata": {}
+  }
+]

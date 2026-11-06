@@ -1,0 +1,132 @@
+{
+  "rules": {
+    "schema_version": "1.0",
+    "sources": [
+      {
+        "id": "assets",
+        "path": "inputs.xlsx",
+        "format": "xlsx"
+      }
+    ],
+    "tables": [
+      {
+        "id": "baseline",
+        "source_id": "assets",
+        "sheet": "资产台账",
+        "header_row": 1,
+        "data_range": "A2:C4",
+        "exclusions": []
+      },
+      {
+        "id": "handover",
+        "source_id": "assets",
+        "sheet": "领用核对",
+        "header_row": 1,
+        "data_range": "A2:C4",
+        "exclusions": []
+      },
+      {
+        "id": "revision",
+        "source_id": "assets",
+        "sheet": "修订核对",
+        "header_row": 1,
+        "data_range": "A2:C4",
+        "exclusions": []
+      }
+    ],
+    "tasks": [
+      {
+        "id": "assets_default",
+        "left_table": "baseline",
+        "right_table": "handover",
+        "keys": [
+          "asset_id"
+        ],
+        "fields": [
+          {
+            "id": "asset_id",
+            "left_column": "A",
+            "right_column": "B",
+            "left_header": "资产编号",
+            "right_header": "编号",
+            "type": "identifier"
+          },
+          {
+            "id": "owner",
+            "left_column": "B",
+            "right_column": "A",
+            "left_header": "领用人",
+            "right_header": "领用人",
+            "type": "text"
+          },
+          {
+            "id": "value",
+            "left_column": "C",
+            "right_column": "C",
+            "left_header": "登记值",
+            "right_header": "登记值",
+            "type": "decimal",
+            "context": {
+              "currency": {
+                "left": {
+                  "literal": "CNY"
+                },
+                "right": {
+                  "literal": "CNY"
+                }
+              }
+            }
+          }
+        ],
+        "formula_policy": "pending"
+      },
+      {
+        "id": "assets_cached",
+        "left_table": "baseline",
+        "right_table": "revision",
+        "keys": [
+          "asset_id"
+        ],
+        "fields": [
+          {
+            "id": "asset_id",
+            "left_column": "A",
+            "right_column": "B",
+            "left_header": "资产编号",
+            "right_header": "编号",
+            "type": "identifier"
+          },
+          {
+            "id": "owner",
+            "left_column": "B",
+            "right_column": "A",
+            "left_header": "领用人",
+            "right_header": "领用人",
+            "type": "text"
+          },
+          {
+            "id": "value",
+            "left_column": "C",
+            "right_column": "C",
+            "left_header": "登记值",
+            "right_header": "登记值",
+            "type": "decimal",
+            "context": {
+              "currency": {
+                "left": {
+                  "literal": "CNY"
+                },
+                "right": {
+                  "literal": "CNY"
+                }
+              }
+            }
+          }
+        ],
+        "formula_policy": "cached"
+      }
+    ]
+  },
+  "source_locations": "仅保留原文件名与文件ID；重跑时需重新指定并授权来源位置",
+  "execution_fingerprint": "915485a36e7dc6d7d586701bd1890f9abce1206741a43f10c5898c883c0eb36e"
+}
