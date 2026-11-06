@@ -23,7 +23,7 @@ class InstallTests(unittest.TestCase):
 
     def test_complete_install_is_a_byte_identical_self_contained_skill(self):
         installer=tool(self,'install'); target=self.dir/'工作 项目/.agents/skills'/NAME
-        result=installer.install(target); self.assertEqual(result['version'],'0.1.0')
+        result=installer.install(target); self.assertEqual(result['version'],(SOURCE/'VERSION').read_text().strip())
         self.assertEqual((target/'SKILL.md').read_bytes(),(SOURCE/'SKILL.md').read_bytes())
         self.assertEqual((target/'scripts/checks.py').read_bytes(),(SOURCE/'scripts/checks.py').read_bytes())
         self.assertEqual((target/'references/examples/inventory/ledger.csv').read_bytes(),(SOURCE/'references/examples/inventory/ledger.csv').read_bytes())

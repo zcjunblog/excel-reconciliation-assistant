@@ -17,7 +17,7 @@ from delivery_guard import DeliveryGuard
 from doctor import RUNTIME_MODULES
 
 SCRIPTS=RUNTIME_MODULES
-RESOURCES={'SKILL.md','VERSION','requirements.txt','agents/openai.yaml','templates/workbook-style.json',
+RESOURCES={'LICENSE','SKILL.md','VERSION','requirements.txt','agents/openai.yaml','templates/workbook-style.json',
            'references/rules.md','references/runtime.md','references/delivery.md','references/examples.md','references/reconciliation-rules.schema.json'}
 RESOURCES.update('scripts/'+name+'.py' for name in SCRIPTS)
 for case,names in {'commerce':['rules.json','inputs.xlsx'],'inventory':['rules.json','ledger.csv','count.csv'],

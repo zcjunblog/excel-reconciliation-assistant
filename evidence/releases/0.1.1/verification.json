@@ -1,0 +1,42 @@
+{
+  "version": "0.1.1",
+  "license": "MIT",
+  "copyright": "2026 zcjunblog",
+  "resources_per_package": 42,
+  "engine_and_skill_body_unchanged_from": "0.1.0",
+  "unchanged_original_resources": 40,
+  "reproducible_two_builds": true,
+  "m5_archives_unchanged": true,
+  "m6_showcase_55_files_unchanged": true,
+  "full_suite": {
+    "passed": true,
+    "count": 156,
+    "python": "3.12.14",
+    "log_sha256": "11357c5bf0bb2dd978e5cf5a4ad62cd9c919236ab84e03c69bef82105b859f11"
+  },
+  "independent_archive_tasks": 10,
+  "archive_python": "3.9.6",
+  "packages": [
+    {
+      "profile": "standard",
+      "archive": "excel-reconciliation-assistant-0.1.1.zip",
+      "bytes": 79461,
+      "sha256": "fc42e212f45987a3152c9320921efd207a45ca3ce732e993b8608a2a4b647a6f"
+    },
+    {
+      "profile": "workbuddy",
+      "archive": "excel-reconciliation-assistant-workbuddy-0.1.1.zip",
+      "bytes": 80206,
+      "sha256": "865d52aabe26fb70785e5e4543c53a8d25f194bd982deb81737956840bca3442"
+    }
+  ],
+  "marketplace_state": "not_submitted",
+  "repository_visibility": "private_until_workbuddy_approval",
+  "skillhub": "deferred_by_author",
+  "pending": [
+    "real office-user review",
+    "other OS/device and five native hosts",
+    "WorkBuddy review and launch",
+    "GitHub visibility after approval"
+  ]
+}

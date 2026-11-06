@@ -23,6 +23,6 @@ python3 tools/smoke_archive.py --release "<构建目录>" --output "<新的验�
 
 SkillHub使用自己的slug、displayName、version、summary、license元数据，slug要求全网唯一，账号身份/实际归属需登录后核验。**WorkBuddy发布不会自动证明SkillHub已有本项目条目或归属。** 当前技能标识excel-reconciliation-assistant与GitHub作者zcjunblog已记录，但没有为该SkillHub账号预留或验证slug。
 
-后续若选择该渠道，可以考虑带作者前缀的slug，如zcjunblog-excel-reconciliation-assistant，仍需当时检查冲突与账号归属。项目许可证尚未确定，不照抄官方示例的MIT，也不把平台专属字段直接塞进通用入口。本阶段不生成SkillHub发布包、不登录实名、不创建凭证、不上传或发布。
+后续若选择该渠道，可以考虑带作者前缀的slug，如zcjunblog-excel-reconciliation-assistant，仍需当时检查冲突与账号归属。用户已选择MIT许可证；SkillHub暂缓，不把平台专属字段直接塞进通用入口。本阶段不生成SkillHub发布包、不登录实名、不创建凭证、不上传或发布。
 
-发布决策保留M6：确定公开范围、许可证、市场展示、真实用户验收后，再按用户授权执行各渠道提审，并记录提交/审核/上线的真实状态。
+当前已授权MIT、WorkBuddy免费首发；审核通过后再公开GitHub。SkillHub暂缓。0.1.1包含包内许可证，旧0.1.0归档保持不变；平台状态见发布记录。真人与其他环境验收保持独立待办。

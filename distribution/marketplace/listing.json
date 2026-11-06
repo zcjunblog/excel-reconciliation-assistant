@@ -1,7 +1,7 @@
 {
   "status": "draft_not_submitted",
   "name": "excel-reconciliation-assistant",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "display_name": "Excel表格核对助手",
   "display_name_en": "Excel Reconciliation Assistant",
   "description_zh": "按业务编号与明确规则核对Excel和CSV，整理字段差异、缺失记录、重复编号和待确认事项。覆盖订单交付、库存盘点、报名签到、资产台账与清单版本核对，输出可筛选的白蓝工作簿及可追溯报告，保留原文件。",
@@ -23,20 +23,21 @@
   "long_description_en": "distribution/marketplace/description-en.md",
   "logo": "distribution/marketplace/logo-512.png",
   "cover": "docs/images/excel-reconciliation-cover.png",
-  "package": "releases/0.1.0/excel-reconciliation-assistant-workbuddy-0.1.0.zip",
-  "package_sha256": "86426ae73a0e1f68c768bec5eda4406ecf0316a139f1f96a34012ad737eab637",
+  "package": "releases/0.1.1/excel-reconciliation-assistant-workbuddy-0.1.1.zip",
+  "package_sha256": "865d52aabe26fb70785e5e4543c53a8d25f194bd982deb81737956840bca3442",
   "categories_suggested": [
     "office",
     "productivity",
     "data-analysis"
   ],
-  "license_decision": "pending_author",
-  "pricing_decision": "pending_author",
-  "public_repository_decision": "pending_author",
+  "license_decision": "MIT",
+  "pricing_decision": "free_workbuddy",
+  "public_repository_decision": "after_workbuddy_approval",
   "client_verification": "evidence/m5/clients.json",
   "case_index": "examples/README.md",
   "preview_images": [
     "docs/images/commerce-overview-render.png",
     "docs/images/negative-delta-details-render.png"
-  ]
+  ],
+  "skillhub_decision": "deferred_by_author"
 }

@@ -96,8 +96,11 @@ def _frozen():
         if digest((release/item['archive']).read_bytes())!=item['sha256']:raise ValueError('M5 archive changed')
     standard=manifest['packages'][0]
     with zipfile.ZipFile(release/standard['archive']) as z:
-        for name,data in snapshot()[0].items():
-            if z.read(NAME+'/'+name)!=data:raise ValueError('Skill source changed from accepted M5 release')
+        original={item['path'] for item in standard['files']}
+        current,_=snapshot(SOURCE)
+        if set(current)!=original|{'LICENSE'}:raise ValueError('Skill source changed from accepted M5 release')
+        for name in original-{'VERSION'}:
+            if z.read(NAME+'/'+name)!=current[name]:raise ValueError('Skill source changed from accepted M5 release')
     return approved
 
 
@@ -165,7 +168,7 @@ def prepare(output):
         _frozen();audit=audit_public_tree(stage)
         names=sorted(p.relative_to(stage).as_posix() for p in stage.rglob('*') if p.is_file())
         files=[{'path':name,'bytes':(stage/name).stat().st_size,'sha256':digest((stage/name).read_bytes())} for name in names]
-        result={'stage':'M6','skill_version':'0.1.0','passed':True,'synthetic':True,'case_tasks':sum(len(c['tasks']) for c in cases),'cases':cases,'files':files,'audit':audit,'m1_originals_unchanged':True,'m5_packages_unchanged':True}
+        result={'stage':'M6','skill_version':snapshot(SOURCE)[1],'passed':True,'synthetic':True,'case_tasks':sum(len(c['tasks']) for c in cases),'cases':cases,'files':files,'audit':audit,'m1_originals_unchanged':True,'m5_packages_unchanged':True}
         manifest=(json.dumps(result,ensure_ascii=False,indent=2)+'\n').encode('utf-8')
         (stage/'showcase-manifest.json').write_bytes(manifest)
         audit_public_tree(stage)

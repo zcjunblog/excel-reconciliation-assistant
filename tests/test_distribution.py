@@ -17,7 +17,7 @@ class DistributionTests(unittest.TestCase):
     def test_two_packages_are_reproducible_and_only_frontmatter_differs(self):
         builder=tool(self,'build_release'); one=self.dir/'one'; two=self.dir/'two'
         builder.build(one); builder.build(two)
-        manifest=json.loads((one/'manifest.json').read_text()); self.assertEqual(manifest['version'],'0.1.0')
+        manifest=json.loads((one/'manifest.json').read_text()); self.assertEqual(manifest['version'],(SOURCE/'VERSION').read_text().strip())
         data=[]
         for item in manifest['packages']:
             p=one/item['archive']; self.assertEqual(p.read_bytes(),(two/item['archive']).read_bytes())
@@ -34,9 +34,22 @@ class DistributionTests(unittest.TestCase):
         self.assertEqual(data[0][NAME+'/SKILL.md'],(SOURCE/'SKILL.md').read_bytes())
         front,body=data[1][NAME+'/SKILL.md'].decode().split('---\n')[1:]
         fields={k:json.loads(v.strip()) for k,v in (line.split(':',1) for line in front.splitlines())}
-        self.assertEqual(fields['version'],'0.1.0'); self.assertEqual(fields['display_name'],'Excel表格核对助手')
+        self.assertEqual(fields['version'],(SOURCE/'VERSION').read_text().strip()); self.assertEqual(fields['display_name'],'Excel表格核对助手')
         self.assertEqual(len(fields['examples_zh']),len(fields['examples_en'])); self.assertGreater(len(fields['examples_zh']),0)
         self.assertEqual(body,(SOURCE/'SKILL.md').read_text().split('---\n')[2])
+
+    def test_license_is_required_and_identical_in_both_archives(self):
+        builder=tool(self,'build_release'); folder=self.dir/'licensed'
+        builder.build(folder)
+        expected=(ROOT/'LICENSE').read_bytes() if (ROOT/'LICENSE').is_file() else b''
+        self.assertTrue(expected, 'Root MIT license must be present')
+        for item in json.loads((folder/'manifest.json').read_text())['packages']:
+            with zipfile.ZipFile(folder/item['archive']) as archive:
+                self.assertIn(NAME+'/LICENSE',archive.namelist())
+                self.assertEqual(archive.read(NAME+'/LICENSE'),expected)
+        d=tool(self,'distribution'); source=source_copy(self.dir/'missing-license')
+        (source/'LICENSE').unlink()
+        with self.assertRaises(ValueError): d.snapshot(source)
 
     def test_bad_platform_metadata_cannot_override_version_or_hide_empty_examples(self):
         d=tool(self,'distribution'); fields,body,version=d.skill_info()
@@ -78,7 +91,7 @@ class DistributionTests(unittest.TestCase):
 
     def test_package_changed_during_publication_cannot_be_registered_as_complete(self):
         builder=tool(self,'build_release'); target=self.dir/'release'; copy_file=shutil.copyfileobj
-        first=target/(NAME+'-0.1.0.zip')
+        first=target/(NAME+'-'+(SOURCE/'VERSION').read_text().strip()+'.zip')
         def mutate(src,dst,*args):
             copy_file(src,dst,*args)
             if Path(dst.name).parent==target and '-workbuddy-' in Path(dst.name).name: first.write_bytes(b'changed')

@@ -63,9 +63,19 @@ class ShowcaseTests(unittest.TestCase):
         paths+=['examples/showcase-v1/'+f['path'] for f in json.loads((ROOT/'examples/showcase-v1/showcase-manifest.json').read_text())['files']]
         paths += [p.relative_to(ROOT).as_posix() for p in (ROOT/'examples/release-cases/negative-delta').glob('*') if p.is_file()]
         for name in paths:
-            baseline=subprocess.check_output(['git','show','HEAD:'+name],cwd=ROOT)
-            checkout=subprocess.check_output(['git','-c','core.autocrlf=true','cat-file','--filters','HEAD:'+name],cwd=ROOT)
+            baseline=subprocess.check_output(['git','show',':'+name],cwd=ROOT)
+            checkout=subprocess.check_output(['git','-c','core.autocrlf=true','cat-file','--filters',':'+name],cwd=ROOT)
             self.assertEqual(checkout,baseline,name)
+
+    def test_license_and_version_update_preserves_frozen_engine_checks(self):
+        module=tool(self,'prepare_showcase'); root=self.project_copy('new-release')
+        source=root/'skills/excel-reconciliation-assistant'
+        (source/'VERSION').write_text('0.1.1\n')
+        (source/'LICENSE').write_text('MIT License\n')
+        with patch.object(module,'ROOT',root),patch.object(module,'SOURCE',source):
+            self.assertEqual(len(module._frozen()),18)
+            with (source/'scripts/checks.py').open('a') as f:f.write('\n# unreviewed engine change\n')
+            with self.assertRaisesRegex(ValueError,'Skill source changed'):module._frozen()
 
     def test_public_audit_rejects_missing_non_directory_or_empty_input(self):
         module=tool(self,'prepare_showcase');plain=self.dir/'file.md';plain.write_text('data');empty=self.dir/'empty';empty.mkdir()
