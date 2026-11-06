@@ -38,5 +38,11 @@
     "other OS/device and five native hosts",
     "WorkBuddy review and launch",
     "GitHub visibility after approval"
-  ]
+  ],
+  "changed_packaging_python_floor": {
+    "python": "3.9.6",
+    "tests": 10,
+    "passed": true,
+    "scope": "nine distribution tests and one version/license frozen-engine regression"
+  }
 }
