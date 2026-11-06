@@ -1,5 +1,5 @@
 {
-  "status": "draft_not_submitted",
+  "status": "submitted_for_review",
   "name": "excel-reconciliation-assistant",
   "version": "0.1.4",
   "display_name": "Excel表格核对助手",
@@ -40,5 +40,16 @@
   "skillhub_decision": "deferred_by_author",
   "workbuddy_layout": "root/subdirectory/file; flattened synthetic samples",
   "formal_overview_zh": "distribution/marketplace/overview-zh.md",
-  "formal_overview_en": "distribution/marketplace/overview-en.md"
+  "formal_overview_en": "distribution/marketplace/overview-en.md",
+  "workbuddy_skill_id": "os_5a4af3ee62a8592f",
+  "market_categories": [
+    "数据分析",
+    "效率工具"
+  ],
+  "service_category": [
+    "工具",
+    "办公"
+  ],
+  "price": "free",
+  "submission_record": "evidence/releases/0.1.4/workbuddy-submission.json"
 }

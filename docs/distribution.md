@@ -25,4 +25,4 @@ SkillHub使用自己的slug、displayName、version、summary、license元数据
 
 后续若选择该渠道，可以考虑带作者前缀的slug，如zcjunblog-excel-reconciliation-assistant，仍需当时检查冲突与账号归属。用户已选择MIT许可证；SkillHub暂缓，不把平台专属字段直接塞进通用入口。本阶段不生成SkillHub发布包、不登录实名、不创建凭证、不上传或发布。
 
-当前已授权MIT、WorkBuddy免费首发；审核通过后再公开GitHub。SkillHub暂缓。0.1.3包含包内许可证、市场目录适配与三组快捷示例；旧0.1.0及解析被拒的0.1.1/0.1.2归档保持不变；平台状态见发布记录。真人与其他环境验收保持独立待办。
+当前已授权MIT、WorkBuddy免费首发；审核通过后再公开GitHub。SkillHub暂缓。0.1.4包含MIT、市场目录适配、三组快捷示例与正式中英文概述，已按免费价格提交审核；旧0.1.0至0.1.3归档保持不变；平台状态见发布记录。真人与其他环境验收保持独立待办。

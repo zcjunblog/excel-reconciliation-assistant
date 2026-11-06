@@ -40,8 +40,11 @@
       "sha256": "84cd9a6e28920047d80e68868c391aa9b0c3a8246556313d3638259a430658bc"
     }
   ],
-  "marketplace_state": "name_conflict_with_own_unsubmitted_0.1.3_draft",
-  "draft_id": "os_e85c4a5a6cefa97f",
+  "marketplace_state": "submitted_for_review",
+  "draft_id": "os_5a4af3ee62a8592f",
   "repository_visibility": "private_until_workbuddy_approval",
-  "skillhub": "deferred_by_author"
+  "skillhub": "deferred_by_author",
+  "workbuddy_skill_id": "os_5a4af3ee62a8592f",
+  "workbuddy_submission_record": "evidence/releases/0.1.4/workbuddy-submission.json",
+  "price": "free"
 }

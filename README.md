@@ -175,6 +175,6 @@ python3 -m unittest discover -s tests -q
 - [M5 分发与客户端](evidence/m5/README.md) · [渠道说明](docs/distribution.md)
 - [M6 展示、错误规则盲测与性能样本](evidence/m6/README.md)
 
-当前发布候选为 0.1.4，采用 [MIT 许可证](LICENSE)，计划免费发布 WorkBuddy。GitHub 仓库将在 WorkBuddy 审核通过后公开；SkillHub 暂缓。尚未市场提审。发布状态以[发布准备记录](docs/release-readiness.md)为准。
+当前版本为 0.1.4，采用 [MIT 许可证](LICENSE)，已按免费价格提交 WorkBuddy 审核，尚未审核通过或市场上线。GitHub 仓库将在审核通过后公开；SkillHub 暂缓。发布状态以[发布准备记录](docs/release-readiness.md)为准。
 
 Created by [zcjunblog](https://github.com/zcjunblog)
