@@ -1,6 +1,6 @@
 # Excel表格核对助手 M2–M4 Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking. 用户已授权并完成M2/M3，M4尚未开始。
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task. 用户已授权并完成M2–M4，具体验收与决策见各阶段progress文件。M5尚未开始。
 
 **Goal:** 在不改写来源文件的前提下，按v1规则完成XLSX/CSV核对，生成可追溯、可筛选的实际文件。
 
@@ -43,7 +43,7 @@
 | compare.py | `compare_pair(pair: MatchedPair, task: TaskRule) -> list[FieldResult]`；`compare_task(association: AssociationResult, task: TaskRule, budget: Budget) -> TaskResult`。键不计比较字段。 |
 | checks.py | `verify_coverage(result: TaskResult) -> list[Issue]`。逐侧行覆盖、重复计数、字段分母与明细去重守恒，不从自己导出的摘要反推“通过”。 |
 | export.py | `write_workbook(results: list[TaskResult], rules: RuleSet, staging_dir: Path, budget: Budget) -> ExportRecord`。预估/实时预算，全部来源文本惰性，失败不返回成功路径。 |
-| report.py | `write_reports(run: RunResult, staging_dir: Path) -> list[ExportRecord]`；`finalize_delivery(run: RunResult, files: list[ExportRecord], new_dir: Path) -> Path`。实际文件摘要，原子晋升暂存目录。 |
+| report.py | `write_reports(run: RunResult, staging_dir: Path) -> list[ExportRecord]`；`finalize_delivery(run: RunResult, files: list[ExportRecord], new_dir: Path) -> Path`。实际文件摘要，独占目录、身份校验复制与清单最后发布；不覆盖竞争目录。 |
 | reconcile_tool.py | `main(argv: Optional[list[str]] = None) -> int`。inspect输出预检与待确认；run输出结果；退出码0=complete，2=partial/需确认，1=blocked/error，不抛成功文案遮盖错误。 |
 
 公共类型：`CellRef(source_id, table_id, sheet: Optional[str], row:int, column:str, physical_lines:Optional[tuple[int,int]])`；`CellValue(ref, raw, raw_type, numeric_lexeme:Optional[str], number_format:Optional[str], formula:Optional[str], cached, cache_type:Optional[str], date_lexeme:Optional[str]=None)`。M3补充date_lexeme保存原生ISO日期的时区/微秒，旧构造兼容；M4展示原值应采用源词法。原始日期、Decimal内部可用类型，序列化为带类型标签的ISO/十进制字符串，不依赖JSON浮点。
@@ -99,25 +99,25 @@ Files: compare.py、checks.py；测试tests/test_compare.py、tests/test_coverag
 
 Files: export.py、templates/workbook-style.json；测试tests/test_export.py。
 
-- [ ] 写失败测试`test_full_match_index_and_exception_sheets`：商贸3对匹配全部在索引，差异4条且包括within/not_comparable，来源位置完整；零记录类别只在概览标0，不造空明细。
-- [ ] 写失败测试`test_untrusted_text_stays_inert`：`=...`、`+...`、`-...`、`@...`、制表符、换行、URL及长编号回读保持文本，无公式/活动超链接；内部十进制字符串保留完整精度。
-- [ ] 写失败测试`test_sharding_and_failed_export_not_registered`：20,001明细变2片且计数不丢，超总预算/单元格/文件大小时XLSX未生成；所有分片导航可定位。
-- [ ] 确认失败后实现布局规格、单一遍历写入与预估/实时预算。运行export测试和全套测试，随后实际Excel/WPS打开首份结果检查中文/筛选/冻结/编号，证据单列；无法实看则视觉验收保持未完成。
-- [ ] 特别复核M1渲染器局限：Artifact预览曾把文本01/0007显示为1/7，实际源类型和原值正确；不能仅凭预览认证编号显示，也不能从预览推断公式缓存存在。
-- [ ] 展示原日期/数值时采用M3保留的date_lexeme/numeric_lexeme与类型；不能只展示库可能已丢时区或精度的raw值。
-- [ ] 提交`feat: export traceable blue and white reconciliation workbook`。
+- [x] 写失败测试`test_full_match_index_and_exception_sheets`：商贸3对匹配全部在索引，差异4条且包括within/not_comparable，来源位置完整；零记录类别只在概览标0，不造空明细。
+- [x] 写失败测试`test_untrusted_text_stays_inert`：`=...`、`+...`、`-...`、`@...`、制表符、换行、URL及长编号回读保持文本，无公式/活动超链接；内部十进制字符串保留完整精度。
+- [x] 写失败测试`test_sharding_and_failed_export_not_registered`：20,001明细变2片且计数不丢，超总预算/单元格/文件大小时XLSX未生成；所有分片导航可定位。
+- [x] 确认失败后实现布局规格、单一遍历写入与预估/实时预算。运行export测试和全套测试，随后实际Excel/WPS打开首份结果检查中文/筛选/冻结/编号，证据单列；无法实看则视觉验收保持未完成。
+- [x] 特别复核M1渲染器局限：Artifact预览曾把文本01/0007显示为1/7，实际源类型和原值正确；不能仅凭预览认证编号显示，也不能从预览推断公式缓存存在。
+- [x] 展示原日期/数值时采用M3保留的date_lexeme/numeric_lexeme与类型；不能只展示库可能已丢时区或精度的raw值。
+- [x] 提交`feat: export traceable blue and white reconciliation workbook`。
 
 ## M4.2 运行、报告和交付
 
 Files: report.py、reconcile_tool.py；测试tests/test_cli.py、tests/test_delivery.py。
 
-- [ ] 写失败测试`test_commerce_end_to_end_readback`：`python3 skills/excel-reconciliation-assistant/scripts/reconcile_tool.py run --rules examples/commerce/rules.json --output outputs/test-v001`真实生成XLSX/两份MD/工作资料/清单；原件SHA不变，明细与oracle一致。
-- [ ] 写失败测试`test_partial_task_and_existing_output`：一个任务缺表另一个正常，退出2、整批partial，清单只列实际产物；已存在输出目录拒绝覆盖。来源执行中变化、守恒失败、磁盘写入中断无complete清单。
-- [ ] 写失败测试`test_inspect_does_not_claim_comparison`：inspect仅输出来源预览/规则问题，缺openpyxl的CSV模式仍能读取CSV，XLSX要求依赖的具体安装提示；不能说未生成的文件已交付。
-- [ ] 确认失败后实现inspect/run、暂存目录、退出码与报告模板；全套测试绿，独立目录重跑四案例与SHA回读，保存evidence/m4并提交`feat: deliver versioned reconciliation reports through CLI`。
+- [x] 写失败测试`test_commerce_end_to_end_readback`：`python3 skills/excel-reconciliation-assistant/scripts/reconcile_tool.py run --rules examples/commerce/rules.json --authorize examples/commerce/inputs.xlsx --output outputs/test-v001`真实生成XLSX/两份MD/工作资料/清单；原件SHA不变，明细与oracle一致。
+- [x] 写失败测试`test_partial_task_and_existing_output`：一个任务缺表另一个正常，退出2、整批partial，清单只列实际产物；已存在输出目录拒绝覆盖。来源执行中变化、守恒失败、磁盘写入中断无complete清单。
+- [x] 写失败测试`test_inspect_does_not_claim_comparison`：inspect仅输出来源预览/规则问题，缺openpyxl的CSV模式仍能读取CSV，XLSX要求依赖的具体安装提示；不能说未生成的文件已交付。
+- [x] 确认失败后实现inspect/run、暂存目录、退出码与报告模板；全套测试绿，独立目录重跑四案例与SHA回读，保存evidence/m4并提交`feat: deliver versioned reconciliation reports through CLI`。
 
 ## 计划自检与后续
 
-已核对：规则字段与Schema一致；接口生产者/消费者使用同名类型；四个行业人工oracle不由生产工具重写；五类Review Focus分别落到失败测试；容量未通过部分不能宣称已验证。CLI、Skill流程、安装目录/构建器/Logo/正式README与客户端行为验证属于M5–M6，届时按当前官方文档另写计划，本计划不预先宣称全客户端可用。
+已核对：规则字段与Schema一致；接口生产者/消费者使用同名类型；四个行业人工oracle不由生产工具重写；五类Review Focus分别落到失败测试；容量未通过部分不能宣称已验证。文件交付CLI属于M4；Skill流程、安装目录/构建器/Logo/正式展示README与客户端行为验证属于M5–M6，届时按当前官方文档另写计划，本计划不预先宣称全客户端可用。
 
-每阶段完成后更新todo/design与GitHub，并告诉用户“已完成什么、当前进度、下一步做什么”。M3收尾证据与决策记录在evidence/m3及memory-bank/m3-progress.md，下一步为M4.1；M4不能提前打勾。
+每阶段完成后更新todo/design与GitHub，并告诉用户“已完成什么、当前进度、下一步做什么”。M4证据与决策见evidence/m4及memory-bank/m4-progress.md；下一步M5安装与分发。跨设备/系统办公显示仍保留M6，不提前打勾。

@@ -1,0 +1,179 @@
+{
+  "stage": "M4",
+  "passed": true,
+  "python": "3.12.14",
+  "os": "Darwin",
+  "unit_tests": 116,
+  "failures": 0,
+  "errors": 0,
+  "cases": [
+    {
+      "case": "commerce",
+      "status": "needs_confirmation",
+      "exit_code": 2,
+      "tasks": [
+        {
+          "task_id": "order_delivery",
+          "manual_oracle_matches": true,
+          "field_counts": {
+            "exact": 5,
+            "within_rule": 1,
+            "different": 2,
+            "not_comparable": 1
+          },
+          "source_row_records": 15
+        }
+      ],
+      "artifact_count": 11,
+      "full_field_records": 9,
+      "source_row_records": 15,
+      "manifest_sha256": "a2f9dfa6690c66417df5abeb9620c2b5eb69425e7c9db7ec5560646fe77bd7d3",
+      "workbook_sha256": "e43740162c25497e9153ae52b58f47892485495ee230af7795297400ccf38166",
+      "seconds": 0.2277,
+      "output": "outputs/m4-verification/run-a29d3013/commerce-v001"
+    },
+    {
+      "case": "inventory",
+      "status": "needs_confirmation",
+      "exit_code": 2,
+      "tasks": [
+        {
+          "task_id": "stock_check",
+          "manual_oracle_matches": true,
+          "field_counts": {
+            "exact": 4,
+            "within_rule": 0,
+            "different": 2,
+            "not_comparable": 2
+          },
+          "source_row_records": 10
+        }
+      ],
+      "artifact_count": 11,
+      "full_field_records": 8,
+      "source_row_records": 10,
+      "manifest_sha256": "467b0376e2ad9badbf7259184c99db0beb58704fcdb5b0fde42faba52de8a13b",
+      "workbook_sha256": "7e3f6f4c362e08b1a3c171fe1f9dd233ce2b1455bd4615670c4e48b6ec548707",
+      "seconds": 0.2096,
+      "output": "outputs/m4-verification/run-a29d3013/inventory-v001"
+    },
+    {
+      "case": "training",
+      "status": "needs_confirmation",
+      "exit_code": 2,
+      "tasks": [
+        {
+          "task_id": "roster_check",
+          "manual_oracle_matches": true,
+          "field_counts": {
+            "exact": 7,
+            "within_rule": 1,
+            "different": 0,
+            "not_comparable": 1
+          },
+          "source_row_records": 10
+        }
+      ],
+      "artifact_count": 11,
+      "full_field_records": 9,
+      "source_row_records": 10,
+      "manifest_sha256": "877d5857e19f7c66f880b7ce99b95ba1345c230974d683c75addc0209ea4b1e6",
+      "workbook_sha256": "fbae1e6e6d624d3168722cee4cba3dab480db34641c2676d791b5f72baf60285",
+      "seconds": 0.2042,
+      "output": "outputs/m4-verification/run-a29d3013/training-v001"
+    },
+    {
+      "case": "administration",
+      "status": "needs_confirmation",
+      "exit_code": 2,
+      "tasks": [
+        {
+          "task_id": "assets_default",
+          "manual_oracle_matches": true,
+          "field_counts": {
+            "exact": 3,
+            "within_rule": 0,
+            "different": 0,
+            "not_comparable": 3
+          },
+          "source_row_records": 6
+        },
+        {
+          "task_id": "assets_cached",
+          "manual_oracle_matches": true,
+          "field_counts": {
+            "exact": 4,
+            "within_rule": 0,
+            "different": 0,
+            "not_comparable": 2
+          },
+          "source_row_records": 6
+        }
+      ],
+      "artifact_count": 11,
+      "full_field_records": 12,
+      "source_row_records": 12,
+      "manifest_sha256": "bf47e3c8b0c52219b95a5dd26b299a41e352a0acd6dd44de9f7e770a146d7d4a",
+      "workbook_sha256": "fda48171dc99697327b64926eae56fa81aa2267368960415e37aa173202ed094",
+      "seconds": 0.2231,
+      "output": "outputs/m4-verification/run-a29d3013/administration-v001"
+    }
+  ],
+  "case_tasks": 5,
+  "m1_manifest_unchanged": true,
+  "unchanged_files": 14,
+  "probe": {
+    "exception_records": 20001,
+    "shard_rows": [
+      20000,
+      1
+    ],
+    "unique_result_ids": 20001,
+    "matched_pairs": 6667,
+    "no_truncation": true,
+    "workbook_bytes": 2063988,
+    "sha256": "9b806e7b109802b69cce10f8f17adcdb430f99e2a0a3145e522cf025f0f75e5e",
+    "compare_export_readback_seconds": 23.5144
+  },
+  "process_peak_rss_mib": 318.8,
+  "code_sha256": {
+    "skills/excel-reconciliation-assistant/scripts/checks.py": "79685fa86e826efbd8961924c6d6d5aa0cb7831c381cd6ebb22ee91e7206035d",
+    "skills/excel-reconciliation-assistant/scripts/common.py": "2b45b117acc1dc7e464182e45c5c7870fc0cac82f7912ee190643424bd20c614",
+    "skills/excel-reconciliation-assistant/scripts/compare.py": "b5490bec52724a7d13920b077ddf215a82662b6f1aaa8e938a2c093faf350d4b",
+    "skills/excel-reconciliation-assistant/scripts/csv_reader.py": "ecf0c4199cb3989d109549bd555cfb038c931224c897b8a070b8ea33fc3bb2d8",
+    "skills/excel-reconciliation-assistant/scripts/delivery_guard.py": "ff1ab7485793433be5088a5161f473b6a50bfdafb9b33f365a89f4d40750fade",
+    "skills/excel-reconciliation-assistant/scripts/export.py": "9e5a7973c651e8856cbd16b62ac617740266f82e6cede854a2f0cd25dcbe8c9e",
+    "skills/excel-reconciliation-assistant/scripts/export_rows.py": "ab4e6f86db02ca3a21ef94cf09dfeb80bd05cd6590df9d0a927b65baddec3385",
+    "skills/excel-reconciliation-assistant/scripts/intake.py": "df890786dcf6729678b0a399028d2d489a5ef5d857920b208ac0b17f6f304bf7",
+    "skills/excel-reconciliation-assistant/scripts/matching.py": "f923c96501180fd42272f2e2aa637136cdb06565abc279070195d26e1fbad275",
+    "skills/excel-reconciliation-assistant/scripts/normalization.py": "c46d38ddbc6c09fd0946ddef8d411a8b89cf1c56e46b66c7a95f0d6ca6f7e427",
+    "skills/excel-reconciliation-assistant/scripts/presentation.py": "0d2df5a97cefbc2fef5a68fbc3b29c5d7068b77bb03b7543d8517a35296e0523",
+    "skills/excel-reconciliation-assistant/scripts/reconcile_tool.py": "6e41d96b185b6c9378778731ecc8ebb550cd7312919958cee97f3b539a9eef31",
+    "skills/excel-reconciliation-assistant/scripts/report.py": "ad2b8962d62bec85fde3a3b08163b76dfe0e331e599ac0228144a2a50a6d4125",
+    "skills/excel-reconciliation-assistant/scripts/rules.py": "c8105bd876196f32addcd6cf11805ffe96c0c040690f8c18a3953ac61df5acf4",
+    "skills/excel-reconciliation-assistant/scripts/runner.py": "19ced8d36157524cb1bce27488a5e158e86a56a907f3489abfa2b0b20a91a9f7",
+    "skills/excel-reconciliation-assistant/scripts/source_guard.py": "c5342069979ef1510f55f52a364ff78e94f5b48dd9e44b638f26d7e274ef5e71",
+    "skills/excel-reconciliation-assistant/scripts/table_data.py": "b04c8de6aebd198387530c964ce743131e70a748449c798e5892201ba42149b6",
+    "skills/excel-reconciliation-assistant/scripts/typed_values.py": "cdd36a69b5ed9e3a917410acf971bea76a83437f5bbe22c3a21b212c0d3e4f85",
+    "skills/excel-reconciliation-assistant/scripts/xlsx_reader.py": "0502fbb4d379c0f1bf66e9079feb98be5ef4e95744c65acc1c11cb7de3911bb5",
+    "tests/comparison_helpers.py": "efa7aa36aa49b69fdddf1f80bd8202ff5b7c4cb78efad2a213b14ecc5056e960",
+    "tests/delivery_helpers.py": "1db7d36baffdbe696c3025daae8b5ec7b0f0ee80e7d1be70428928289a5e5982",
+    "tests/fixture_helpers.py": "40824ee44e63647708f89caa07c80896e8c58d1d439635add94807e8462f4f42",
+    "tests/test_cli.py": "ba3a482a20dacee82ccb5572685662e4e3d6c05bdb4fe15668254bf64978a786",
+    "tests/test_compare.py": "2c39d8c86050fb3825cf7e511bf52036b3a838aabd23d5a0141562605fc66ef7",
+    "tests/test_coverage.py": "dcf0f22d5f5f569b4431b8cb77611a726422742b0c6da57551a2aba5d96c4ed6",
+    "tests/test_delivery.py": "0e97d77d83ce318270619e5fd7e26a1602208c9b477490ed9d7b0c009efb5870",
+    "tests/test_export.py": "bdb80aadd09a25d29b44cd6807cc86ddbef8a0e0e063fc852f6fb42b259df3aa",
+    "tests/test_intake.py": "88a0bcb59f7a4c42e8c4731a5b86b20f5c1341040acdb58a852e9d0e4a0bb613",
+    "tests/test_m4_review.py": "8f92ca67e167d56601727fb58986631130c22da36c235d635d2a06ad88570b24",
+    "tests/test_matching.py": "d2bfde604d73cd427a9ab758fddf86d3d0f1b0fda28fcd4eb7f6ffb1a123b75b",
+    "tests/test_presentation.py": "0cf32e764902860ea18dfd502397c8f5f617184b224aae6cabb11eff15baf437",
+    "tests/test_rules.py": "3c2c4b8ef608cbac7771357082a62e9e313091019dae77585cec0e1a776fdce3",
+    "tests/test_source_limits.py": "3c34953a08531fb37c338df64ada7d28aec5552f26b5156e437e0cce5de1d0db"
+  },
+  "not_verified": [
+    "不同设备或操作系统上的办公显示",
+    "M5可安装Skill和客户端运行",
+    "所有阈值组合的最大容量性能"
+  ]
+}

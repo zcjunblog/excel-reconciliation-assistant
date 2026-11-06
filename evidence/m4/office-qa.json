@@ -1,0 +1,35 @@
+{
+  "stage": "M4",
+  "scope": "macOS WPS native UI; synthetic files only",
+  "os": "Darwin",
+  "wps_version": "12.1.29181",
+  "commerce_delivery": "outputs/m4-deliveries/commerce-v004",
+  "commerce_workbook_sha256": "18e35e99cf00deb21bd7015aa143db92c90b0ac64949ccad9f62d71279215142",
+  "qa_copy_unchanged": true,
+  "screenshots": {
+    "office-details.png": "b6fdf0c0cd183126526d72822e0f3e25ccdc7629de52bef8e79c886056b76636",
+    "office-filter.png": "a11163eb2dae98d073cc2ba61db11db6f982aa4acf571a4681275501c6bd7182",
+    "office-freeze.png": "6d50e2831c1540dd64e3f663602b099b8658b744087a133d5274c670bc59e0d8",
+    "office-overview.png": "b485a31ef7c1eba165ec8db9fc584a12b4af8a7f0a9d921bf9c4eae647eb5fdd",
+    "office-pending.png": "13333596975d80c6e115f98d5b2fd26b734b5fadfb28d6b25783b303c4e8882b",
+    "office-text-final.png": "12218d921cb18e9237cb9a73e4aedf7950b11be4702a1dda2d89dd5b4704e413"
+  },
+  "observations": [
+    "概览任务ID换行完整，数量3/2/1/5与报告一致",
+    "差异明细4条含规则内一致/有差异/不可比较，业务键01/02保持",
+    "待确认6条，无效键原列A可见，没有伪造空位置问题",
+    "横向至U列时A:D及首行仍可见",
+    "状态有差异筛选得到原行3/4两条",
+    "公式样式文本=1+1显示原文，未执行；URL非活动链接",
+    "三行中文、22位含前导零文本、含微秒及+08:00的日期文本完整，编辑栏可见原文"
+  ],
+  "text_qa_workbook": "outputs/m4-text-qa-v002/核对结果.xlsx",
+  "text_qa_sha256": "14a1d42c4dd0d68a400e086d15d60ffb6fcb4324ec92241ed51f9389e0818178",
+  "not_verified": [
+    "不同设备/操作系统和Excel本体",
+    "负差额的真实办公样张",
+    "两万行分片在办公软件中的滚动/打开性能",
+    "真实Agent客户端与安装包"
+  ],
+  "separation": "office-text-final.png来自专项惰性文本样张；其余来自最终商贸交付副本。筛选后关闭不保存，原件与正式交付均未在UI改写。"
+}

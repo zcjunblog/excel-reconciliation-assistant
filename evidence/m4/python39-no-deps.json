@@ -1,0 +1,40 @@
+{
+  "status": "partial",
+  "mode": "run",
+  "output": "outputs/m4-python39-no-deps-v002",
+  "run_id": "ca3eeaffcce4403990f54d9ee144e74e",
+  "tasks": [
+    {
+      "task_id": "stock_check",
+      "status": "needs_confirmation"
+    }
+  ],
+  "different_fields": 2,
+  "not_comparable_fields": 2,
+  "errors": [],
+  "issue_count": 0,
+  "unavailable_formats": [
+    {
+      "path": "核对结果.xlsx",
+      "code": "missing_dependency",
+      "message": "Excel输出需要openpyxl>=3.1,<4；未生成工作簿"
+    }
+  ],
+  "files": [
+    "核对报告.md",
+    "待确认事项.md",
+    "工作资料/字段结果.jsonl",
+    "工作资料/关联结果.jsonl",
+    "工作资料/检查记录.json",
+    "工作资料/来源索引.json",
+    "工作资料/读取范围.json",
+    "工作资料/核对规则.json",
+    "工作资料/执行摘要.json",
+    "交付清单.json"
+  ],
+  "python": "3.9.6",
+  "mode_flags": [
+    "-S"
+  ],
+  "scope": "CSV读取、关联、比较和完整MD/JSON交付；XLSX明确未生成"
+}

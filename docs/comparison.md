@@ -19,7 +19,7 @@ assert not verify_coverage(result)
 assert verify_sources_unchanged(intake, rules, budget)
 ```
 
-示例承接[读取接口](intake.md)，只使用已登记的内存表。宿主应处理IntakeError/BudgetExceeded并保留失败状态，不能把异常或缺失任务换成零差异。整批预算/来源变化须丢弃整批完整结论，M4统一运行器尚未实现。
+示例承接[读取接口](intake.md)，只使用已登记的内存表。宿主应处理IntakeError/BudgetExceeded并保留失败状态，不能把异常或缺失任务换成零差异。整批预算/来源变化须丢弃整批完整结论；M4已提供统一运行器及[交付CLI](delivery.md)。
 
 `associate(left, right, task)`校验逻辑表、表头、原行与来源一致性，按显式单键/复合键分组。字段类型与规范化顺序参与内部元组键，显示键保留字符串分量，不拼成容易碰撞的分隔字符串。任一侧重复，则两侧该组全部隔离；空键、公式键、数值型编号与规范化后空键进入无效区。每次按源行号确定输出顺序，不按当前数组顺序配对。
 

@@ -1,6 +1,6 @@
 # 核对规则协议 v1
 
-状态：M1规则结构冻结；M2读取与M3关联/比较已实现，导出尚未实现。机器结构见[JSON Schema](../schemas/reconciliation-rules.schema.json)，合成实例见[案例目录](../examples/README.md)。规则文件为UTF-8 JSON，`schema_version`固定为`1.0`，未知字段拒绝；升级结构必须显式迁移。实际边界见[读取说明](intake.md)与[比较说明](comparison.md)。
+状态：M1规则结构冻结；M2读取、M3关联/比较与M4文件交付已实现。机器结构见[JSON Schema](../schemas/reconciliation-rules.schema.json)，合成实例见[案例目录](../examples/README.md)。规则文件为UTF-8 JSON，`schema_version`固定为`1.0`，未知字段拒绝；升级结构必须显式迁移。实际边界见[读取说明](intake.md)、[比较说明](comparison.md)与[交付说明](delivery.md)。
 
 ## 输入和实施顺序
 
@@ -68,6 +68,7 @@ selected = included + explicitly_excluded
 - 每次最多200,000个字段比较。读取还需限制所访问XML/CSV的实际扫描记录与单元格，不能仅验证选中小范围或工作簿声明维度。每文件实际扫描不超过200,000行、2,000,000个单元格；M2禁止遍历伪造的XFD/百万空行矩形。
 - CSV单逻辑记录1MiB、单单元格32,000字符；XLSX文本相同上限，超限阻断，不截断。
 - XLSX明细每片20,000行，整个结果最多100,000条明细、2,000,000个写入单元格、50个明细分片、50MiB文件。规则、概览同样计写入预算。
+- M4补充：全交付累计250MiB，包含Excel、报告、JSONL/JSON与清单；内部资料超全局预算也不能交付“完整”结论。阈值不代表暂存副本的总磁盘占用。
 - 总执行时限120秒作为可配置宿主预算；超时中止且不登记完整交付。首版不声称不同硬件均能达到此时间。
 - M3具体计算拒绝阈值：Decimal系数最多1000位、调整指数绝对值不超过1000；越界字段标不可比并保留原值，不以舍入换取一致。原生ISO日期保留date_lexeme；数值日期源精度超出库可靠保留范围时也不可比。
 
