@@ -31,3 +31,7 @@
 - 最终包独立解压Python3.9重跑10任务、inspect和-S CSV降级通过，原始14份字节未变；六客户端12次隔离安装全部重新验证。
 - 最终真实Codex CLI：再次使用审查后41份安装资源，原生turn.completed、进程exit0；2匹配对/6字段/11源行、两处非exact的坐标和差额、待确认分区、10份交付文件SHA、Excel惰性文本与原件摘要均由根上下文独立回读。此前forward行为测评仅doctor与最终版本不同，已在证据如实登记；不重写旧日志。
 - Task3状态：核心实施与审查已完成，WorkBuddy最终包导入/实际调用仍等待手动解锁。保持Task3与M5未完成，不运行task-done伪造通过；保留本计划工作区供解锁后续验收。最终包、文档和证据先同步feat/m5-distribution分支，待客户端门禁通过后再合入main。
+- 解锁后续验收：取消待安装旧候选，选择releases/0.1.0最终WorkBuddy ZIP；等待安全检测完成（低风险），未跳过、未开启全局自动安装。原生UI“技能导入成功”、已安装v0.1.0。
+- 最终WorkBuddy真实新任务：显式技能标签，限定workbuddy-project两CSV与技能资源，实际doctor/inspect/run、文件校验和调用记录完成。原生UI“已完成8m29s”、needs_confirmation、真实Excel预览。根上下文对安装副本41资源与最终ZIP逐字节对照；10交付文件SHA、2匹配对/6字段/11源行、两处非exact坐标、前导零/惰性文本、原件摘要全部通过，证据evidence/m5/workbuddy.json。
+- 原锁定门禁已解除；其他五宿主/跨系统、SkillHub账号归属和发布仍按既有边界保留M6。没有新增功能或再次独立审查；已审查修复的生产代码与最终包不变。
+- Task 3: complete — 实施提交cbe682b..129ace2及本次客户端/资料收尾；task-done全套144/144通过。一次独立整分支审查6项Important均有RED→GREEN证据，最终包与审查后生产代码摘要一致。按既有阶段同步授权合入main并推送；不新建市场提交或改仓库可见性。

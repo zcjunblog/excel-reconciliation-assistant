@@ -11,8 +11,9 @@
     {
       "client": "WorkBuddy",
       "version": "5.9.3",
-      "actual_host_test": "pending_unlock",
-      "details": "Selected pre-review candidate ZIP in native upload dialog. Mac locked before parse/import acceptance could be observed. Final archive has updated doctor; awaiting manual unlock to reselect final ZIP and run actual task."
+      "actual_host_test": "passed",
+      "details": "Final WorkBuddy archive completed low-risk check, imported successfully as v0.1.0. Explicit skill tag in a dedicated native task loaded excel-reconciliation-assistant, doctor/inspect/run executed, task completed with real XLSX preview. Root re-read all41 installed resources against final ZIP, all10 receipt files, source hashes and hidden hand expectation.",
+      "evidence": "workbuddy.json"
     },
     {
       "client": "Claude Code / Cursor / Copilot CLI / Gemini CLI / OpenCode",

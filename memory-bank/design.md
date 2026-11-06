@@ -269,4 +269,4 @@ M1已确定首版规则协议、容量拒绝阈值、公式策略和报告明细
 
 ### 20.1 本轮实际边界
 
-已生成0.1.0通用与WorkBuddy双包，每包41资源；两包仓库外Python3.9独立执行共10任务、缺依赖CSV降级与inspect通过，M1原始14份SHA未变。六客户端project/user共12次目录安装只是隔离布局验证，真实Codex调用另有原生进程与文件证据。最终完整144测试在Python3.9和3.12通过；审查6项Important均修复。WorkBuddy选择候选ZIP后Mac锁定，最终包尚待重新导入与真实调用，不提前关闭M5。详细状态见[evidence/m5](../evidence/m5/README.md)。
+已生成0.1.0通用与WorkBuddy双包，每包41资源；两包仓库外Python3.9独立执行共10任务、缺依赖CSV降级与inspect通过，M1原始14份SHA未变。六客户端project/user共12次目录安装只是隔离布局验证，真实Codex调用另有原生进程与文件证据。最终完整144测试在Python3.9和3.12通过；审查6项Important均修复。WorkBuddy曾因Mac锁定暂停，用户解锁后最终包经安全检测导入成功，原生新任务实际调用并预览Excel；41资源与最终ZIP、10交付文件摘要、11源行及人工预期均独立回读通过。M5完成，下一步M6。详细状态见[evidence/m5](../evidence/m5/README.md)。

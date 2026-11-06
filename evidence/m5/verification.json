@@ -1,6 +1,6 @@
 {
   "stage": "M5",
-  "status": "pending_workbuddy_acceptance",
+  "status": "complete",
   "version": "0.1.0",
   "unit_tests": [
     {
@@ -80,11 +80,11 @@
     "skills/excel-reconciliation-assistant/scripts/xlsx_reader.py": "0502fbb4d379c0f1bf66e9079feb98be5ef4e95744c65acc1c11cb7de3911bb5"
   },
   "not_verified": [
-    "WorkBuddy final-package import and actual invocation: Mac locked",
     "Five other native Agent hosts",
     "Cross-operating-system office display",
     "SkillHub account ownership or slug availability",
     "Marketplace acceptance or publication"
   ],
-  "actual_codex_final_payload": "passed: native turn.completed/exit0 and all41 resources match"
+  "actual_codex_final_payload": "passed: native turn.completed/exit0 and all41 resources match",
+  "actual_workbuddy_final_payload": "passed: native import, explicit skill load, completed task, real XLSX and all41 installed resources match"
 }
