@@ -1,0 +1,21 @@
+.DS_Store
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+node_modules/
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+private-inputs/
+real-data/
+outputs/
+dist/
+tmp/
+*.log
+~$*
+.~lock.*
+
+# Future public examples must be synthetic and explicitly reviewed.
