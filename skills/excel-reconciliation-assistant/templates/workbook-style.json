@@ -1,0 +1,15 @@
+{
+  "font": "Microsoft YaHei",
+  "body_size": 11,
+  "title_size": 16,
+  "ink": "243247",
+  "blue": "17365D",
+  "accent": "2764A5",
+  "pale_blue": "EAF2FB",
+  "muted": "64748B",
+  "stripe": "F6F9FD",
+  "line": "DCE5F0",
+  "different": "FFF0F0",
+  "not_comparable": "FFF5DE",
+  "within_rule": "EAF2FB"
+}

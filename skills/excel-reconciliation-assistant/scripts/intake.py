@@ -113,6 +113,7 @@ def read_tables(intake: IntakeResult, rules: RuleSet, budget: Budget) -> dict:
                     if isinstance(grid,IntakeError):
                         raise IntakeError(grid.issue.code,grid.issue.message,{'source_id':sid,'table_id':table['id'],'sheet':table['sheet']})
                     result=build_table(table,grid,sid,expected[table['id']])
+                    result.metadata.update(source_sha256=snap.sha256,source_bytes=snap.bytes,source_name=snap.path.name)
                     output[table['id']]=result
                     intake.table_previews[table['id']]={'header':result.header,'selected_rows':len(result.selected_rows),'included_rows':len(result.rows),'excluded_rows':result.excluded_rows,'metadata':result.metadata}
                 except IntakeError as e:

@@ -52,6 +52,12 @@ class Budget:
     max_record_bytes: int = 1024 * 1024
     max_text_chars: int = 32000
     max_comparisons: int = 200000
+    max_sheet_rows: int = 20000
+    max_output_rows: int = 100000
+    max_output_cells: int = 2000000
+    max_output_sheets: int = 50
+    max_output_bytes: int = 50 * 1024 * 1024
+    max_artifact_bytes: int = 250 * 1024 * 1024
     max_seconds: float = 120.0
     started: float = field(default_factory=time.monotonic)
     counters: dict[str, int] = field(default_factory=dict)
@@ -251,3 +257,29 @@ class TaskResult:
     status: str
     row_statuses: list[dict] = field(default_factory=list)
     totals: list[dict] = field(default_factory=list)
+
+
+@dataclass(frozen=True)
+class ExportRecord:
+    path: Path
+    kind: str
+    status: str
+    sha256: str
+    bytes: int
+
+
+@dataclass
+class RunResult:
+    rules: RuleSet
+    intake: IntakeResult
+    task_results: list[TaskResult]
+    task_statuses: list[dict]
+    issues: list[Issue]
+    status: str
+    mode: str = 'run'
+    unavailable_formats: list[dict] = field(default_factory=list)
+    budget: Budget = field(default_factory=Budget)
+    run_id: str = ''
+
+    @property
+    def source_snapshots(self): return self.intake.source_snapshots
