@@ -1,0 +1,46 @@
+{
+  "version": "0.1.2",
+  "license": "MIT",
+  "resources_per_profile": 42,
+  "workbuddy_market_layout": "Skill root/subdirectory/file",
+  "flattened_sample_resources": 10,
+  "changed_business_rules": false,
+  "sample_source_bytes_unchanged": true,
+  "engine_and_standard_skill_body_unchanged": true,
+  "prior_archives_unchanged": [
+    "0.1.0",
+    "0.1.1"
+  ],
+  "reproducible_two_builds": true,
+  "full_suite": {
+    "count": 157,
+    "passed": true,
+    "python": "3.12.14",
+    "log_sha256": "9c14f77c73c803c42c46531b3866c5910417bd44b1b7be3abb9c1f878c86276f"
+  },
+  "packaging_python_floor": {
+    "python": "3.9.6",
+    "count": 10,
+    "passed": true
+  },
+  "independent_archive_tasks": 10,
+  "archive_python": "3.9.6",
+  "initial_validation_failure": "Three archive tests exposed a stale hardcoded inspect authorization filename; corrected to read actual package rule sources; final full suite passed",
+  "packages": [
+    {
+      "profile": "standard",
+      "archive": "excel-reconciliation-assistant-0.1.2.zip",
+      "bytes": 79461,
+      "sha256": "2469958085e9a76f3d55f2cb65338175576e7c5fb69f7c8b7a74cbbb4d8e1769"
+    },
+    {
+      "profile": "workbuddy",
+      "archive": "excel-reconciliation-assistant-workbuddy-0.1.2.zip",
+      "bytes": 80104,
+      "sha256": "a712f0ca14d027c9c48e18bdc83be27123f1b2f43e1f14df0c826ee274d6155d"
+    }
+  ],
+  "marketplace_state": "not_uploaded",
+  "repository_visibility": "private_until_workbuddy_approval",
+  "skillhub": "deferred_by_author"
+}

@@ -2,7 +2,7 @@
 from __future__ import annotations
 import hashlib
 import json
-from pathlib import Path
+from pathlib import Path,PurePosixPath
 import re
 import shutil
 import sys
@@ -85,6 +85,43 @@ def snapshot(source=SOURCE):
     if not payloads: raise ValueError('Empty Skill source')
     _,_,version=_parse_info(payloads['SKILL.md'].decode('utf-8'),payloads['VERSION'].decode('utf-8'))
     return payloads,version
+
+
+def profile_path(name,profile):
+    if profile=='standard': return name
+    if profile!='workbuddy': raise ValueError('Unknown distribution profile')
+    parts=PurePosixPath(name).parts
+    if len(parts)==4 and parts[:2]==('references','examples'):
+        name='references/'+parts[2]+'-'+parts[3]
+    if len(PurePosixPath(name).parts)>2: raise ValueError('WorkBuddy resource exceeds market directory depth')
+    return name
+
+
+def package_payloads(payloads,profile):
+    """Keep standard layout; adapt only sample paths for the WorkBuddy market."""
+    paths={name:profile_path(name,profile) for name in payloads}
+    if len(set(paths.values()))!=len(paths): raise ValueError('Distribution resource path collision')
+    result={}
+    for name,data in payloads.items():
+        if profile=='workbuddy' and name.startswith('references/examples/') and name.endswith('/rules.json'):
+            rules=json.loads(data)
+            for source in rules['sources']:
+                original=(PurePosixPath(name).parent/source['path']).as_posix()
+                if original not in paths: raise ValueError('Example rules refer to an undistributed source')
+                source['path']=PurePosixPath(paths[original]).name
+            data=(json.dumps(rules,ensure_ascii=False,indent=2)+'\n').encode('utf-8')
+        elif profile=='workbuddy' and name=='references/examples.md':
+            text=data.decode('utf-8')
+            for old,new in paths.items():
+                if old.startswith('references/examples/') and old.endswith('/rules.json'):
+                    case=PurePosixPath(old).parts[2]
+                    text=text.replace('['+case+'/rules.json](examples/'+case+'/rules.json)',
+                                      '['+case+'-rules.json]('+PurePosixPath(new).name+')')
+            text=text.replace('原始案例与项目验收源文件字节一致。',
+                              '原始表格与项目验收源文件字节一致；WorkBuddy包仅调整样例文件名和规则相对路径，不改业务规则或数据。')
+            data=text.encode('utf-8')
+        result[paths[name]]=data
+    return result
 
 
 def workbuddy_entry(fields,body,version,profile=None):

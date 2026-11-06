@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 import tempfile
 import zipfile
-from distribution import ROOT,SOURCE,NAME,snapshot,_parse_info,workbuddy_entry,digest,publish_files
+from distribution import ROOT,SOURCE,NAME,snapshot,_parse_info,workbuddy_entry,digest,publish_files,package_payloads
 
 
 def build(out=None):
@@ -21,7 +21,7 @@ def build(out=None):
         for kind in ('standard','workbuddy'):
             filename=NAME+('-workbuddy' if kind=='workbuddy' else '')+'-'+version+'.zip'; entries=[]
             with zipfile.ZipFile(stage/filename,'x',zipfile.ZIP_DEFLATED,compresslevel=9) as archive:
-                for name,original in payloads.items():
+                for name,original in package_payloads(payloads,kind).items():
                     data=buddy if kind=='workbuddy' and name=='SKILL.md' else original
                     info=zipfile.ZipInfo(NAME+'/'+name,(2026,11,6,0,0,0)); info.create_system=3
                     info.compress_type=zipfile.ZIP_DEFLATED; info.external_attr=0o100644<<16

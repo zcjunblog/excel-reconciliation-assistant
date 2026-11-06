@@ -2,7 +2,7 @@
 
 ## 单一来源
 
-`skills/excel-reconciliation-assistant/VERSION`是唯一版本源。`tools/build_release.py`从同一个明确资源集合生成通用包与WorkBuddy包，后者只改变SKILL.md的展示frontmatter。root `distribution/workbuddy.json`不允许覆盖name或version；中英文示例必须为等长、非空字符串数组。
+`skills/excel-reconciliation-assistant/VERSION`是唯一版本源。`tools/build_release.py`从同一个明确资源集合生成通用包与WorkBuddy包，后者注入SKILL.md展示frontmatter，并将10份行业样例平铺到references/行业-文件名；四份样例规则仅调整sources.path，样例索引链接同步调整。引擎、原表字节和业务字段规则不变。此适配对应开放平台实际返回的两级目录限制。root `distribution/workbuddy.json`不允许覆盖name或version；中英文示例必须为等长、非空字符串数组。
 
 包内包括完整工具、模板、Schema、参考和四行业原始合成样例，不含人工expected答案、用户资料、测试输出、凭证或Python缓存。每个版本目录包含两个ZIP、SHA256SUMS及逐资源manifest.json；不覆盖既有版本目录。
 
@@ -25,4 +25,4 @@ SkillHub使用自己的slug、displayName、version、summary、license元数据
 
 后续若选择该渠道，可以考虑带作者前缀的slug，如zcjunblog-excel-reconciliation-assistant，仍需当时检查冲突与账号归属。用户已选择MIT许可证；SkillHub暂缓，不把平台专属字段直接塞进通用入口。本阶段不生成SkillHub发布包、不登录实名、不创建凭证、不上传或发布。
 
-当前已授权MIT、WorkBuddy免费首发；审核通过后再公开GitHub。SkillHub暂缓。0.1.1包含包内许可证，旧0.1.0归档保持不变；平台状态见发布记录。真人与其他环境验收保持独立待办。
+当前已授权MIT、WorkBuddy免费首发；审核通过后再公开GitHub。SkillHub暂缓。0.1.2包含包内许可证和市场目录适配，旧0.1.0及解析被拒的0.1.1归档保持不变；平台状态见发布记录。真人与其他环境验收保持独立待办。

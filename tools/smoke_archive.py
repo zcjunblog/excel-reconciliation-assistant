@@ -11,7 +11,7 @@ import sys
 import tempfile
 import zipfile
 from xml.etree import ElementTree as ET
-from distribution import ROOT,NAME,RESOURCES,snapshot,_parse_info,workbuddy_entry,digest,publish_files
+from distribution import ROOT,NAME,snapshot,_parse_info,workbuddy_entry,digest,publish_files,package_payloads,profile_path
 
 
 def _require(condition,message):
@@ -22,9 +22,9 @@ def _json(path): return json.loads(path.read_text(encoding='utf-8'))
 def _jsonl(path): return [json.loads(line) for line in path.read_text(encoding='utf-8').splitlines()]
 
 
-def _extract(archive,folder,entries):
+def _extract(archive,folder,entries,resources):
     receipts={entry['path']:entry for entry in entries}
-    _require(len(receipts)==len(entries) and set(receipts)==RESOURCES,'Archive manifest resources do not match Skill contract')
+    _require(len(receipts)==len(entries) and set(receipts)==resources,'Archive manifest resources do not match Skill contract')
     expected={NAME+'/'+name for name in receipts}
     with zipfile.ZipFile(archive) as zipped:
         members=zipped.infolist(); names=[m.filename for m in members]
@@ -142,9 +142,10 @@ def verify(release,output,python=None):
             _require(not archive.is_symlink() and archive.stat().st_size<=20*1024*1024,'Unsafe or oversized archive')
             raw=archive.read_bytes()
             _require(len(raw)==item['bytes'] and digest(raw)==item['sha256'],'Archive checksum mismatch')
-            folder=stage/item['profile']; folder.mkdir(); _extract(archive,folder,item['files'])
+            expected_payloads=package_payloads(canonical,item['profile'])
+            folder=stage/item['profile']; folder.mkdir(); _extract(archive,folder,item['files'],set(expected_payloads))
             source=folder/NAME; fields,body,_=_parse_info(canonical['SKILL.md'].decode(),canonical['VERSION'].decode())
-            for name,data in canonical.items():
+            for name,data in expected_payloads.items():
                 expected=workbuddy_entry(fields,body,version) if item['profile']=='workbuddy' and name=='SKILL.md' else data
                 _require((source/name).read_bytes()==expected,'Archive drifted from canonical Skill source')
         for item in packages:
@@ -152,7 +153,7 @@ def verify(release,output,python=None):
             doctor=_run(python,scripts/'doctor.py',['--require-xlsx'],folder,0)
             _require(doctor['skill_version']==version and doctor['capabilities']['xlsx'],'Installed package lacks required XLSX environment')
             for case in ('commerce','inventory','training','administration'):
-                rules_path=source/'references/examples'/case/'rules.json'; rules=_json(rules_path)
+                rules_path=source/profile_path('references/examples/'+case+'/rules.json',item['profile']); rules=_json(rules_path)
                 auth=[value for s in rules['sources'] for value in ('--authorize',str((rules_path.parent/s['path']).resolve()))]
                 out=folder/'cases'/(case+'-v001')
                 data=_run(python,scripts/'reconcile_tool.py',['run','--rules',rules_path,'--output',out,*auth],folder,2)
@@ -160,14 +161,15 @@ def verify(release,output,python=None):
                 delivery=_delivery(out); tasks=_oracle(out,case)
                 cases.append({'case':case,'status':data['status'],'tasks':tasks,'actual_files':len(delivery['files'])+1})
             # inspect is a distinct stage, without comparison claims or field outputs.
-            rules_path=source/'references/examples/commerce/rules.json'; inspection=folder/'inspect-v001'
-            inspected=_run(python,scripts/'reconcile_tool.py',['inspect','--rules',rules_path,'--output',inspection,'--authorize',rules_path.parent/'inputs.xlsx'],folder,0)
+            rules_path=source/profile_path('references/examples/commerce/rules.json',item['profile']); inspection=folder/'inspect-v001'
+            auth=[value for s in _json(rules_path)['sources'] for value in ('--authorize',str((rules_path.parent/s['path']).resolve()))]
+            inspected=_run(python,scripts/'reconcile_tool.py',['inspect','--rules',rules_path,'--output',inspection,*auth],folder,0)
             checked=_delivery(inspection)
             _require(inspected['status']=='ready' and checked['tasks']==[] and not (inspection/'核对结果.xlsx').exists(),'inspect claimed a comparison')
             # No optional packages: CSV still has full reports, XLSX explicitly absent.
             no_site=_run(python,scripts/'doctor.py',[],folder,0,True)
             _require(no_site['capabilities']['csv'] and not no_site['capabilities']['xlsx'],'No-site probe imported optional dependencies')
-            rules_path=source/'references/examples/inventory/rules.json'; out=folder/'csv-no-deps-v001'
+            rules_path=source/profile_path('references/examples/inventory/rules.json',item['profile']); out=folder/'csv-no-deps-v001'
             auth=[value for s in _json(rules_path)['sources'] for value in ('--authorize',str((rules_path.parent/s['path']).resolve()))]
             data=_run(python,scripts/'reconcile_tool.py',['run','--rules',rules_path,'--output',out,*auth],folder,2,True)
             delivery=_delivery(out); _oracle(out,'inventory')

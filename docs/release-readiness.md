@@ -1,6 +1,6 @@
 # 发布准备记录
 
-更新日期：2026-11-06。当前0.1.1发布候选已获用户授权：MIT、WorkBuddy免费首发、审核通过后再公开GitHub，SkillHub暂缓。**尚未提审、尚未市场发布、仓库保持私有**。0.1.0为保留的历史验收快照。
+更新日期：2026-11-06。当前0.1.2发布候选已获用户授权：MIT、WorkBuddy免费首发、审核通过后再公开GitHub，SkillHub暂缓。**尚未提审、尚未市场发布、仓库保持私有**。0.1.0为保留的历史验收快照。
 
 ## 可直接审阅的材料
 
@@ -13,7 +13,7 @@
 | 中英文上架说明 | [中文](../distribution/marketplace/description-zh.md) · [英文](../distribution/marketplace/description-en.md) |
 | 展示字段、示例与资源索引 | [listing.json](../distribution/marketplace/listing.json) |
 | 真实四行业与负差额演示 | [案例索引](../examples/README.md) · [逐文件摘要](../examples/showcase-v1/showcase-manifest.json) |
-| 通用/WorkBuddy安装包 | [0.1.1目录](../releases/0.1.1) · [SHA256SUMS](../releases/0.1.1/SHA256SUMS) |
+| 通用/WorkBuddy安装包 | [0.1.2目录](../releases/0.1.2) · [SHA256SUMS](../releases/0.1.2/SHA256SUMS) |
 | 已验证的客户端和范围 | [M5证据](../evidence/m5/README.md) |
 
 Logo尺寸是项目提供的上传候选，不是引用平台强制尺寸；当前WorkBuddy公开技能文档没有列出Logo像素/体积限制。实际提审时以页面上传控件当时的要求为准。512px候选与原图只有技术尺寸差别，未改图形。
@@ -28,14 +28,14 @@ Logo尺寸是项目提供的上传候选，不是引用平台强制尺寸；当�
 | 错误规则盲测、容量样本与办公复核 | 本机检查及最终回归通过 | [M6证据](../evidence/m6/README.md)：盲测暴露并记录草稿问题，五案例WPS查看，5000对/15000字段完整CLI样本 |
 | 真人办公用户复核 | 待完成 | 用户或办公同事下载样张，检查差额、原行定位、筛选与确认事项 |
 | 跨设备/操作系统、其余五宿主 | 未验证 | 可在声明当前验证范围后分阶段补测，不声称全平台实跑 |
-| 发布许可证 | 已选择MIT | 根目录与0.1.1双包内包含同一份[MIT许可证](../LICENSE) |
+| 发布许可证 | 已选择MIT | 根目录与0.1.2双包内包含同一份[MIT许可证](../LICENSE) |
 | 公开范围与收费 | 用户已授权 | 免费发布WorkBuddy；审核通过后公开GitHub，当前保持私有 |
 | WorkBuddy提审 | 未提交 | 已获上传/提交授权；验包完成后执行并保存回执 |
 | SkillHub | 仅核验公开规则 | 尚未登录实名、验证标识归属或上传；用户已决定暂缓 |
 
 ## 已批准的发布顺序
 
-用户已批准[MIT许可证](https://opensource.org/license/mit)、WorkBuddy免费首发、审核通过后再公开GitHub；SkillHub暂缓。已补入根目录与包内同一份MIT文件，版权为2026 zcjunblog。0.1.1仅新增许可证和更新VERSION，保留已验收0.1.0双包，不覆盖历史案例和证据。
+用户已批准[MIT许可证](https://opensource.org/license/mit)、WorkBuddy免费首发、审核通过后再公开GitHub；SkillHub暂缓。已补入根目录与包内同一份MIT文件，版权为2026 zcjunblog。0.1.1仅新增许可证和更新VERSION，实际市场解析因样例目录嵌套过深被拒；0.1.2增加WorkBuddy专用目录适配。保留0.1.0和0.1.1双包，不覆盖历史案例和证据。
 
 真人试阅、其他设备/系统与五宿主仍未完成，发布授权不替代这些证据。当前不提前公开仓库或创建公开镜像；若审核要求公开证据而与该顺序冲突，记录实际要求再处理。
 
@@ -63,3 +63,5 @@ M5已通过官方[公开教程](https://skillhub.cn/tutorials#publish-via-cli)�
 - 商贸案例的重复编号、空编号和币种问题是否容易发现。
 
 这份清单是待执行的人工验收，不由自动脚本或代理自己勾成通过。
+
+目录适配验证与提交记录见[0.1.2执行记录](../memory-bank/release-0.1.2.md)。0.1.1解析失败属于市场开包阶段，尚未进入审核。

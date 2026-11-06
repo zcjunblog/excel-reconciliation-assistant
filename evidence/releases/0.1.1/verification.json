@@ -30,7 +30,7 @@
       "sha256": "865d52aabe26fb70785e5e4543c53a8d25f194bd982deb81737956840bca3442"
     }
   ],
-  "marketplace_state": "not_submitted",
+  "marketplace_state": "parse_rejected_directory_depth",
   "repository_visibility": "private_until_workbuddy_approval",
   "skillhub": "deferred_by_author",
   "pending": [
@@ -44,5 +44,7 @@
     "tests": 10,
     "passed": true,
     "scope": "nine distribution tests and one version/license frozen-engine regression"
-  }
+  },
+  "marketplace_error": "目录层级超限 — Skill 包仅支持两级目录结构（根目录/二级目录/文件），请移除子目录嵌套",
+  "superseded_by": "0.1.2"
 }

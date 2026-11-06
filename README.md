@@ -7,8 +7,8 @@
 <p align="center"><strong>让每一处表格差异，都能定位、解释和复核。</strong></p>
 <p align="center">Excel Reconciliation Assistant<br>面向各行业与多种 Agent 客户端的表格核对 Skill</p>
 <p align="center">
-  <a href="releases/0.1.1/excel-reconciliation-assistant-0.1.1.zip">标准 Skill</a> ·
-  <a href="releases/0.1.1/excel-reconciliation-assistant-workbuddy-0.1.1.zip">WorkBuddy 安装包</a> ·
+  <a href="releases/0.1.2/excel-reconciliation-assistant-0.1.2.zip">标准 Skill</a> ·
+  <a href="releases/0.1.2/excel-reconciliation-assistant-workbuddy-0.1.2.zip">WorkBuddy 安装包</a> ·
   <a href="#工作流程">工作流程</a> ·
   <a href="#真实演示">真实演示</a> ·
   <a href="#快速开始">快速开始</a>
@@ -121,9 +121,9 @@ Agent 理解任务、整理规则并解释结果；确定性工具执行读取�
 
 ### 安装包
 
-- [标准 Skill 0.1.1](releases/0.1.1/excel-reconciliation-assistant-0.1.1.zip)
-- [WorkBuddy 0.1.1](releases/0.1.1/excel-reconciliation-assistant-workbuddy-0.1.1.zip)
-- [SHA256SUMS](releases/0.1.1/SHA256SUMS) · [逐资源清单](releases/0.1.1/manifest.json)
+- [标准 Skill 0.1.2](releases/0.1.2/excel-reconciliation-assistant-0.1.2.zip)
+- [WorkBuddy 0.1.2](releases/0.1.2/excel-reconciliation-assistant-workbuddy-0.1.2.zip)
+- [SHA256SUMS](releases/0.1.2/SHA256SUMS) · [逐资源清单](releases/0.1.2/manifest.json)
 
 无模型 API 密钥要求；能否执行取决于客户端的文件读写、Python 执行能力及其权限范围。CSV 可只用标准库完成核对与 Markdown／JSON 交付；缺少 Excel 依赖时明确说明未生成 XLSX。
 
@@ -175,6 +175,6 @@ python3 -m unittest discover -s tests -q
 - [M5 分发与客户端](evidence/m5/README.md) · [渠道说明](docs/distribution.md)
 - [M6 展示、错误规则盲测与性能样本](evidence/m6/README.md)
 
-当前发布候选为 0.1.1，采用 [MIT 许可证](LICENSE)，计划免费发布 WorkBuddy。GitHub 仓库将在 WorkBuddy 审核通过后公开；SkillHub 暂缓。尚未市场提审。发布状态以[发布准备记录](docs/release-readiness.md)为准。
+当前发布候选为 0.1.2，采用 [MIT 许可证](LICENSE)，计划免费发布 WorkBuddy。GitHub 仓库将在 WorkBuddy 审核通过后公开；SkillHub 暂缓。尚未市场提审。发布状态以[发布准备记录](docs/release-readiness.md)为准。
 
 Created by [zcjunblog](https://github.com/zcjunblog)

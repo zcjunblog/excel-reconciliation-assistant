@@ -14,7 +14,7 @@ class DistributionTests(unittest.TestCase):
     def setUp(self):
         self.temp=tempfile.TemporaryDirectory(); self.addCleanup(self.temp.cleanup); self.dir=Path(self.temp.name).resolve()
 
-    def test_two_packages_are_reproducible_and_only_frontmatter_differs(self):
+    def test_two_packages_are_reproducible_with_profile_specific_resources(self):
         builder=tool(self,'build_release'); one=self.dir/'one'; two=self.dir/'two'
         builder.build(one); builder.build(two)
         manifest=json.loads((one/'manifest.json').read_text()); self.assertEqual(manifest['version'],(SOURCE/'VERSION').read_text().strip())
@@ -30,13 +30,32 @@ class DistributionTests(unittest.TestCase):
                     self.assertEqual(hashlib.sha256(raw).hexdigest(),entry['sha256']); self.assertEqual(len(raw),entry['bytes'])
                 self.assertFalse(any('__pycache__' in n or 'expected.json' in n for n in payload))
                 data.append(payload)
-        self.assertEqual({k for k in data[0] if data[0][k]!=data[1][k]},{NAME+'/SKILL.md'})
         self.assertEqual(data[0][NAME+'/SKILL.md'],(SOURCE/'SKILL.md').read_bytes())
         front,body=data[1][NAME+'/SKILL.md'].decode().split('---\n')[1:]
         fields={k:json.loads(v.strip()) for k,v in (line.split(':',1) for line in front.splitlines())}
         self.assertEqual(fields['version'],(SOURCE/'VERSION').read_text().strip()); self.assertEqual(fields['display_name'],'Excel表格核对助手')
         self.assertEqual(len(fields['examples_zh']),len(fields['examples_en'])); self.assertGreater(len(fields['examples_zh']),0)
         self.assertEqual(body,(SOURCE/'SKILL.md').read_text().split('---\n')[2])
+
+    def test_workbuddy_market_depth_preserves_rule_semantics_and_source_bytes(self):
+        builder=tool(self,'build_release'); folder=self.dir/'market';builder.build(folder)
+        packages=json.loads((folder/'manifest.json').read_text())['packages']
+        with zipfile.ZipFile(folder/packages[0]['archive']) as standard,zipfile.ZipFile(folder/packages[1]['archive']) as buddy:
+            self.assertTrue(all(len(Path(n).parts)<=3 for n in buddy.namelist()),'Market permits only Skill root/subdirectory/file')
+            for case in ('commerce','inventory','training','administration'):
+                original=json.loads(standard.read(NAME+'/references/examples/'+case+'/rules.json'))
+                actual=json.loads(buddy.read(NAME+'/references/'+case+'-rules.json'))
+                expected=copy.deepcopy(original)
+                for source in expected['sources']:
+                    name=source['path']; source['path']=case+'-'+name
+                    self.assertEqual(buddy.read(NAME+'/references/'+case+'-'+name),standard.read(NAME+'/references/examples/'+case+'/'+name))
+                self.assertEqual(actual,expected)
+            import re,posixpath
+            for name in buddy.namelist():
+                if not name.endswith('.md'):continue
+                for href in re.findall(r'\]\(([^)]+)\)',buddy.read(name).decode()):
+                    if href.startswith(('http:','https:','#')):continue
+                    self.assertIn(posixpath.normpath(posixpath.join(posixpath.dirname(name),href)),buddy.namelist())
 
     def test_license_is_required_and_identical_in_both_archives(self):
         builder=tool(self,'build_release'); folder=self.dir/'licensed'
