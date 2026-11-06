@@ -188,3 +188,64 @@ class IntakeResult:
         if self.global_blocked or len(self.blocked_table_ids) == self.table_count:
             return 'blocked'
         return 'partial' if self.blocked_table_ids else 'ready'
+
+
+@dataclass
+class MatchedPair:
+    left: RowData
+    right: RowData
+    key: tuple[str, ...]
+
+
+@dataclass
+class AmbiguousGroup:
+    key: tuple[str, ...]
+    left: list[RowData]
+    right: list[RowData]
+
+
+@dataclass
+class AssociationResult:
+    task_id: str
+    left: TableData
+    right: TableData
+    task_rule: TaskRule
+    unique_pairs: list[MatchedPair]
+    left_only: list[RowData]
+    right_only: list[RowData]
+    duplicate_groups: list[AmbiguousGroup]
+    left_invalid: list[RowData]
+    right_invalid: list[RowData]
+    included_rows: dict[str, tuple[int, ...]]
+    selected_rows: dict[str, tuple[int, ...]]
+    excluded_rows: dict[str, dict[int, str]]
+    issues: list[Issue] = field(default_factory=list)
+
+
+@dataclass
+class FieldResult:
+    result_id: str
+    task_id: str
+    key: tuple[str, ...]
+    field_id: str
+    left: CellValue
+    right: CellValue
+    normalized_left: Any
+    normalized_right: Any
+    status: str
+    reason: str
+    delta: Optional[str] = None
+    warnings: list[str] = field(default_factory=list)
+    context: dict = field(default_factory=dict)
+
+
+@dataclass
+class TaskResult:
+    association: AssociationResult
+    field_results: list[FieldResult]
+    issues: list[Issue]
+    row_counts: dict
+    field_counts: dict
+    status: str
+    row_statuses: list[dict] = field(default_factory=list)
+    totals: list[dict] = field(default_factory=list)
