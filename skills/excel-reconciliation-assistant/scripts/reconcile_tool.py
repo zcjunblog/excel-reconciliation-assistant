@@ -13,6 +13,7 @@ from rules import load_rules
 from runner import execute
 from export import write_workbook
 from presentation import json_safe
+from delivery_guard import cleanup_interrupted
 import report
 
 
@@ -29,8 +30,8 @@ def run_job(mode,rules_path,new_dir,authorized_paths,budget=None,*,staging_dir=N
         output.parent.mkdir(parents=True,exist_ok=True)
         if staging_dir is None:
             owned=tempfile.TemporaryDirectory(prefix='.reconcile-',dir=output.parent)
-            stage=Path(owned.name)
-        else: stage=Path(staging_dir)
+            stage=Path(owned.name).resolve()
+        else: stage=Path(staging_dir).resolve()
         rules=load_rules(Path(rules_path))
         run=execute(rules,set(authorized_paths),budget,mode)
         if run_id: run.run_id=run_id
@@ -61,6 +62,8 @@ def run_job(mode,rules_path,new_dir,authorized_paths,budget=None,*,staging_dir=N
 
 def _worker(connection,mode,rules_path,output,authorized,timeout,stage,run_id):
     try:
+        # openpyxl's intermediate worksheet XML must be killed/cleaned with this stage.
+        tempfile.tempdir=stage
         result=run_job(mode,rules_path,output,authorized,Budget(max_seconds=timeout),staging_dir=stage,run_id=run_id)
         connection.send(result)
     except Exception:
@@ -68,30 +71,8 @@ def _worker(connection,mode,rules_path,output,authorized,timeout,stage,run_id):
     finally: connection.close()
 
 
-def _cleanup_interrupted(output,run_id):
-    """Remove only this run's declared files; never remove unexpected user files."""
-    if output.is_symlink() or not output.is_dir(): return
-    for name in ('.交付中.json','交付清单.json'):
-        marker=output/name
-        try:
-            if marker.is_symlink(): continue
-            data=json.loads(marker.read_text(encoding='utf-8'))
-            if data.get('run_id')!=run_id: continue
-            entries=data['files']; paths=[x if isinstance(x,str) else x['path'] for x in entries]
-            for value in paths+['交付清单.json','.交付中.json']:
-                relative=Path(value)
-                if relative.is_absolute() or '..' in relative.parts: continue
-                target=output/relative
-                if target.parent.resolve()!=output.resolve() and output.resolve() not in target.parent.resolve().parents: continue
-                if target.is_file() or target.is_symlink(): target.unlink(missing_ok=True)
-            for directory in sorted(output.rglob('*'),key=lambda p:len(p.parts),reverse=True):
-                if directory.is_dir() and not directory.is_symlink():
-                    try: directory.rmdir()
-                    except OSError: pass
-            try: output.rmdir()
-            except OSError: pass
-            return
-        except (OSError,ValueError,KeyError,TypeError): continue
+def _cleanup_interrupted(output,run_id,staging_dir=None):
+    cleanup_interrupted(output,run_id,staging_dir)
 
 
 def main(argv=None):
@@ -123,10 +104,10 @@ def main(argv=None):
                     result=_failure(Issue('execution_timeout','超过整次执行时限，未登记完整交付'))
                 if process.is_alive(): process.terminate(); process.join()
                 reader.close()
-                if result[1].get('errors',[{}]) and result[1]['errors'][0].get('code')=='execution_timeout': _cleanup_interrupted(output,run_id)
+                if result[1].get('errors',[{}]) and result[1]['errors'][0].get('code')=='execution_timeout': _cleanup_interrupted(output,run_id,stage)
         except (OSError,ValueError) as error:
             result=_failure(Issue('execution_failed','无法启动或完成隔离执行',{'error_type':type(error).__name__}))
-    print(json.dumps(result[1],ensure_ascii=False,allow_nan=False))
+    print(json.dumps(result[1],ensure_ascii=True,allow_nan=False))
     return result[0]
 
 

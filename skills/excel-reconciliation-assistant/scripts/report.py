@@ -11,6 +11,7 @@ from common import ExportRecord, IntakeError
 from checks import verify_coverage
 from intake import verify_sources_unchanged
 from presentation import STATUS, json_safe, compact, task_label, reason_label, original_value, display_text, field_label
+from delivery_guard import DeliveryGuard
 
 
 def _digest(path):
@@ -109,7 +110,8 @@ def _report_lines(run):
         yield f'有差异记录对 {result.row_counts["different_pairs"]}，不可比记录对 {result.row_counts["not_comparable_pairs"]}；两者可重叠，不能相加当总数。\n\n'
         exceptions=[f for f in result.field_results if f.status!='exact']
         if exceptions:
-            yield '主要差异与例外（最多展示20条；完整明细保留在Excel及工作资料）：\n\n'
+            location='工作资料' if any(f['path']=='核对结果.xlsx' for f in run.unavailable_formats) else 'Excel及工作资料'
+            yield '主要差异与例外（最多展示20条；完整明细保留在'+location+'）：\n\n'
             yield '| 字段 | 状态 | 基准原值 | 比较原值 | 差额 | 原位置 |\n| --- | --- | --- | --- | --- | --- |\n'
             for f in exceptions[:20]:
                 yield '| '+' | '.join(code_text(v) for v in (field_label(task,f.field_id),STATUS[f.status],original_value(f.left),original_value(f.right),f.delta,
@@ -166,6 +168,9 @@ def write_reports(run,staging_dir):
         if any(c['coverage_issues'] for c in checks): raise IntakeError('coverage_failed','报告生成后覆盖检查失败，整批交付中止',fatal=True)
         files.append(writer.json('工作资料/检查记录.json',checks))
     files.append(writer.json('工作资料/来源索引.json',_sources(run)))
+    files.append(writer.json('工作资料/读取范围.json',[
+        {'table_id':t['id'],'definition':t,'blocked':t['id'] in run.intake.blocked_table_ids,'preview':run.intake.table_previews.get(t['id'])}
+        for t in run.rules.tables]))
     files.append(writer.json('工作资料/核对规则.json',_safe_rules(run)))
     files.append(writer.json('工作资料/执行摘要.json',{'mode':run.mode,'status':run.status,'tasks':run.task_statuses,'issues':run.issues,'unavailable_formats':run.unavailable_formats,'run_id':run.run_id}))
     return files
@@ -173,7 +178,7 @@ def write_reports(run,staging_dir):
 
 def _validated_files(files):
     if not files: raise IntakeError('missing_artifacts','没有可登记的交付文件')
-    roots={record.path.parent if record.path.parent.name!='工作资料' else record.path.parent.parent for record in files}
+    roots={(record.path.parent if record.path.parent.name!='工作资料' else record.path.parent.parent).resolve() for record in files}
     if len(roots)!=1: raise IntakeError('invalid_artifacts','交付文件不在同一个暂存目录')
     root=next(iter(roots)).resolve(); inventory=[]; names=set()
     for record in files:
@@ -197,32 +202,28 @@ def finalize_delivery(run,files,new_dir):
     if run.mode=='run' and run.task_results and not any(f['kind']=='xlsx' for f in inventory) and not run.unavailable_formats:
         raise IntakeError('missing_artifacts','缺少Excel结果且未登记未生成原因')
     run.budget.enforce('max_artifact_bytes',sum(f['bytes'] for f in inventory))
-    run.budget.check(); destination.mkdir()
-    marker=destination/'.交付中.json'; created=[]
+    run.budget.check(); guard=DeliveryGuard(destination,root,run.run_id); destination=guard.root
     try:
-        with marker.open('x',encoding='utf-8') as stream:
-            created.append(marker); stream.write(json.dumps({'run_id':run.run_id,'files':[f['path'] for f in inventory]}))
+        with guard.open('.交付中.json') as stream:
+            stream.write(json.dumps({'run_id':run.run_id,'files':[f['path'] for f in inventory]}).encode('utf-8'))
         for entry in inventory:
-            run.budget.check(); source=root/entry['path']; target=destination/entry['path']; target.parent.mkdir(parents=True,exist_ok=True)
-            with source.open('rb') as src,target.open('xb') as dst:
-                created.append(target); shutil.copyfileobj(src,dst)
+            run.budget.check(); source=root/entry['path']; target=destination/entry['path']
+            with source.open('rb') as src,guard.open(entry['path']) as dst:
+                shutil.copyfileobj(src,dst)
+            guard.validate(entry['path'])
             if _digest(target)!=entry['sha256']: raise IntakeError('delivery_readback','交付副本摘要与暂存记录不一致')
         run.budget.check()
         if not verify_sources_unchanged(run.intake,run.rules,run.budget):
             raise IntakeError('source_changed','来源在交付复制期间发生变化，未发布交付清单',fatal=True)
+        for entry in inventory:
+            run.budget.check(); guard.validate(entry['path'])
+            if _digest(destination/entry['path'])!=entry['sha256']: raise IntakeError('artifact_changed','交付复制后文件被修改')
         manifest={'schema_version':'1.0','run_id':run.run_id,'mode':run.mode,'status':run.status,'tasks':run.task_statuses,'files':inventory,'unavailable_formats':run.unavailable_formats,
                   'scope':'来源与规则预检；未执行核对' if run.mode=='inspect' else '指定任务、字段与范围；状态不代表业务一致'}
         raw=json.dumps(manifest,ensure_ascii=False,indent=2,allow_nan=False).encode('utf-8')+b'\n'
         run.budget.enforce('max_artifact_bytes',sum(f['bytes'] for f in inventory)+len(raw))
-        with (destination/'交付清单.json').open('xb') as stream:
-            created.append(destination/'交付清单.json'); stream.write(raw)
-        run.budget.check(); marker.unlink(); return destination
-    except Exception:
-        for p in reversed(created): p.unlink(missing_ok=True)
-        for p in sorted(destination.rglob('*'),key=lambda p:len(p.parts),reverse=True):
-            if p.is_dir() and not p.is_symlink():
-                try: p.rmdir()
-                except OSError: pass
-        try: destination.rmdir()
-        except OSError: pass
+        with guard.open('交付清单.json') as stream: stream.write(raw)
+        run.budget.check(); guard.unlink('.交付中.json'); return destination
+    except BaseException:
+        guard.cleanup()
         raise

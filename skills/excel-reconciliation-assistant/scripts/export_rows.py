@@ -4,6 +4,7 @@ from pathlib import Path
 from common import IntakeError
 from checks import verify_coverage
 from presentation import STATUS, ExactNumber, original_value, display_text, compact, task_label, field_label, context_label, reason_label
+from presentation import json_safe
 
 
 @dataclass
@@ -24,6 +25,26 @@ def row_summary(row,table):
     return compact({table.header.get(col,col):display_text(original_value(c)) for col,c in row.cells.items()})
 
 
+def remaining_issues(results,issues):
+    represented={(i.code,compact(i.source_ref)) for result in results for i in result.association.issues}
+    return [i for i in issues if (i.code,compact(i.source_ref)) not in represented]
+
+
+def view_sizes(results,rules,issues=()):
+    """Count views without allocating repeated keys, original values or detail rows."""
+    counts={'字段与规则':[sum(len(t['fields']) for t in rules.tasks),14],
+            '来源与范围':[len(rules.tables),13],'差异明细':[0,21],'仅基准侧':[0,7],'仅比较侧':[0,7],
+            '待确认记录':[len(remaining_issues(results,issues)),11],'匹配索引':[0,13],'数值汇总':[0,9]}
+    for result in results:
+        a=result.association
+        counts['差异明细'][0]+=sum(f.status!='exact' for f in result.field_results)
+        counts['待确认记录'][0]+=sum(f.status=='not_comparable' or bool(f.warnings) for f in result.field_results)
+        counts['待确认记录'][0]+=len(a.left_invalid)+len(a.right_invalid)+sum(len(g.left)+len(g.right) for g in a.duplicate_groups)
+        counts['仅基准侧'][0]+=len(a.left_only); counts['仅比较侧'][0]+=len(a.right_only)
+        counts['匹配索引'][0]+=len(a.unique_pairs); counts['数值汇总'][0]+=len(result.totals)
+    return [values for values in counts.values() if values[0]]
+
+
 def build_views(results,rules,issues=()):
     declared={t['id']:t for t in rules.tasks}; found={}; tables={}
     for result in results:
@@ -36,22 +57,34 @@ def build_views(results,rules,issues=()):
     for result in results:
         a=result.association; task=a.task_rule; label=task_label(task,rules)
         fields={f['id']:f for f in task['fields']}
+        key_labels={}; context_labels={}
+        def formatted_key(key):
+            if key not in key_labels: key_labels[key]=key_label(task,key)
+            return key_labels[key]
+        def formatted_context(context):
+            key=tuple((name,pair.get('left'),pair.get('right')) for name,pair in context.items())
+            if key not in context_labels: context_labels[key]=context_label(context)
+            return context_labels[key]
+        invalid_reasons={}
+        for issue in a.issues:
+            ref=json_safe(issue.source_ref)
+            if isinstance(ref,dict): invalid_reasons.setdefault((ref.get('table_id'),ref.get('row')),[]).append((reason_label(issue.code),ref.get('column','')))
         for f in result.field_results:
             if f.status!='exact':
                 numeric=fields[f.field_id]['type']=='decimal'
                 checked=lambda v:ExactNumber(v) if numeric and v is not None else v
-                differences.append([label,STATUS[f.status],key_label(task,f.key),field_label(task,f.field_id),original_value(f.left),original_value(f.right),ExactNumber(f.delta) if f.delta is not None else None,
-                    context_label(f.context),reason_label(f.reason),f.left.ref.source_id,f.left.ref.sheet or 'CSV记录',f.left.ref.row,f.left.ref.column,
+                differences.append([label,STATUS[f.status],formatted_key(f.key),field_label(task,f.field_id),original_value(f.left),original_value(f.right),ExactNumber(f.delta) if f.delta is not None else None,
+                    formatted_context(f.context),reason_label(f.reason),f.left.ref.source_id,f.left.ref.sheet or 'CSV记录',f.left.ref.row,f.left.ref.column,
                     f.right.ref.source_id,f.right.ref.sheet or 'CSV记录',f.right.ref.row,f.right.ref.column,f.result_id,checked(f.normalized_left),checked(f.normalized_right),
                     '；'.join(reason_label(w) for w in f.warnings)])
             if f.status=='not_comparable' or f.warnings:
-                pending.append([label,'两侧','字段待确认',key_label(task,f.key),f.left.ref.source_id+' / '+f.right.ref.source_id,
+                pending.append([label,'两侧','字段待确认',formatted_key(f.key),f.left.ref.source_id+' / '+f.right.ref.source_id,
                     (f.left.ref.sheet or 'CSV')+' / '+(f.right.ref.sheet or 'CSV'),f'{f.left.ref.row} / {f.right.ref.row}',f.left.ref.column+' / '+f.right.ref.column,
                     f.result_id,'；'.join([reason_label(f.reason)]+[reason_label(w) for w in f.warnings]),field_label(task,f.field_id)])
         row_states={(r['left_row'],r['right_row']):r for r in result.row_statuses}
         for pair in a.unique_pairs:
             state=row_states[(pair.left.row,pair.right.row)]; lc=next(iter(pair.left.cells.values())).ref; rc=next(iter(pair.right.cells.values())).ref
-            matched.append([label,key_label(task,pair.key),lc.source_id,lc.sheet or 'CSV记录',pair.left.row,rc.source_id,rc.sheet or 'CSV记录',pair.right.row,
+            matched.append([label,formatted_key(pair.key),lc.source_id,lc.sheet or 'CSV记录',pair.left.row,rc.source_id,rc.sheet or 'CSV记录',pair.right.row,
                 state['field_counts']['exact'],state['field_counts']['within_rule'],state['field_counts']['different'],state['field_counts']['not_comparable'],STATUS[state['status']]])
         for side,table in (('left',a.left),('right',a.right)):
             for row in getattr(a,side+'_only'):
@@ -60,18 +93,19 @@ def build_views(results,rules,issues=()):
                 only[side].append([label,'仅基准侧' if side=='left' else '仅比较侧',key,ref.source_id,ref.sheet or 'CSV记录',row.row,row_summary(row,table)])
             for row in getattr(a,side+'_invalid'):
                 ref=next(iter(row.cells.values())).ref
-                reasons=[reason_label(i.code) for i in a.issues if getattr(i.source_ref,'row',None)==row.row and getattr(i.source_ref,'table_id',None)==table.id]
-                pending.append([label,'基准' if side=='left' else '比较','无效业务键','',ref.source_id,ref.sheet or 'CSV记录',row.row,'','','；'.join(reasons),row_summary(row,table)])
+                reasons=invalid_reasons.get((table.id,row.row),[])
+                pending.append([label,'基准' if side=='left' else '比较','无效业务键','',ref.source_id,ref.sheet or 'CSV记录',row.row,' / '.join(sorted({col for _,col in reasons if col})),'','；'.join(reason for reason,_ in reasons),row_summary(row,table)])
             for group in a.duplicate_groups:
                 for row in getattr(group,side):
                     ref=next(iter(row.cells.values())).ref
-                    pending.append([label,'基准' if side=='left' else '比较','重复键歧义',key_label(task,group.key),ref.source_id,ref.sheet or 'CSV记录',row.row,'','',
+                    pending.append([label,'基准' if side=='left' else '比较','重复键歧义',formatted_key(group.key),ref.source_id,ref.sheet or 'CSV记录',row.row,'','',
                         f'基准{len(group.left)}条 / 比较{len(group.right)}条；未任意配对',row_summary(row,table)])
         for t in result.totals:
             totals.append([label,field_label(task,t['field_id']),context_label(t['context']),'同口径' if t['comparable_context'] else '口径不一致',t['included_pairs'],t['excluded_pairs'],
                 ExactNumber(t['left_total']) if t['left_total'] is not None else None,ExactNumber(t['right_total']) if t['right_total'] is not None else None,ExactNumber(t['delta_sum']) if t['delta_sum'] is not None else None])
-    for issue in issues:
-        ref=issue.source_ref if isinstance(issue.source_ref,dict) else {}
+    for issue in remaining_issues(results,issues):
+        ref=json_safe(issue.source_ref)
+        if not isinstance(ref,dict): ref={}
         pending.append(['运行预检','来源','结构或执行问题','',ref.get('source_id',''),ref.get('sheet',''),ref.get('row',''),ref.get('column',''),'',issue.message,compact(ref)])
     mappings=[]
     definitions={t['id']:t for t in rules.tables}; sources={s['id']:s for s in rules.sources}

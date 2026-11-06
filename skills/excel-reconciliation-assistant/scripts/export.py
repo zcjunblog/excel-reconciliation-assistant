@@ -8,7 +8,7 @@ import re
 import tempfile
 import unicodedata
 from common import ExportRecord, IntakeError
-from export_rows import SheetData, build_views, overview_rows
+from export_rows import SheetData, build_views, overview_rows, view_sizes
 from presentation import ExactNumber
 
 ILLEGAL_XML=re.compile(r'[\x00-\x08\x0b\x0c\x0e-\x1f]')
@@ -131,6 +131,10 @@ def _style_overview(ws,rows,navigation,style,budget):
             c=ws.cell(row,1); name=navigation[row]
             c.hyperlink=Hyperlink(ref=c.coordinate,location="'"+name.replace("'","''")+"'!A1",display=name)
             c.font=Font(name=style['font'],size=11,color=style['accent'],underline='single')
+            ws.cell(row,2).alignment=Alignment(horizontal='center',vertical='center')
+        elif values[0] and isinstance(values[1],int):
+            for c in ws[row]: c.alignment=Alignment(horizontal='center' if isinstance(c.value,int) else 'left',vertical='center',wrap_text=True)
+            ws.row_dimensions[row].height=34
     ws['A2'].font=Font(name=style['font'],size=style['title_size'],bold=True,color=style['blue']); ws.row_dimensions[2].height=35
     ws['A3'].font=Font(name=style['font'],size=10,color=style['muted'])
     ws['B5'].font=Font(name=style['font'],size=11,bold=True,color=style['accent'])
@@ -168,6 +172,13 @@ def write_workbook(results,rules,staging_dir,budget,task_statuses=None,issues=()
     except ImportError as e: raise IntakeError('missing_dependency','Excel输出需要openpyxl>=3.1,<4；未生成工作簿') from e
     directory=Path(staging_dir); final=directory/'核对结果.xlsx'
     if final.exists() or final.is_symlink(): raise IntakeError('output_exists','工作簿已存在，拒绝覆盖')
+    if not 1<=budget.max_sheet_rows<=1048575: raise IntakeError('invalid_output_budget','单片行数预算无效')
+    sizes=view_sizes(results,rules,issues)
+    pieces=sum(math.ceil(rows/budget.max_sheet_rows) for rows,width in sizes)
+    _limit(budget,'max_output_rows',sum(rows for rows,width in sizes))
+    _limit(budget,'max_output_sheets',pieces)
+    cells=sum((rows+math.ceil(rows/budget.max_sheet_rows))*width for rows,width in sizes)
+    _limit(budget,'max_output_cells',cells+(26+3*len(rules.tasks)+pieces)*11)
     views,found=build_views(results,rules,issues); shards=_shards(views,budget)
     partial=len(found)!=len(rules.tasks) or any(s.get('status')=='blocked' for s in (task_statuses or []))
     status='partial' if partial else 'needs_confirmation' if any(r.status=='needs_confirmation' for r in results) else 'complete'

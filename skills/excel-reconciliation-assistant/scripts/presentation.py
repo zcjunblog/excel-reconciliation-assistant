@@ -74,7 +74,7 @@ def task_label(task,rules):
     for side in ('left','right'):
         t=tables.get(task[side+'_table'])
         labels.append((t.get('sheet') or Path(sources[t['source_id']]['path']).stem) if t else task[side+'_table'])
-    return ' 与 '.join(labels)
+    return ' 与 '.join(labels)+' ['+task['id']+']'
 
 
 def field_label(task,fid):
