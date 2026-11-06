@@ -7,6 +7,7 @@ import os
 from pathlib import Path, PurePosixPath
 import stat
 import zipfile
+import zlib
 from common import Budget, IntakeError, SourceSnapshot
 
 
@@ -79,5 +80,5 @@ def inspect_zip(data: bytes, budget: Budget) -> dict:
             return {'zip_members':len(entries),'expanded_bytes':actual}
     except IntakeError:
         raise
-    except (zipfile.BadZipFile, OSError, ValueError, RuntimeError, NotImplementedError) as e:
+    except (zipfile.BadZipFile, OSError, ValueError, RuntimeError, NotImplementedError, zlib.error) as e:
         raise IntakeError('invalid_zip','工作簿压缩结构损坏或不受支持') from e

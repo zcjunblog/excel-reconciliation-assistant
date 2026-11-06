@@ -181,6 +181,7 @@ class IntakeResult:
     global_blocked: bool = False
     rules_fingerprint: str = ''
     table_count: int = 0
+    registered_table_ids: set[str] = field(default_factory=set)
 
     @property
     def status(self):

@@ -1,6 +1,6 @@
 # 核对规则协议 v1
 
-状态：M1规格冻结，尚未实现生产读取器与核对引擎。机器结构见[JSON Schema](../schemas/reconciliation-rules.schema.json)，合成实例见[案例目录](../examples/README.md)。规则文件为UTF-8 JSON，`schema_version`固定为`1.0`，未知字段拒绝；升级协议必须显式迁移。
+状态：M1规格冻结；M2已实现规则预检与来源读取，关联/比较/导出尚未实现。机器结构见[JSON Schema](../schemas/reconciliation-rules.schema.json)，合成实例见[案例目录](../examples/README.md)。规则文件为UTF-8 JSON，`schema_version`固定为`1.0`，未知字段拒绝；升级协议必须显式迁移。M2实际读取边界见[接口说明](intake.md)。
 
 ## 输入和实施顺序
 

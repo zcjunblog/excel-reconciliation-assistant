@@ -4,6 +4,8 @@ import json
 from pathlib import Path
 import sys
 import zipfile
+from xml.sax.saxutils import escape
+from xml.etree import ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPTS = ROOT / 'skills/excel-reconciliation-assistant/scripts'
@@ -59,3 +61,44 @@ def workbook_case(directory, changes=None):
 
 def authorize(rules):
     return {(rules.path.parent / s['path']).resolve() for s in rules.sources}
+
+
+def sheet_xml(rows, extra='', dimension='A1:F9'):
+    body=[]
+    for row_number, cells in rows:
+        parts=[]
+        for column, value in cells.items():
+            ref=f'{column}{row_number}'
+            if isinstance(value,str):
+                parts.append(f'<c r="{ref}" t="inlineStr"><is><t xml:space="preserve">{escape(value)}</t></is></c>')
+            elif value is not None:
+                parts.append(f'<c r="{ref}"><v>{value}</v></c>')
+        body.append(f'<row r="{row_number}">'+''.join(parts)+'</row>')
+    return ('<?xml version="1.0"?><worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">'
+            f'<dimension ref="{dimension}"/><sheetData>'+''.join(body)+'</sheetData>'+extra+'</worksheet>').encode()
+
+
+def update_sheet(data, *, merge=None, dimension=None, far_row=None):
+    ns='{http://schemas.openxmlformats.org/spreadsheetml/2006/main}'
+    root=ET.fromstring(data)
+    if merge:
+        merges=ET.SubElement(root,ns+'mergeCells',{'count':'1'})
+        ET.SubElement(merges,ns+'mergeCell',{'ref':merge})
+    if dimension:
+        element=root.find(ns+'dimension')
+        if element is None: element=ET.SubElement(root,ns+'dimension')
+        element.set('ref',dimension)
+    if far_row:
+        rows=root.find(ns+'sheetData')
+        row=ET.SubElement(rows,ns+'row',{'r':str(far_row)})
+        cell=ET.SubElement(row,ns+'c',{'r':'A'+str(far_row)})
+        ET.SubElement(cell,ns+'v').text='1'
+    return ET.tostring(root,encoding='utf-8')
+
+
+def workbook_epoch(data, epoch):
+    ns='{http://schemas.openxmlformats.org/spreadsheetml/2006/main}'
+    root=ET.fromstring(data); element=root.find(ns+'workbookPr')
+    if element is None: element=ET.SubElement(root,ns+'workbookPr')
+    element.set('date1904',epoch)
+    return ET.tostring(root,encoding='utf-8')

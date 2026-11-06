@@ -1,6 +1,6 @@
 # Excel表格核对助手 M2–M4 Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking. 用户本轮仅授权M1；本计划尚未开始执行。
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking. 用户已授权M2，M2.1/M2.2完成；M3–M4尚未开始。
 
 **Goal:** 在不改写来源文件的前提下，按v1规则完成XLSX/CSV核对，生成可追溯、可筛选的实际文件。
 
@@ -32,7 +32,7 @@
 
 ## 模块与接口
 
-以下路径以`skills/excel-reconciliation-assistant/scripts/`为基准，M1不创建占位实现。测试从该目录导入模块；CLI同目录运行，相对资源路径从`__file__`解析。
+以下路径以`skills/excel-reconciliation-assistant/scripts/`为基准，M2已实现公共协议、规则和来源读取。intake内部拆分source_guard、csv_reader、xlsx_reader、table_data，公开接口保持不变。测试从该目录导入模块；未来CLI同目录运行，相对资源路径从`__file__`解析。
 
 | 文件 | 职责与公开接口 |
 | --- | --- |
@@ -58,21 +58,21 @@
 
 Files: 新建common.py、rules.py、intake.py；测试tests/test_rules.py、tests/test_source_limits.py。
 
-- [ ] 写失败测试`test_unknown_field_and_negative_tolerance_rejected`：未知选项、identifier容差、日期缺格式、同表两侧、重复ID、无效键引用均返回定位到JSON路径的问题。
-- [ ] 运行`python3 -m unittest discover -s tests -p 'test_rules.py' -v`，确认因缺实现失败；只创建上述公共类型和规则校验，重跑全绿。
-- [ ] 写失败测试`test_source_not_authorized_and_changed_hash_blocked`、`test_zip_budget_and_duplicate_members`：未授权真实路径、符号链接越界、ZIP重复名、加密/宏/外部工作簿链接、超20MiB/100MiB/50MiB成员/10,000成员均blocked，来源文件哈希不变。
-- [ ] 运行对应测试确认失败；实现来源预检和流式实际字节计数，不能只检查中央目录声明值；同物理文件重复登记拒绝。
-- [ ] 运行`python3 -m unittest discover -s tests -p 'test_*limits.py' -v`及rules测试，全绿后提交`feat: validate reconciliation rules and source budgets`。
+- [x] 写失败测试`test_unknown_field_and_negative_tolerance_rejected`：未知选项、identifier容差、日期缺格式、同表两侧、重复ID、无效键引用均返回定位到JSON路径的问题。
+- [x] 运行`python3 -m unittest discover -s tests -p 'test_rules.py' -v`，确认因缺实现失败；只创建上述公共类型和规则校验，重跑全绿。
+- [x] 写失败测试`test_source_not_authorized_and_changed_hash_blocked`、`test_zip_budget_and_duplicate_members`：未授权真实路径、符号链接越界、ZIP重复名、加密/宏/外部工作簿链接、超20MiB/100MiB/50MiB成员/10,000成员均blocked，来源文件哈希不变。
+- [x] 运行对应测试确认失败；实现来源预检和流式实际字节计数，不能只检查中央目录声明值；同物理文件重复登记拒绝。
+- [x] 运行`python3 -m unittest discover -s tests -p 'test_*limits.py' -v`及rules测试，全绿后提交`feat: validate reconciliation rules and source budgets`。
 
 ## M2.2 表格读取与原位置
 
 Files: 完成intake.py；测试tests/test_intake.py；新增仅测试用畸形文件构建器tests/fixture_helpers.py。
 
-- [ ] 写失败测试`test_four_case_headers_and_source_coordinates`：原样读取四组案例；商贸订单selected8/included7/excluded9，隐藏4行仍含；CSV前导零、空串与物理行范围保留；行政6处公式/缓存与expected原值一致。
-- [ ] 写失败测试`test_missing_sheet_header_merge_and_bad_csv_block_table`：缺表/缺列/重名表头/表头或数据合并、乱码、宽度不齐、空表/全排除均不能返回可核对空表。UTF8/BOM与显式GB18030各有正确读取例。
-- [ ] 写失败测试`test_small_range_cannot_bypass_scan_budget`、`test_fake_dimension_is_not_allocated`：XFD/百万空行声明不引发矩形分配，远端实际内容、过大共享字符串、超长CSV逻辑记录触发限制。
-- [ ] 逐个运行确认失败；实现只读双视图读取、XLSX源XML数值词法提取和1900/1904日期元数据、实际扫描计数与范围分离；不打开写入来源。
-- [ ] 运行`python3 -m unittest discover -s tests -p 'test_intake.py' -v`与M2.1测试；对所有来源前后SHA相等，形成evidence/m2记录并提交`feat: read scoped XLSX and CSV with provenance`。
+- [x] 写失败测试`test_four_case_headers_and_source_coordinates`：原样读取四组案例；商贸订单selected8/included7/excluded9，隐藏4行仍含；CSV前导零、空串与物理行范围保留；行政6处公式/缓存与expected原值一致。
+- [x] 写失败测试`test_missing_sheet_header_merge_and_bad_csv_block_table`：缺表/缺列/重名表头/表头或数据合并、乱码、宽度不齐、空表/全排除均不能返回可核对空表。UTF8/BOM与显式GB18030各有正确读取例。
+- [x] 写失败测试`test_small_range_cannot_bypass_scan_budget`、`test_fake_dimension_is_not_allocated`：XFD/百万空行声明不引发矩形分配，远端实际内容、过大共享字符串、超长CSV逻辑记录触发限制。
+- [x] 逐个运行确认失败；实现只读双视图读取、XLSX源XML数值词法提取和1900/1904日期元数据、实际扫描计数与范围分离；不打开写入来源。
+- [x] 运行`python3 -m unittest discover -s tests -p 'test_intake.py' -v`与M2.1测试；对所有来源前后SHA相等，形成evidence/m2记录并提交`feat: read scoped XLSX and CSV with provenance`。
 
 ## M3.1 精确关联与歧义隔离
 
@@ -117,4 +117,4 @@ Files: report.py、reconcile_tool.py；测试tests/test_cli.py、tests/test_deli
 
 已核对：规则字段与Schema一致；接口生产者/消费者使用同名类型；四个行业人工oracle不由生产工具重写；五类Review Focus分别落到失败测试；容量未通过部分不能宣称已验证。CLI、Skill流程、安装目录/构建器/Logo/正式README与客户端行为验证属于M5–M6，届时按当前官方文档另写计划，本计划不预先宣称全客户端可用。
 
-每阶段完成后更新todo/design与GitHub，并告诉用户“已完成什么、当前进度、下一步做什么”。本轮收尾只提交M1规格与测试材料，下一步为M2.1。
+每阶段完成后更新todo/design与GitHub，并告诉用户“已完成什么、当前进度、下一步做什么”。M2收尾证据与决策记录在evidence/m2及memory-bank/m2-progress.md，下一步为M3.1；M3–M4不能提前打勾。

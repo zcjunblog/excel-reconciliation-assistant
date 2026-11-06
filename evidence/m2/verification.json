@@ -1,0 +1,132 @@
+{
+  "stage": "M2",
+  "passed": true,
+  "python": "3.12.14",
+  "openpyxl": "3.1.5",
+  "os": "Darwin",
+  "unit_tests": 41,
+  "failures": 0,
+  "errors": 0,
+  "cases": {
+    "commerce": {
+      "status": "ready",
+      "source_hashes_unchanged": true,
+      "tables": {
+        "orders": {
+          "selected": 8,
+          "included": 7,
+          "excluded": 1,
+          "date_system": "1900"
+        },
+        "delivery": {
+          "selected": 7,
+          "included": 7,
+          "excluded": 0,
+          "date_system": "1900"
+        }
+      }
+    },
+    "inventory": {
+      "status": "ready",
+      "source_hashes_unchanged": true,
+      "tables": {
+        "ledger": {
+          "selected": 5,
+          "included": 5,
+          "excluded": 0,
+          "date_system": null
+        },
+        "count": {
+          "selected": 5,
+          "included": 5,
+          "excluded": 0,
+          "date_system": null
+        }
+      }
+    },
+    "training": {
+      "status": "ready",
+      "source_hashes_unchanged": true,
+      "tables": {
+        "registration": {
+          "selected": 5,
+          "included": 5,
+          "excluded": 0,
+          "date_system": null
+        },
+        "attendance": {
+          "selected": 5,
+          "included": 5,
+          "excluded": 0,
+          "date_system": null
+        }
+      }
+    },
+    "administration": {
+      "status": "ready",
+      "source_hashes_unchanged": true,
+      "tables": {
+        "baseline": {
+          "selected": 3,
+          "included": 3,
+          "excluded": 0,
+          "date_system": "1900"
+        },
+        "handover": {
+          "selected": 3,
+          "included": 3,
+          "excluded": 0,
+          "date_system": "1900"
+        },
+        "revision": {
+          "selected": 3,
+          "included": 3,
+          "excluded": 0,
+          "date_system": "1900"
+        }
+      }
+    }
+  },
+  "m1_manifest_unchanged": true,
+  "reader_probe": {
+    "status": "ready",
+    "source_hashes_unchanged": true,
+    "tables": {
+      "left": {
+        "selected": 50000,
+        "included": 50000,
+        "excluded": 0,
+        "date_system": null
+      },
+      "right": {
+        "selected": 50000,
+        "included": 50000,
+        "excluded": 0,
+        "date_system": null
+      }
+    },
+    "read_seconds": 0.7892,
+    "scope": "两份50,000行x2列CSV的生产读取器；未执行关联/比较/导出"
+  },
+  "elapsed_seconds": 1.0399,
+  "process_peak_rss_mib": 204.28,
+  "code_sha256": {
+    "skills/excel-reconciliation-assistant/scripts/common.py": "ad8fef6a7d96c544af1dc2556dbca276891739ffac47e621c0473c6c06aa82d1",
+    "skills/excel-reconciliation-assistant/scripts/csv_reader.py": "ecf0c4199cb3989d109549bd555cfb038c931224c897b8a070b8ea33fc3bb2d8",
+    "skills/excel-reconciliation-assistant/scripts/intake.py": "c3958d53ef37f78991ebfd30ad45a7f3be7396e62ffbc53cf605f2f20caac3ae",
+    "skills/excel-reconciliation-assistant/scripts/rules.py": "c8105bd876196f32addcd6cf11805ffe96c0c040690f8c18a3953ac61df5acf4",
+    "skills/excel-reconciliation-assistant/scripts/source_guard.py": "c5342069979ef1510f55f52a364ff78e94f5b48dd9e44b638f26d7e274ef5e71",
+    "skills/excel-reconciliation-assistant/scripts/table_data.py": "76bdebf49bc3d32aef8a4083fec40544bb0fdca999b274c464a12a4288f3582d",
+    "skills/excel-reconciliation-assistant/scripts/xlsx_reader.py": "4104ef246495c47ef6da0eb475f440d06b198547dfce2b966c40c24f70cc3520",
+    "tests/fixture_helpers.py": "40824ee44e63647708f89caa07c80896e8c58d1d439635add94807e8462f4f42",
+    "tests/test_intake.py": "88a0bcb59f7a4c42e8c4731a5b86b20f5c1341040acdb58a852e9d0e4a0bb613",
+    "tests/test_rules.py": "3c2c4b8ef608cbac7771357082a62e9e313091019dae77585cec0e1a776fdce3",
+    "tests/test_source_limits.py": "3c34953a08531fb37c338df64ada7d28aec5552f26b5156e437e0cce5de1d0db"
+  },
+  "not_verified": [
+    "M3关联与比较",
+    "M4结果导出与办公软件UI",
+    "最大宽表和全链路容量",
+    "Agent客户端调用与分发"
+  ]
+}

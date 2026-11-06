@@ -1,0 +1,2 @@
+# CSV读取与规则预检仅需Python标准库；XLSX读取需要此项。
+openpyxl>=3.1,<4

@@ -77,5 +77,9 @@ class RuleTests(unittest.TestCase):
         d['sources'][0]['path']='changed'
         self.assertEqual(r.sources[0]['path'],'inputs.xlsx')
 
+    def test_non_text_codec_rejected(self):
+        d=sample('inventory'); d['sources'][0]['encoding']='base64_codec'
+        self.assertTrue(validate_rules(RuleSet.from_dict(d,ROOT/'rules.json')))
+
 
 if __name__=='__main__': unittest.main()

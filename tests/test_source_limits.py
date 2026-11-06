@@ -122,5 +122,23 @@ class SourceTests(unittest.TestCase):
             _,intake=self.inspect(p,budget)
             self.assertTrue(intake.global_blocked)
 
+    def test_corrupt_deflate_stream_becomes_source_issue(self):
+        p=workbook_case(self.dir)
+        raw=bytearray((self.dir/'inputs.xlsx').read_bytes())
+        name_len=int.from_bytes(raw[26:28],'little'); extra_len=int.from_bytes(raw[28:30],'little')
+        offset=30+name_len+extra_len
+        raw[offset]=(raw[offset]&~6)|6
+        (self.dir/'inputs.xlsx').write_bytes(raw)
+        _,intake=self.inspect(p)
+        self.assertIn('invalid_zip',self.codes(intake)); self.assertFalse(intake.global_blocked)
+        d=load_rules(p).payload
+        (self.dir/'healthy.csv').write_text('id,value\na,1\nb,2\n')
+        d['sources'].append({'id':'healthy','path':'healthy.csv','format':'csv'})
+        d['tables'].append({'id':'healthy','source_id':'healthy','sheet':None,'header_row':1,'data_range':'A2:B3','exclusions':[]})
+        write_rules(self.dir,d); rules,intake=self.inspect(p)
+        from intake import read_tables
+        self.assertEqual(set(read_tables(intake,rules,Budget())),{'healthy'})
+        self.assertEqual(intake.status,'partial')
+
 
 if __name__=='__main__': unittest.main()

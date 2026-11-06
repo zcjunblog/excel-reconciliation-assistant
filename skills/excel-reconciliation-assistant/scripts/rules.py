@@ -38,7 +38,10 @@ def validate_rules(rules: RuleSet) -> list[Issue]:
     def ident(value, path): return text(value, path, ID)
 
     def col(value, path):
-        return text(value,path,COL) and (column_number(value)<=16384 or not error(path,'列超过XFD'))
+        if not text(value,path,COL): return False
+        if column_number(value)>16384:
+            error(path,'列超过XFD'); return False
+        return True
 
     data = rules.payload
     if not obj(data,'$',('schema_version','sources','tables','tasks'),('schema_version','sources','tables','tasks')):
@@ -60,8 +63,10 @@ def validate_rules(rules: RuleSet) -> list[Issue]:
         if fmt not in ('xlsx','csv'): error(p+'.format','仅支持xlsx与csv')
         if 'encoding' in source:
             if text(source['encoding'],p+'.encoding'):
-                try: codecs.lookup(source['encoding'])
-                except LookupError: error(p+'.encoding','未知字符编码')
+                try:
+                    codecs.lookup(source['encoding'])
+                    'A'.encode(source['encoding'])
+                except (LookupError,UnicodeError,TypeError): error(p+'.encoding','未知或非文本字符编码')
             if fmt!='csv': error(p+'.encoding','encoding仅适用于CSV')
     for i, table in enumerate(array(data.get('tables'),'$.tables',2,5)):
         p=f'$.tables[{i}]'
