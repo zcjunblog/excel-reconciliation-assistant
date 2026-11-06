@@ -46,7 +46,7 @@ def run_job(mode,rules_path,new_dir,authorized_paths,budget=None,*,staging_dir=N
         files+=report.write_reports(run,stage)
         report.finalize_delivery(run,files,output)
         code=0 if run.status in ('complete','ready') else 1 if run.status=='blocked' else 2
-        return code,{'status':run.status,'mode':mode,'output':str(output),'run_id':run.run_id,
+        return code,{'skill_version':run.skill_version,'status':run.status,'mode':mode,'output':str(output),'run_id':run.run_id,
                      'tasks':run.task_statuses,'different_fields':sum(r.field_counts['different'] for r in run.task_results),
                      'not_comparable_fields':sum(r.field_counts['not_comparable'] for r in run.task_results),
                      'errors':json_safe(run.issues[:20]),'issue_count':len(run.issues),

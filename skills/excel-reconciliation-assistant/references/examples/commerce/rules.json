@@ -1,0 +1,100 @@
+{
+  "schema_version": "1.0",
+  "sources": [
+    {
+      "id": "book",
+      "path": "inputs.xlsx",
+      "format": "xlsx"
+    }
+  ],
+  "tables": [
+    {
+      "id": "orders",
+      "source_id": "book",
+      "sheet": "订单",
+      "header_row": 1,
+      "data_range": "A2:F9",
+      "exclusions": [
+        {
+          "rows": [
+            9
+          ],
+          "reason": "显式排除合计行"
+        }
+      ]
+    },
+    {
+      "id": "delivery",
+      "source_id": "book",
+      "sheet": "交付",
+      "header_row": 1,
+      "data_range": "A2:F8",
+      "exclusions": []
+    }
+  ],
+  "tasks": [
+    {
+      "id": "order_delivery",
+      "left_table": "orders",
+      "right_table": "delivery",
+      "keys": [
+        "order",
+        "line"
+      ],
+      "fields": [
+        {
+          "id": "order",
+          "left_column": "A",
+          "right_column": "A",
+          "left_header": "订单号",
+          "right_header": "编号",
+          "type": "identifier"
+        },
+        {
+          "id": "line",
+          "left_column": "B",
+          "right_column": "C",
+          "left_header": "行号",
+          "right_header": "行号",
+          "type": "identifier"
+        },
+        {
+          "id": "item",
+          "left_column": "C",
+          "right_column": "F",
+          "left_header": "品名",
+          "right_header": "品名",
+          "type": "text"
+        },
+        {
+          "id": "quantity",
+          "left_column": "D",
+          "right_column": "E",
+          "left_header": "数量",
+          "right_header": "数量",
+          "type": "decimal"
+        },
+        {
+          "id": "amount",
+          "left_column": "E",
+          "right_column": "B",
+          "left_header": "金额",
+          "right_header": "金额",
+          "type": "decimal",
+          "tolerance": "0.01",
+          "context": {
+            "currency": {
+              "left": {
+                "column": "F"
+              },
+              "right": {
+                "column": "D"
+              }
+            }
+          }
+        }
+      ],
+      "formula_policy": "pending"
+    }
+  ]
+}

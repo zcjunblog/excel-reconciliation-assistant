@@ -5,16 +5,18 @@ from common import RunResult, Issue, IntakeError
 from intake import inspect_sources,read_tables,verify_sources_unchanged
 from matching import associate
 from compare import compare_task
+from runtime_info import skill_version
 
 
 def execute(rules,authorized_paths,budget,mode='run'):
     if mode not in ('run','inspect'): raise IntakeError('invalid_mode','仅支持inspect或run')
+    version=skill_version()
     intake=inspect_sources(rules,authorized_paths,budget)
     tables=read_tables(intake,rules,budget)
     if intake.global_blocked:
         raise IntakeError('intake_blocked','来源变化或全局预算使整批中止',{'issues':[i.code for i in intake.issues]},fatal=True)
     if mode=='inspect':
-        return RunResult(rules,intake,[],[],list(intake.issues),intake.status,mode,budget=budget,run_id=uuid.uuid4().hex)
+        return RunResult(rules,intake,[],[],list(intake.issues),intake.status,mode,budget=budget,run_id=uuid.uuid4().hex,skill_version=version)
     results=[]; states=[]; issues=list(intake.issues)
     for task in rules.tasks:
         budget.check()
@@ -37,4 +39,4 @@ def execute(rules,authorized_paths,budget,mode='run'):
     elif any(r.status=='needs_confirmation' for r in results): status='needs_confirmation'
     else: status='complete'
     if not verify_sources_unchanged(intake,rules,budget): raise IntakeError('source_changed','来源在核对期间发生变化，整批结论失效',fatal=True)
-    return RunResult(rules,intake,results,states,issues,status,mode,budget=budget,run_id=uuid.uuid4().hex)
+    return RunResult(rules,intake,results,states,issues,status,mode,budget=budget,run_id=uuid.uuid4().hex,skill_version=version)

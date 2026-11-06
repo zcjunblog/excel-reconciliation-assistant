@@ -280,6 +280,7 @@ class RunResult:
     unavailable_formats: list[dict] = field(default_factory=list)
     budget: Budget = field(default_factory=Budget)
     run_id: str = ''
+    skill_version: str = ''
 
     @property
     def source_snapshots(self): return self.intake.source_snapshots

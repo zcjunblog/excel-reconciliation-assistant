@@ -172,7 +172,7 @@ def write_reports(run,staging_dir):
         {'table_id':t['id'],'definition':t,'blocked':t['id'] in run.intake.blocked_table_ids,'preview':run.intake.table_previews.get(t['id'])}
         for t in run.rules.tables]))
     files.append(writer.json('工作资料/核对规则.json',_safe_rules(run)))
-    files.append(writer.json('工作资料/执行摘要.json',{'mode':run.mode,'status':run.status,'tasks':run.task_statuses,'issues':run.issues,'unavailable_formats':run.unavailable_formats,'run_id':run.run_id}))
+    files.append(writer.json('工作资料/执行摘要.json',{'skill_version':run.skill_version,'mode':run.mode,'status':run.status,'tasks':run.task_statuses,'issues':run.issues,'unavailable_formats':run.unavailable_formats,'run_id':run.run_id}))
     return files
 
 
@@ -218,7 +218,7 @@ def finalize_delivery(run,files,new_dir):
         for entry in inventory:
             run.budget.check(); guard.validate(entry['path'])
             if _digest(destination/entry['path'])!=entry['sha256']: raise IntakeError('artifact_changed','交付复制后文件被修改')
-        manifest={'schema_version':'1.0','run_id':run.run_id,'mode':run.mode,'status':run.status,'tasks':run.task_statuses,'files':inventory,'unavailable_formats':run.unavailable_formats,
+        manifest={'schema_version':'1.0','skill_version':run.skill_version,'run_id':run.run_id,'mode':run.mode,'status':run.status,'tasks':run.task_statuses,'files':inventory,'unavailable_formats':run.unavailable_formats,
                   'scope':'来源与规则预检；未执行核对' if run.mode=='inspect' else '指定任务、字段与范围；状态不代表业务一致'}
         raw=json.dumps(manifest,ensure_ascii=False,indent=2,allow_nan=False).encode('utf-8')+b'\n'
         run.budget.enforce('max_artifact_bytes',sum(f['bytes'] for f in inventory)+len(raw))

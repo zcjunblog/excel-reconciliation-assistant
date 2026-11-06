@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Excel Reconciliation Rules v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "sources", "tables", "tasks"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "sources": {"type": "array", "minItems": 1, "maxItems": 5, "items": {"$ref": "#/$defs/source"}},
+    "tables": {"type": "array", "minItems": 2, "maxItems": 5, "items": {"$ref": "#/$defs/table"}},
+    "tasks": {"type": "array", "minItems": 1, "maxItems": 4, "items": {"$ref": "#/$defs/task"}}
+  },
+  "$defs": {
+    "id": {"type": "string", "pattern": "^[a-z][a-z0-9_]{0,63}$"},
+    "column": {"type": "string", "pattern": "^[A-Z]{1,3}$"},
+    "source": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "path", "format"],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"},
+        "path": {"type": "string", "minLength": 1},
+        "format": {"enum": ["xlsx", "csv"]},
+        "encoding": {"type": "string", "minLength": 1}
+      }
+    },
+    "exclusion": {
+      "type": "object", "additionalProperties": false, "required": ["rows", "reason"],
+      "properties": {
+        "rows": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "integer", "minimum": 1}},
+        "reason": {"type": "string", "minLength": 1}
+      }
+    },
+    "table": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "source_id", "sheet", "header_row", "data_range", "exclusions"],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"}, "source_id": {"$ref": "#/$defs/id"},
+        "sheet": {"type": ["string", "null"], "minLength": 1},
+        "header_row": {"type": "integer", "minimum": 1},
+        "data_range": {"type": "string", "pattern": "^[A-Z]{1,3}[1-9][0-9]*:[A-Z]{1,3}[1-9][0-9]*$"},
+        "exclusions": {"type": "array", "items": {"$ref": "#/$defs/exclusion"}}
+      }
+    },
+    "contextSide": {
+      "oneOf": [
+        {"type": "object", "additionalProperties": false, "required": ["literal"], "properties": {"literal": {"type": "string", "minLength": 1}}},
+        {"type": "object", "additionalProperties": false, "required": ["column"], "properties": {"column": {"$ref": "#/$defs/column"}}}
+      ]
+    },
+    "contextPair": {
+      "type": "object", "additionalProperties": false, "required": ["left", "right"],
+      "properties": {"left": {"$ref": "#/$defs/contextSide"}, "right": {"$ref": "#/$defs/contextSide"}}
+    },
+    "field": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "left_column", "right_column", "left_header", "right_header", "type"],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"},
+        "left_column": {"$ref": "#/$defs/column"}, "right_column": {"$ref": "#/$defs/column"},
+        "left_header": {"type": "string", "minLength": 1}, "right_header": {"type": "string", "minLength": 1},
+        "type": {"enum": ["identifier", "text", "decimal", "date", "datetime"]},
+        "normalize": {"type": "array", "uniqueItems": true, "items": {"enum": ["trim", "casefold", "nfkc"]}},
+        "nullable": {"type": "boolean"}, "parse_numeric_text": {"type": "boolean"},
+        "tolerance": {"type": "string", "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$"},
+        "date_format": {
+          "type": "object", "additionalProperties": false, "required": ["left", "right"],
+          "properties": {"left": {"type": "string", "minLength": 1}, "right": {"type": "string", "minLength": 1}}
+        },
+        "context": {
+          "type": "object", "additionalProperties": false, "minProperties": 1,
+          "properties": {"currency": {"$ref": "#/$defs/contextPair"}, "unit": {"$ref": "#/$defs/contextPair"}}
+        }
+      },
+      "allOf": [
+        {"if": {"properties": {"type": {"enum": ["identifier", "text"]}}}, "then": {"not": {"anyOf": [{"required": ["tolerance"]}, {"required": ["context"]}, {"required": ["date_format"]}, {"required": ["parse_numeric_text"]}]}}},
+        {"if": {"properties": {"type": {"const": "decimal"}}}, "then": {"not": {"anyOf": [{"required": ["normalize"]}, {"required": ["date_format"]}]}}},
+        {"if": {"properties": {"type": {"enum": ["date", "datetime"]}}}, "then": {"required": ["date_format"], "not": {"anyOf": [{"required": ["normalize"]}, {"required": ["tolerance"]}, {"required": ["context"]}, {"required": ["parse_numeric_text"]}]}}}
+      ]
+    },
+    "task": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "left_table", "right_table", "keys", "fields", "formula_policy"],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"},
+        "left_table": {"$ref": "#/$defs/id"}, "right_table": {"$ref": "#/$defs/id"},
+        "keys": {"type": "array", "minItems": 1, "maxItems": 8, "uniqueItems": true, "items": {"$ref": "#/$defs/id"}},
+        "fields": {"type": "array", "minItems": 2, "maxItems": 200, "items": {"$ref": "#/$defs/field"}},
+        "formula_policy": {"enum": ["pending", "cached"]}
+      }
+    }
+  }
+}
